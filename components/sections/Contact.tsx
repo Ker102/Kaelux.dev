@@ -157,7 +157,7 @@ export default function Contact() {
           className="mt-20 pt-8 border-t border-gray-300 dark:border-gray-700 text-center"
         >
           <p className="text-gray-400">
-            © 2025 Kaelux. Built with Next.js, TypeScript, and Tailwind CSS.
+            © {new Date().getFullYear()} Kaelux. All rights reserved.
           </p>
         </motion.footer>
       </div>
