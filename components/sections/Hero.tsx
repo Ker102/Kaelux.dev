@@ -167,22 +167,44 @@ export default function Hero() {
 
             <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
                 {/* Shining Star */}
-                <MotionImage
-                    src="/images/decorative/clean-star.png"
-                    alt="Shining Star"
-                    width={200}
-                    height={200}
-                    priority
-                    className="w-32 h-32 md:w-44 md:h-44 mb-0 object-contain mix-blend-screen"
-                    animate={{
-                        scale: [1, 1.05, 1],
-                    }}
-                    transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
+                {/* Star Container with Glow */}
+                <div className="relative w-24 h-24 md:w-32 md:h-32 mb-2 flex items-center justify-center">
+                    {/* Underglow Image */}
+                    <MotionImage
+                        src="/images/decorative/star-glow.png"
+                        alt="Star Glow"
+                        width={300}
+                        height={300}
+                        className="absolute w-[180%] h-[180%] object-contain -z-10 opacity-50"
+                        animate={{
+                            scale: [0.8, 1.1, 0.8],
+                            opacity: [0.3, 0.6, 0.3],
+                        }}
+                        transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+
+                    {/* Star Asset */}
+                    <MotionImage
+                        src="/images/decorative/shiny-star-v2.png"
+                        alt="Shining Star"
+                        width={200}
+                        height={200}
+                        priority
+                        className="w-full h-full object-contain relative z-10"
+                        animate={{
+                            scale: [1, 1.05, 1],
+                        }}
+                        transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+                </div>
 
                 <motion.div
                     initial="initial"
