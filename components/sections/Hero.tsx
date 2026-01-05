@@ -94,7 +94,13 @@ export default function Hero() {
                     </div>
 
                     {/* Bottom Right Flow - From bottom center to right edge */}
-                    <div className="absolute bottom-0 right-0 z-1 pointer-events-none select-none">
+                    <div
+                        className="absolute bottom-0 right-0 z-1 pointer-events-none select-none"
+                        style={{
+                            maskImage: 'linear-gradient(to right, transparent, black 20%)',
+                            WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%)'
+                        }}
+                    >
                         <Image
                             src="/images/decorative/liquid-flow-3.png"
                             alt="Liquid Flow Bottom"
@@ -107,7 +113,7 @@ export default function Hero() {
             )}
 
             {/* Bottom Fade Gradient for smooth transition */}
-            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/90 to-transparent z-5 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black via-black/40 to-transparent z-5 pointer-events-none" />
 
             <div className="relative z-10 container mx-auto px-6 text-center">
                 <motion.div

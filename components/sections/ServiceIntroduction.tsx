@@ -49,10 +49,10 @@ const imageReveal = {
 
 export default function ServiceIntroduction() {
     return (
-        <section id="services" className="relative min-h-screen py-24 md:py-32 px-6 bg-black overflow-hidden flex flex-col justify-center">
+        <section id="services" className="relative min-h-screen pt-12 md:pt-24 pb-24 px-6 bg-black overflow-hidden flex flex-col justify-start">
 
             {/* Top Gradient Fade for Smooth Entry - Extended height for smoother blend */}
-            <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black via-black/80 to-transparent z-20 pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black via-black/40 to-transparent z-20 pointer-events-none" />
 
             {/* Iridescent Ambient Glows - Metallic Chromatic Theme */}
             {/* Reduced opacity to ensure the black background remains deep */}
@@ -72,7 +72,7 @@ export default function ServiceIntroduction() {
                 >
                     {/* Top Header Section */}
                     <motion.div variants={slideUpFade} className="mb-12 lg:mb-20 w-full text-center lg:text-left">
-                        <h2 className="text-5xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500 drop-shadow-lg">
+                        <h2 className="text-5xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-transparent bg-clip-text bg-gradient-to-b from-gray-800 via-white to-white drop-shadow-lg">
                             Beyond Chatbots: <br />
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-purple-300 to-cyan-300 animate-gradient-x bg-[length:200%_auto]">
                                 Intelligent Infrastructure
