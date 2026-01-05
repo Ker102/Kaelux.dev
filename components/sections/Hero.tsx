@@ -85,11 +85,12 @@ export default function Hero() {
                     {/* Left Side Flow */}
                     <div className="absolute top-0 left-0 z-1 pointer-events-none select-none">
                         <Image
-                            src="/images/decorative/liquid-flow-2.png"
+                            src="/images/decorative/liquid-flow-left-hq.png"
                             alt="Liquid Flow Left"
-                            width={700}
-                            height={700}
-                            className="w-[300px] md:w-[500px] lg:w-[650px] object-contain -translate-x-[20%] -translate-y-[15%]"
+                            width={1000}
+                            height={1000}
+                            priority
+                            className="w-[300px] md:w-[600px] lg:w-[800px] object-contain -translate-x-[15%]"
                         />
                     </div>
 
