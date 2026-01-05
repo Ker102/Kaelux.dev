@@ -36,20 +36,20 @@ export default function Home() {
           <Image
             src="/kaelux-icon-v3.png"
             alt="Kaelux Icon"
-            width={80}
-            height={80}
+            width={64}
+            height={64}
             priority
-            className="relative h-20 w-20 select-none object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] rounded-[18px]"
+            className="relative h-16 w-16 select-none object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] rounded-[15px]"
           />
 
           {/* Text Brand */}
           <Image
             src="/kaelux-text-new.png"
             alt="Kaelux"
-            width={133}
-            height={40}
+            width={106}
+            height={32}
             priority
-            className="relative h-10 w-auto select-none object-contain drop-shadow-md"
+            className="relative h-8 w-auto select-none object-contain drop-shadow-md"
           />
         </div>
       </motion.div>

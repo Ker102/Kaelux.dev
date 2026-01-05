@@ -68,53 +68,41 @@ export default function Hero() {
                 </div>
             )}
 
-            {/* Floating Decorative Elements - Only render on client */}
+            {/* New Static Liquid Flows - Only render on client */}
             {isMounted && (
                 <>
-                    <FloatingDecor
-                        src="/images/decorative/liquid-1.png"
-                        alt="Decorative element 1"
-                        size={300}
-                        xOffset={-3}
-                        yOffset={15}
-                        delay={0}
-                        duration={50}
-                        opacity={1}
-                        className="hidden md:block"
-                    />
-                    <FloatingDecor
-                        src="/images/decorative/liquid-2.png"
-                        alt="Decorative element 2"
-                        size={250}
-                        xOffset={82}
-                        yOffset={10}
-                        delay={5}
-                        duration={55}
-                        opacity={0.95}
-                        className="hidden md:block"
-                    />
-                    <FloatingDecor
-                        src="/images/decorative/liquid-5.png"
-                        alt="Decorative element 5"
-                        size={200}
-                        xOffset={5}
-                        yOffset={70}
-                        delay={2.5}
-                        duration={60}
-                        opacity={0.95}
-                        className="hidden md:block"
-                    />
-                    <FloatingDecor
-                        src="/images/decorative/liquid-4.png"
-                        alt="Decorative element 4"
-                        size={280}
-                        xOffset={87}
-                        yOffset={65}
-                        delay={3}
-                        duration={52}
-                        opacity={0.98}
-                        className="hidden md:block"
-                    />
+                    {/* Top Right Flow */}
+                    <div className="absolute top-0 right-0 z-1 pointer-events-none select-none">
+                        <Image
+                            src="/images/decorative/liquid-flow-1.png"
+                            alt="Liquid Flow Top Right"
+                            width={600}
+                            height={600}
+                            className="w-[250px] md:w-[400px] lg:w-[500px] object-contain translate-x-[20%] -translate-y-[10%]"
+                        />
+                    </div>
+
+                    {/* Left Side Flow */}
+                    <div className="absolute top-0 left-0 z-1 pointer-events-none select-none">
+                        <Image
+                            src="/images/decorative/liquid-flow-2.png"
+                            alt="Liquid Flow Left"
+                            width={700}
+                            height={700}
+                            className="w-[300px] md:w-[500px] lg:w-[650px] object-contain -translate-x-[20%] -translate-y-[15%]"
+                        />
+                    </div>
+
+                    {/* Bottom Right Flow - From bottom center to right edge */}
+                    <div className="absolute bottom-0 right-0 z-1 pointer-events-none select-none">
+                        <Image
+                            src="/images/decorative/liquid-flow-3.png"
+                            alt="Liquid Flow Bottom"
+                            width={900}
+                            height={600}
+                            className="w-[400px] md:w-[700px] lg:w-[900px] object-contain translate-x-[5%] translate-y-[5%]"
+                        />
+                    </div>
                 </>
             )}
 
