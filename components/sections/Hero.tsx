@@ -168,7 +168,7 @@ export default function Hero() {
             <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
                 {/* Shining Star */}
                 {/* Star Container with Glow */}
-                <div className="relative w-24 h-24 md:w-32 md:h-32 mb-2 flex items-center justify-center">
+                <div className="relative w-16 h-16 md:w-32 md:h-32 mb-2 flex items-center justify-center">
                     {/* Underglow Image */}
                     <MotionImage
                         src="/images/decorative/star-glow.png"
@@ -227,7 +227,7 @@ export default function Hero() {
                             width={900}
                             height={120}
                             priority
-                            className="w-auto h-auto max-w-[90vw] md:max-w-[70vw] lg:max-w-[800px] select-none drop-shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                            className="w-auto h-auto max-w-[80vw] md:max-w-[70vw] lg:max-w-[800px] select-none drop-shadow-[0_0_30px_rgba(255,255,255,0.15)]"
                             style={{
                                 filter: 'brightness(1.05) contrast(1.02)',
                             }}

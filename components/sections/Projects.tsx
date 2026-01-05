@@ -7,7 +7,7 @@ import FloatingDecor from "@/components/FloatingDecor";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { HiExternalLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
-import { useState, useRef, MouseEvent } from "react";
+import { useState, useRef, useEffect, MouseEvent } from "react";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
 // 3D Tilt Component for Project Preview
@@ -69,16 +69,16 @@ function TiltCard({ children, project }: { children: React.ReactNode; project: a
           transform: "translateZ(50px)",
           transformStyle: "preserve-3d",
         }}
-          animate={{
-            boxShadow: hoveredProject
-              ? "0 25px 50px -12px rgba(255, 255, 255, 0.3), 0 0 60px rgba(184, 184, 184, 0.2), 0 0 100px rgba(140, 140, 140, 0.1)"
-              : "0 10px 15px -3px rgba(0, 0, 0, 0.3)",
-          }}
+        animate={{
+          boxShadow: hoveredProject
+            ? "0 25px 50px -12px rgba(255, 255, 255, 0.3), 0 0 60px rgba(184, 184, 184, 0.2), 0 0 100px rgba(140, 140, 140, 0.1)"
+            : "0 10px 15px -3px rgba(0, 0, 0, 0.3)",
+        }}
         transition={{ duration: 0.3 }}
         className="relative rounded-xl"
       >
         {children}
-        
+
         {/* Glow effect overlay */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -146,9 +146,28 @@ function TiltCard({ children, project }: { children: React.ReactNode; project: a
 function VideoPreview({ videoUrl, projectName }: { videoUrl: string; projectName: string }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handleVideoClick = async () => {
+  // Detect touch device on mount (for mobile-specific native controls)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    }
+  }, []);
+
+  // Get video MIME type based on extension
+  const getVideoMimeType = (url: string): string => {
+    if (url.endsWith('.webm')) return 'video/webm';
+    if (url.endsWith('.mov')) return 'video/quicktime';
+    if (url.endsWith('.m4v')) return 'video/x-m4v';
+    return 'video/mp4';
+  };
+
+  const handleVideoClick = async (e: React.MouseEvent) => {
+    // Prevent click if using native controls (touch devices)
+    if (isTouchDevice) return;
+
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
@@ -188,6 +207,14 @@ function VideoPreview({ videoUrl, projectName }: { videoUrl: string; projectName
     setIsLoaded(true);
   };
 
+  const handlePlay = () => {
+    setIsPlaying(true);
+  };
+
+  const handlePause = () => {
+    setIsPlaying(false);
+  };
+
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
@@ -197,19 +224,27 @@ function VideoPreview({ videoUrl, projectName }: { videoUrl: string; projectName
     >
       <video
         ref={videoRef}
-        src={videoUrl}
         loop
         muted
         playsInline
+        webkit-playsinline="true"
         preload="metadata"
+        controls={isTouchDevice}
         onEnded={handleVideoEnd}
         onLoadedData={handleLoadedData}
+        onPlay={handlePlay}
+        onPause={handlePause}
         className="w-full h-auto object-cover"
         style={{ minHeight: isLoaded ? 'auto' : '200px', backgroundColor: '#1a1a1a' }}
-      />
-      
-      {/* Play/Pause Overlay */}
-      {!isPlaying && (
+      >
+        <source src={videoUrl} type={getVideoMimeType(videoUrl)} />
+        {/* Fallback MP4 source */}
+        <source src={videoUrl} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Play/Pause Overlay - Hide on touch devices since they use native controls */}
+      {!isPlaying && !isTouchDevice && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -229,15 +264,17 @@ function VideoPreview({ videoUrl, projectName }: { videoUrl: string; projectName
           </motion.div>
         </motion.div>
       )}
-      
-      {/* Hover hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        className="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm text-white text-sm font-medium"
-      >
-        {isPlaying ? "Click to pause" : "Click to play"}
-      </motion.div>
+
+      {/* Hover hint - Hide on touch devices */}
+      {!isTouchDevice && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          className="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm text-white text-sm font-medium"
+        >
+          {isPlaying ? "Click to pause" : "Click to play"}
+        </motion.div>
+      )}
     </motion.div>
   );
 }
@@ -256,9 +293,8 @@ function ProjectList({ projects, startIndex = 0 }: { projects: Project[]; startI
         <motion.div
           key={project.id}
           variants={fadeInUp}
-          className={`flex flex-col ${
-            (startIndex + index) % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-          } gap-12 items-center`}
+          className={`flex flex-col ${(startIndex + index) % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+            } gap-12 items-center`}
         >
           {/* Project Preview */}
           <div className="w-full lg:w-1/2" style={{ perspective: "1000px" }}>
