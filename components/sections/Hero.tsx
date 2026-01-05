@@ -9,6 +9,44 @@ import FloatingDecor from "@/components/FloatingDecor";
 import { HiArrowDown } from "react-icons/hi";
 import { fadeInUp, slideInFromLeft, slideInFromRight } from "@/lib/animations";
 
+const MotionImage = motion(Image);
+
+const starAnimation = {
+    animate: {
+        scale: [1, 1.1, 1],
+        opacity: [0.8, 1, 0.8],
+        filter: [
+            "drop-shadow(0 0 15px rgba(255,255,255,0.8))",
+            "drop-shadow(0 0 45px rgba(255,255,255,1))",
+            "drop-shadow(0 0 15px rgba(255,255,255,0.8))"
+        ],
+        transition: {
+            duration: 3,
+            ease: "easeInOut" as const,
+            repeat: Infinity,
+            repeatType: "reverse" as const
+        }
+    }
+};
+
+const glowAnimation = {
+    initial: { filter: "drop-shadow(0 0 15px rgba(168,85,247,0.3))" },
+    animate: {
+        filter: [
+            "drop-shadow(0 0 15px rgba(168,85,247,0.3))",
+            "drop-shadow(0 0 40px rgba(168,85,247,0.6))",
+            "drop-shadow(0 0 20px rgba(192,132,252,0.4))",
+            "drop-shadow(0 0 15px rgba(168,85,247,0.3))"
+        ],
+        transition: {
+            duration: 5,
+            ease: "easeInOut" as const,
+            repeat: Infinity,
+            repeatType: "reverse" as const
+        }
+    }
+};
+
 export default function Hero() {
     const [isMounted, setIsMounted] = useState(false);
 
@@ -72,42 +110,53 @@ export default function Hero() {
             {isMounted && (
                 <>
                     {/* Top Right Flow */}
-                    <div className="absolute top-0 right-0 z-1 pointer-events-none select-none">
-                        <Image
+                    {/* Top Right Flow */}
+                    <div className="absolute top-0 right-0 z-1 pointer-events-none select-none translate-x-[20%] -translate-y-[10%]">
+                        <MotionImage
                             src="/images/decorative/liquid-flow-1.png"
                             alt="Liquid Flow Top Right"
-                            width={600}
-                            height={600}
-                            className="w-[250px] md:w-[400px] lg:w-[500px] object-contain translate-x-[20%] -translate-y-[10%]"
+                            width={800}
+                            height={800}
+                            priority
+                            className="w-[250px] md:w-[400px] lg:w-[500px] object-contain"
+                            initial="initial"
+                            animate="animate"
+                            variants={glowAnimation}
                         />
                     </div>
 
                     {/* Left Side Flow */}
-                    <div className="absolute top-0 left-0 z-1 pointer-events-none select-none">
-                        <Image
+                    <div className="absolute top-0 left-0 z-1 pointer-events-none select-none -translate-x-[20%]">
+                        <MotionImage
                             src="/images/decorative/liquid-flow-left-hq.png"
                             alt="Liquid Flow Left"
                             width={1000}
                             height={1000}
                             priority
-                            className="w-[300px] md:w-[600px] lg:w-[800px] object-contain -translate-x-[15%]"
+                            className="w-[300px] md:w-[600px] lg:w-[800px] object-contain"
+                            initial="initial"
+                            animate="animate"
+                            variants={glowAnimation}
                         />
                     </div>
 
                     {/* Bottom Right Flow - From bottom center to right edge */}
                     <div
-                        className="absolute bottom-0 right-0 z-1 pointer-events-none select-none"
+                        className="absolute bottom-0 right-0 z-1 pointer-events-none select-none translate-x-[5%] translate-y-[5%]"
                         style={{
                             maskImage: 'linear-gradient(to right, transparent, black 20%)',
                             WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%)'
                         }}
                     >
-                        <Image
+                        <MotionImage
                             src="/images/decorative/liquid-flow-3.png"
                             alt="Liquid Flow Bottom"
                             width={900}
                             height={600}
-                            className="w-[400px] md:w-[700px] lg:w-[900px] object-contain translate-x-[5%] translate-y-[5%]"
+                            className="w-[400px] md:w-[700px] lg:w-[900px] object-contain"
+                            initial="initial"
+                            animate="animate"
+                            variants={glowAnimation}
                         />
                     </div>
                 </>
@@ -116,12 +165,29 @@ export default function Hero() {
             {/* Bottom Fade Gradient for smooth transition */}
             <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black via-black/40 to-transparent z-5 pointer-events-none" />
 
-            <div className="relative z-10 container mx-auto px-6 text-center">
+            <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
+                {/* Shining Star */}
+                <MotionImage
+                    src="/images/decorative/clean-star.png"
+                    alt="Shining Star"
+                    width={200}
+                    height={200}
+                    priority
+                    className="w-32 h-32 md:w-44 md:h-44 mb-0 object-contain mix-blend-screen"
+                    animate={{
+                        scale: [1, 1.05, 1],
+                    }}
+                    transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+
                 <motion.div
                     initial="initial"
                     animate="animate"
                     variants={fadeInUp}
-                    className="space-y-6"
                 >
                     {/* SEO: Visually hidden H1 for search engines and screen readers */}
                     <h1 className="sr-only">
