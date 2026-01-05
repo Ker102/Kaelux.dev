@@ -106,6 +106,9 @@ export default function Hero() {
                 </>
             )}
 
+            {/* Bottom Fade Gradient for smooth transition */}
+            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/90 to-transparent z-5 pointer-events-none" />
+
             <div className="relative z-10 container mx-auto px-6 text-center">
                 <motion.div
                     initial="initial"
