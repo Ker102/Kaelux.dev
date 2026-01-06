@@ -129,6 +129,20 @@ function CompactNavbar() {
 
   return (
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-4">
+      {/* Mobile-only Brand Logo - Top Left */}
+      <Link
+        href="/"
+        className="md:hidden fixed top-6 left-4 z-50 pointer-events-auto"
+      >
+        <Image
+          src="/logo.png"
+          alt="Kaelux Logo"
+          width={32}
+          height={32}
+          className="w-8 h-8 object-contain"
+        />
+      </Link>
+
       <motion.div
         ref={containerRef}
         className="pointer-events-auto relative overflow-hidden will-change-transform"

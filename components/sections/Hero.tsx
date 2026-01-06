@@ -133,7 +133,7 @@ export default function Hero() {
                             width={1000}
                             height={1000}
                             priority
-                            className="w-[300px] md:w-[600px] lg:w-[800px] object-contain"
+                            className="w-[150px] md:w-[600px] lg:w-[800px] object-contain"
                             initial="initial"
                             animate="animate"
                             variants={glowAnimation}
