@@ -7,9 +7,9 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kaelux Dev Studio | Applied AI & Full-Stack Systems",
-  description: "Kaelux Projects is an independent studio shipping AI copilots, immersive experiences, and production-ready web systems.",
-  keywords: ["Kaelux", "developer", "portfolio", "projects", "web development", "Next.js", "React", "TypeScript", "AI workspace", "automation", "creative technology"],
+  title: "Kaelux | AI Engineering Agency — Custom LLM & Automation Solutions",
+  description: "Kaelux is an AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses. From RAG pipelines to workflow agents—we engineer AI that works.",
+  keywords: ["AI engineering agency", "custom LLM solutions", "AI automation", "RAG pipelines", "workflow agents", "AI infrastructure", "full-stack development", "Next.js", "React", "TypeScript", "enterprise AI", "intelligent automation"],
   authors: [{ name: "Kaelux" }],
   metadataBase: new URL('https://kaelux.dev'),
   manifest: '/manifest.json',
@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Kaelux Dev Studio | Applied AI & Full-Stack Systems",
-    description: "Specialised in AI agents, realtime experiences, and performant web products.",
+    title: "Kaelux | AI Engineering Agency — Custom LLM & Automation Solutions",
+    description: "Kaelux is an AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses.",
     type: "website",
     url: "https://kaelux.dev",
-    siteName: "Kaelux Developer Page",
+    siteName: "Kaelux AI Engineering",
     images: [
       {
         url: "/logo.png",
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kaelux Dev Studio",
-    description: "Custom AI workspaces and elite-level web builds.",
+    title: "Kaelux | AI Engineering Agency",
+    description: "Custom LLM systems, intelligent automation, and production-ready AI infrastructure for businesses.",
     images: ["/logo.png"],
   },
   robots: {
@@ -77,8 +77,8 @@ export default function RootLayout({
     "url": "https://kaelux.dev",
     "logo": "https://kaelux.dev/logo.png",
     "image": "https://kaelux.dev/logo.png",
-    "description": "Independent studio engineering AI copilots, experiential design, and full-stack web systems.",
-    "jobTitle": "Founder & Developer",
+    "description": "AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses.",
+    "jobTitle": "Founder & AI Engineer",
     "sameAs": [
       "https://github.com/Ker102"
     ]
