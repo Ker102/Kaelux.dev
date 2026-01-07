@@ -4,6 +4,7 @@
   "description": "Modern Next.js Developer Portfolio",
   "scripts": {
     "dev": "next dev",
+    "dev:mobile": "node scripts/open-mobile.mjs & next dev -p 3001",
     "build": "next build",
     "start": "next start -H 0.0.0.0 -p $PORT",
     "lint": "eslint app components lib hooks data --max-warnings 999"
