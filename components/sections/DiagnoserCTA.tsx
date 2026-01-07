@@ -130,9 +130,68 @@ export default function DiagnoserCTA() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 }}
-                    className="flex justify-center items-center gap-6 mt-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500"
+                    className="flex justify-center items-center gap-6 mt-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 relative z-10"
                 >
                     <span className="text-xs font-mono text-gray-400">Powered by Enterprise Neural Engine v3.5</span>
+                </motion.div>
+            </div>
+
+            {/* Floating 3D Shapes - Positioned relative to section */}
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <motion.div
+                    initial={{ opacity: 0, rotate: -25, x: -50 }}
+                    whileInView={{ opacity: 1, rotate: -12, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="absolute -top-8 left-4 w-64 h-64 md:w-[28rem] md:h-[28rem]"
+                >
+                    <img
+                        src="/models/cta-shape-1.png"
+                        alt=""
+                        className="w-full h-full object-contain drop-shadow-[0_50px_50px_rgba(0,0,0,0.5)]"
+                    />
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, rotate: 20, x: 50 }}
+                    whileInView={{ opacity: 1, rotate: 12, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    className="absolute -top-12 -right-28 w-80 h-80 md:w-[38rem] md:h-[38rem]"
+                >
+                    <img
+                        src="/models/cta-shape-2.png"
+                        alt="3D Brain"
+                        className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+                    />
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, rotate: -15, y: 50 }}
+                    whileInView={{ opacity: 1, rotate: -8, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.4 }}
+                    className="absolute bottom-8 -left-14 w-72 h-72 md:w-[30rem] md:h-[30rem]"
+                >
+                    <img
+                        src="/models/cta-cloud.png"
+                        alt="3D Cloud"
+                        className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+                    />
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, rotate: 15, y: 50 }}
+                    whileInView={{ opacity: 1, rotate: 8, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="absolute -bottom-8 right-0 w-72 h-72 md:w-[28rem] md:h-[28rem]"
+                >
+                    <img
+                        src="/models/cta-shape-4.png"
+                        alt=""
+                        className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+                    />
                 </motion.div>
             </div>
         </section>
