@@ -38,12 +38,13 @@ export const featuredProjects: Project[] = [
   },
   {
     id: "workflow-automation-atlas",
-    name: "Workflow Automation Atlas",
-    description: "Curated collection of 3,800+ battle-tested n8n workflows organized into themed packs with a Vue + Vite workflow explorer. Ready-to-import JSON exports for rapid automation deployment.",
-    techStack: ["Vue 3", "Vite", "n8n", "TypeScript", "Node.js"],
+    name: "n8n Automation Atlas",
+    description: "🔥 36,985 n8n automation workflows — curated templates + AI-generated synthetic workflows, ML-ready with semantic labels. Features a Vue + Vite Workflow Explorer with search, filtering by category/integration/complexity, and one-click JSON downloads.",
+    techStack: ["Vue 3", "Vite", "TypeScript", "n8n", "Python", "Parquet"],
     image: "/projects/workflow-atlas.jpg",
     videoUrl: "https://github.com/Ker102/DevPotfolio/releases/download/v1.0.0-assets/Generic.PnP.Monitor.2025-11-21.16.19.55.mp4",
-    githubUrl: "https://github.com/Ker102/n8n-ai-automation-workflow-atlas",
+    liveUrl: "https://n8n-workflows-36k.vercel.app/",
+    githubUrl: "https://github.com/Ker102/n8n-workflows-36k",
   },
 ];
 

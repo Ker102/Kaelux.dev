@@ -311,7 +311,7 @@ function ProjectList({ projects, startIndex = 0 }: { projects: Project[]; startI
 
           {/* Project Info */}
           <div className="w-full lg:w-1/2 space-y-4">
-            <h3 className="text-3xl md:text-4xl font-bold gradient-text">
+            <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500">
               {project.name}
             </h3>
             <p className="text-lg text-gray-300">
