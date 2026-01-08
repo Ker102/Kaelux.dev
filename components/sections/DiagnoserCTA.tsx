@@ -21,129 +21,15 @@ export default function DiagnoserCTA() {
     };
 
     return (
-        <section className="relative py-12 px-6 overflow-hidden bg-white">
-            <div className="container mx-auto max-w-3xl relative z-10">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="text-center mb-16"
-                >
-                    {/* Professional Badge */}
-                    <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/80 border border-gray-200/50 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.04)] mb-8 transition-all hover:border-gray-300/50">
-                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 animate-pulse" />
-                        <span className="text-sm text-gray-600 font-semibold tracking-wide">Intelligent Diagnostics</span>
-                    </div>
-
-                    <h2 className="text-5xl md:text-6xl font-semibold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-700 to-gray-500">
-                        Not Sure Where to Start?
-                    </h2>
-                    <p className="text-gray-500 text-xl max-w-2xl mx-auto leading-relaxed font-light">
-                        Let our neural engine analyze your business infrastructure and architect the perfect solution.
-                    </p>
-                </motion.div>
-
-                {/* Chat Preview Box - Deep Black / Chrome Theme */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${isFocused
-                        ? "shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/20 scale-[1.02]"
-                        : "shadow-[0_20px_40px_-12px_rgba(0,0,0,0.3)]"
-                        }`}
-                    style={{ background: '#09090b' }}
-                >
-                    {/* Glass Sheen */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none" />
-
-                    {/* Chrome Border */}
-                    <div className="absolute inset-0 rounded-3xl border border-white/10 pointer-events-none" />
-
-                    <div className="relative z-10">
-                        {/* Chat Header */}
-                        <div className="flex items-center gap-4 px-8 py-5 border-b border-white/5 bg-white/[0.02]">
-                            {/* Abstract Brand Icon */}
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-950 border border-white/10 flex items-center justify-center shadow-lg relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 className="font-semibold text-white text-sm tracking-wide">Kaelux Neural Agent</h3>
-                                <div className="flex items-center gap-2 mt-0.5">
-                                    <span className="relative flex h-2 w-2">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                                    </span>
-                                    <span className="text-xs text-zinc-400 font-medium">System Online</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Initial Question - Clean, no avatar */}
-                        <div className="p-8">
-                            <div className="bg-zinc-900/80 border border-white/10 text-zinc-300 rounded-2xl px-6 py-5 shadow-inner backdrop-blur-sm">
-                                <p className="text-[15px] font-medium text-white">
-                                    Describe your business and what you&apos;re looking to achieve.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Input Area */}
-                        <form onSubmit={handleSubmit} className="p-5 border-t border-white/5 bg-black/20">
-                            <div className="flex items-center gap-3 relative">
-                                <input
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    onFocus={() => setIsFocused(true)}
-                                    onBlur={() => setIsFocused(false)}
-                                    placeholder="Tell us about your business..."
-                                    className="w-full bg-zinc-900/50 border border-white/10 rounded-xl pl-5 pr-14 py-4 
-                                   text-white placeholder-zinc-600 focus:outline-none focus:ring-1 
-                                   focus:ring-white/20 focus:border-white/20 transition-all font-light text-sm"
-                                />
-                                <motion.button
-                                    type="submit"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="absolute right-2 p-2.5 rounded-lg bg-white text-black 
-                                   hover:bg-gray-100 transition-colors shadow-lg shadow-white/5"
-                                >
-                                    <Send className="w-4 h-4" />
-                                </motion.button>
-                            </div>
-                            <p className="text-[11px] text-zinc-600 mt-4 text-center tracking-widest uppercase font-medium">
-                                Press Enter to Initialize
-                            </p>
-                        </form>
-                    </div>
-                </motion.div>
-
-                {/* Trust indicator */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                    className="flex justify-center items-center gap-6 mt-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 relative z-10"
-                >
-                    <span className="text-xs font-mono text-gray-400">Powered by Enterprise Neural Engine v3.5</span>
-                </motion.div>
-            </div>
-
-            {/* Floating 3D Shapes - Positioned relative to section */}
-            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="relative z-20">
+            {/* Mobile-only top shapes - positioned OUTSIDE the section for perfect layering */}
+            <div className="md:hidden absolute -top-20 left-0 right-0 h-32 z-50 pointer-events-none">
                 <motion.div
                     initial={{ opacity: 0, rotate: -25, x: -50 }}
                     whileInView={{ opacity: 1, rotate: -12, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="absolute -top-8 left-4 w-64 h-64 md:w-[28rem] md:h-[28rem]"
+                    className="absolute top-0 -left-12 w-48 h-48"
                 >
                     <img
                         src="/models/cta-shape-1.png"
@@ -157,7 +43,7 @@ export default function DiagnoserCTA() {
                     whileInView={{ opacity: 1, rotate: 12, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.3 }}
-                    className="absolute -top-12 -right-28 w-80 h-80 md:w-[38rem] md:h-[38rem]"
+                    className="absolute top-0 -right-16 w-56 h-56"
                 >
                     <img
                         src="/models/cta-shape-2.png"
@@ -165,35 +51,183 @@ export default function DiagnoserCTA() {
                         className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
                     />
                 </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, rotate: -15, y: 50 }}
-                    whileInView={{ opacity: 1, rotate: -8, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.4 }}
-                    className="absolute bottom-8 -left-14 w-72 h-72 md:w-[30rem] md:h-[30rem]"
-                >
-                    <img
-                        src="/models/cta-cloud.png"
-                        alt="3D Cloud"
-                        className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
-                    />
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, rotate: 15, y: 50 }}
-                    whileInView={{ opacity: 1, rotate: 8, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="absolute -bottom-8 right-0 w-72 h-72 md:w-[28rem] md:h-[28rem]"
-                >
-                    <img
-                        src="/models/cta-shape-4.png"
-                        alt=""
-                        className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
-                    />
-                </motion.div>
             </div>
-        </section>
+
+            <section className="relative py-24 md:py-12 px-6 overflow-hidden bg-white">
+                <div className="container mx-auto max-w-3xl relative z-10">
+                    {/* Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="text-center mb-16"
+                    >
+                        {/* Professional Badge */}
+                        <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/80 border border-gray-200/50 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.04)] mb-8 transition-all hover:border-gray-300/50">
+                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 animate-pulse" />
+                            <span className="text-sm text-gray-600 font-semibold tracking-wide">Intelligent Diagnostics</span>
+                        </div>
+
+                        <h2 className="text-5xl md:text-6xl font-semibold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-700 to-gray-500">
+                            Not Sure Where to Start?
+                        </h2>
+                        <p className="text-gray-500 text-xl max-w-2xl mx-auto leading-relaxed font-light">
+                            Let our neural engine analyze your business infrastructure and architect the perfect solution.
+                        </p>
+                    </motion.div>
+
+                    {/* Chat Preview Box - Deep Black / Chrome Theme */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${isFocused
+                            ? "shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/20 scale-[1.02]"
+                            : "shadow-[0_20px_40px_-12px_rgba(0,0,0,0.3)]"
+                            }`}
+                        style={{ background: '#09090b' }}
+                    >
+                        {/* Glass Sheen */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none" />
+
+                        {/* Chrome Border */}
+                        <div className="absolute inset-0 rounded-3xl border border-white/10 pointer-events-none" />
+
+                        <div className="relative z-10">
+                            {/* Chat Header */}
+                            <div className="flex items-center gap-4 px-8 py-5 border-b border-white/5 bg-white/[0.02]">
+                                {/* Abstract Brand Icon */}
+                                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-950 border border-white/10 flex items-center justify-center shadow-lg relative overflow-hidden group">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-white text-sm tracking-wide">Kaelux Neural Agent</h3>
+                                    <div className="flex items-center gap-2 mt-0.5">
+                                        <span className="relative flex h-2 w-2">
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                        </span>
+                                        <span className="text-xs text-zinc-400 font-medium">System Online</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Initial Question - Clean, no avatar */}
+                            <div className="p-8">
+                                <div className="bg-zinc-900/80 border border-white/10 text-zinc-300 rounded-2xl px-6 py-5 shadow-inner backdrop-blur-sm">
+                                    <p className="text-[15px] font-medium text-white">
+                                        Describe your business and what you&apos;re looking to achieve.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Input Area */}
+                            <form onSubmit={handleSubmit} className="p-5 border-t border-white/5 bg-black/20">
+                                <div className="flex items-center gap-3 relative">
+                                    <input
+                                        value={input}
+                                        onChange={(e) => setInput(e.target.value)}
+                                        onFocus={() => setIsFocused(true)}
+                                        onBlur={() => setIsFocused(false)}
+                                        placeholder="Tell us about your business..."
+                                        className="w-full bg-zinc-900/50 border border-white/10 rounded-xl pl-5 pr-14 py-4 
+                                   text-white placeholder-zinc-600 focus:outline-none focus:ring-1 
+                                   focus:ring-white/20 focus:border-white/20 transition-all font-light text-sm"
+                                    />
+                                    <motion.button
+                                        type="submit"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="absolute right-2 p-2.5 rounded-lg bg-white text-black 
+                                   hover:bg-gray-100 transition-colors shadow-lg shadow-white/5"
+                                    >
+                                        <Send className="w-4 h-4" />
+                                    </motion.button>
+                                </div>
+                                <p className="text-[11px] text-zinc-600 mt-4 text-center tracking-widest uppercase font-medium">
+                                    Press Enter to Initialize
+                                </p>
+                            </form>
+                        </div>
+                    </motion.div>
+
+                    {/* Trust indicator */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 }}
+                        className="flex justify-center items-center gap-6 mt-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 relative z-10 pb-16 md:pb-0"
+                    >
+                        <span className="text-xs font-mono text-gray-400">Powered by Enterprise Neural Engine v3.5</span>
+                    </motion.div>
+                </div>
+
+                {/* Floating 3D Shapes - Bottom models (inside section bounds) */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                    <motion.div
+                        initial={{ opacity: 0, rotate: -15, y: 50 }}
+                        whileInView={{ opacity: 1, rotate: -8, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                        className="absolute bottom-4 -left-16 w-52 h-52 md:bottom-8 md:-left-14 md:w-[30rem] md:h-[30rem]"
+                    >
+                        <img
+                            src="/models/cta-cloud.png"
+                            alt="3D Cloud"
+                            className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+                        />
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, rotate: 15, y: 50 }}
+                        whileInView={{ opacity: 1, rotate: 8, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                        className="absolute bottom-4 -right-16 w-52 h-52 md:-bottom-8 md:right-0 md:w-[28rem] md:h-[28rem]"
+                    >
+                        <img
+                            src="/models/cta-shape-4.png"
+                            alt=""
+                            className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+                        />
+                    </motion.div>
+
+                    {/* Desktop-only top shapes (hidden on mobile, shown via md:block) */}
+                    <motion.div
+                        initial={{ opacity: 0, rotate: -25, x: -50 }}
+                        whileInView={{ opacity: 1, rotate: -12, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        className="hidden md:block absolute md:-top-8 md:left-4 md:w-[28rem] md:h-[28rem]"
+                    >
+                        <img
+                            src="/models/cta-shape-1.png"
+                            alt=""
+                            className="w-full h-full object-contain drop-shadow-[0_50px_50px_rgba(0,0,0,0.5)]"
+                        />
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, rotate: 20, x: 50 }}
+                        whileInView={{ opacity: 1, rotate: 12, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.3 }}
+                        className="hidden md:block absolute md:-top-12 md:-right-28 md:w-[38rem] md:h-[38rem]"
+                    >
+                        <img
+                            src="/models/cta-shape-2.png"
+                            alt="3D Brain"
+                            className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+                        />
+                    </motion.div>
+                </div>
+            </section>
+        </div>
     );
 }
