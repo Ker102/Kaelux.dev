@@ -64,7 +64,7 @@ export default function AdditionalServicesSolutions() {
                 >
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                         Complete{" "}
-                        <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#000000_0%,#434343_50%,#000000_100%)]">
+                        <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#FF3BFF_0%,#ECBFBF_38%,#5C24FF_76%,#D94FD5_100%)]">
                             Platform Solutions
                         </span>
                     </h2>
