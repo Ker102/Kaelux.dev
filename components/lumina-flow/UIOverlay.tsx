@@ -25,7 +25,7 @@ const itemVariants = {
     y: 0,
     scale: 1,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 100,
       damping: 15,
     },
@@ -38,7 +38,7 @@ const headerVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 80,
       damping: 20,
       delay: 0.1,
@@ -53,7 +53,7 @@ const cardVariants = {
     scale: 1,
     y: 0,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 60,
       damping: 15,
       delay: 0.3,
@@ -67,7 +67,7 @@ const footerVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 100,
       damping: 20,
       delay: 0.8,
@@ -76,7 +76,7 @@ const footerVariants = {
 };
 
 // Reusable link item component with hover animations
-const LinkItem: React.FC<{ href: string; icon: React.ElementType; label: string; index: number }> = ({
+const LinkItem: React.FC<{ href: string; icon: React.ElementType<{ size?: number; strokeWidth?: number }>; label: string; index: number }> = ({
   href,
   icon: Icon,
   label,
@@ -88,7 +88,7 @@ const LinkItem: React.FC<{ href: string; icon: React.ElementType; label: string;
     whileHover={{
       scale: 1.03,
       x: 4,
-      transition: { type: 'spring', stiffness: 400, damping: 25 }
+      transition: { type: 'spring' as const, stiffness: 400, damping: 25 }
     }}
     whileTap={{ scale: 0.98 }}
     className="group/item relative flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-colors duration-300"
