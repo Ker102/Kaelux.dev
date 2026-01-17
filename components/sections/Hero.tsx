@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
 import MagneticButton from "@/components/MagneticButton";
 import GlassSurface from "@/components/GlassSurface";
 import FloatingDecor from "@/components/FloatingDecor";
 import { HiArrowDown } from "react-icons/hi";
-import { fadeInUp, slideInFromLeft, slideInFromRight } from "@/lib/animations";
 
 const MotionImage = motion(Image);
 
+// Original star animation - unchanged
 const starAnimation = {
     animate: {
         scale: [1, 1.1, 1],
@@ -29,6 +30,7 @@ const starAnimation = {
     }
 };
 
+// Original glow animation for liquid flows - unchanged
 const glowAnimation = {
     initial: { filter: "drop-shadow(0 0 15px rgba(168,85,247,0.3))" },
     animate: {
@@ -50,6 +52,18 @@ const glowAnimation = {
 export default function Hero() {
     const [isMounted, setIsMounted] = useState(false);
 
+    // Refs for GSAP entrance animations
+    const sectionRef = useRef<HTMLElement>(null);
+    const starContainerRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const titleRef = useRef<HTMLDivElement>(null);
+    const subtitleRef = useRef<HTMLParagraphElement>(null);
+    const buttonsRef = useRef<HTMLDivElement>(null);
+    const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+    const liquidFlow1Ref = useRef<HTMLDivElement>(null);
+    const liquidFlow2Ref = useRef<HTMLDivElement>(null);
+    const liquidFlow3Ref = useRef<HTMLDivElement>(null);
+
     // Generate star properties once and keep them stable across re-renders
     const stars = useMemo(() => {
         return [...Array(100)].map((_, i) => ({
@@ -67,6 +81,96 @@ export default function Hero() {
         setIsMounted(true);
     }, []);
 
+    // GSAP Entrance Animations
+    useEffect(() => {
+        if (!isMounted) return;
+
+        const ctx = gsap.context(() => {
+            // Create main timeline for smooth staggered entrance
+            const tl = gsap.timeline({
+                defaults: {
+                    ease: "power2.out",
+                }
+            });
+
+            // Star container entrance - smooth fade in
+            tl.fromTo(starContainerRef.current,
+                { opacity: 0, y: -20 },
+                { opacity: 1, y: 0, duration: 1.2 },
+                0.3
+            );
+
+            // Title entrance - smooth slide up
+            tl.fromTo(titleRef.current,
+                { opacity: 0, y: 40 },
+                { opacity: 1, y: 0, duration: 1.4 },
+                0.6
+            );
+
+            // Subtitle entrance
+            tl.fromTo(subtitleRef.current,
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 1.2 },
+                1.0
+            );
+
+            // Buttons entrance - staggered
+            if (buttonsRef.current) {
+                tl.fromTo(buttonsRef.current.children,
+                    { opacity: 0, y: 20, scale: 0.95 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.9,
+                        stagger: 0.12,
+                        ease: "back.out(1.4)"
+                    },
+                    1.3
+                );
+            }
+
+            // Scroll indicator entrance
+            tl.fromTo(scrollIndicatorRef.current,
+                { opacity: 0 },
+                { opacity: 1, duration: 0.8 },
+                1.8
+            );
+
+            // Scroll indicator continuous bounce
+            gsap.to(scrollIndicatorRef.current, {
+                y: 10,
+                duration: 1.8,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                delay: 2.5
+            });
+
+            // Liquid flows - slide in using xPercent (additive to CSS transforms)
+            // Top Right Flow - slides in from right
+            gsap.fromTo(liquidFlow1Ref.current,
+                { opacity: 0, xPercent: 30 },
+                { opacity: 1, xPercent: 0, duration: 1.6, delay: 0.2, ease: "power2.out" }
+            );
+
+            // Left Flow - slides in from left
+            gsap.fromTo(liquidFlow2Ref.current,
+                { opacity: 0, xPercent: -30 },
+                { opacity: 1, xPercent: 0, duration: 1.6, delay: 0.4, ease: "power2.out" }
+            );
+
+            // Bottom Right Flow - slides in from right
+            gsap.fromTo(liquidFlow3Ref.current,
+                { opacity: 0, xPercent: 20 },
+                { opacity: 1, xPercent: 0, duration: 1.6, delay: 0.6, ease: "power2.out" }
+            );
+
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, [isMounted]);
+
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         element?.scrollIntoView({ behavior: "smooth" });
@@ -74,6 +178,7 @@ export default function Hero() {
 
     return (
         <section
+            ref={sectionRef}
             id="hero"
             className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
         >
@@ -106,12 +211,14 @@ export default function Hero() {
                 </div>
             )}
 
-            {/* New Static Liquid Flows - Only render on client */}
+            {/* Liquid Flows - ORIGINAL POSITIONS PRESERVED */}
             {isMounted && (
                 <>
-                    {/* Top Right Flow */}
-                    {/* Top Right Flow */}
-                    <div className="absolute top-0 right-0 z-1 pointer-events-none select-none translate-x-[20%] -translate-y-[10%]">
+                    {/* Top Right Flow - ORIGINAL POSITION: translate-x-[20%] -translate-y-[10%] */}
+                    <div
+                        ref={liquidFlow1Ref}
+                        className="absolute top-0 right-0 z-1 pointer-events-none select-none translate-x-[20%] -translate-y-[10%] opacity-0"
+                    >
                         <MotionImage
                             src="/images/decorative/liquid-flow-1.png"
                             alt="Liquid Flow Top Right"
@@ -125,8 +232,11 @@ export default function Hero() {
                         />
                     </div>
 
-                    {/* Left Side Flow */}
-                    <div className="absolute top-0 left-0 z-1 pointer-events-none select-none -translate-x-[20%]">
+                    {/* Left Side Flow - ORIGINAL POSITION: -translate-x-[20%] */}
+                    <div
+                        ref={liquidFlow2Ref}
+                        className="absolute top-0 left-0 z-1 pointer-events-none select-none -translate-x-[20%] opacity-0"
+                    >
                         <MotionImage
                             src="/images/decorative/liquid-flow-left-hq.png"
                             alt="Liquid Flow Left"
@@ -140,9 +250,10 @@ export default function Hero() {
                         />
                     </div>
 
-                    {/* Bottom Right Flow - From bottom center to right edge */}
+                    {/* Bottom Right Flow - ORIGINAL POSITION: translate-x-[5%] translate-y-[5%] */}
                     <div
-                        className="absolute bottom-0 right-0 z-1 pointer-events-none select-none translate-x-[5%] translate-y-[5%]"
+                        ref={liquidFlow3Ref}
+                        className="absolute bottom-0 right-0 z-1 pointer-events-none select-none translate-x-[5%] translate-y-[5%] opacity-0"
                         style={{
                             maskImage: 'linear-gradient(to right, transparent, black 20%)',
                             WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%)'
@@ -166,10 +277,10 @@ export default function Hero() {
             <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black via-black/40 to-transparent z-5 pointer-events-none" />
 
             <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-                {/* Shining Star */}
+                {/* Shining Star - ORIGINAL ANIMATION PRESERVED */}
                 {/* Star Container with Glow */}
-                <div className="relative w-16 h-16 md:w-32 md:h-32 mb-2 flex items-center justify-center">
-                    {/* Underglow Image */}
+                <div ref={starContainerRef} className="relative w-16 h-16 md:w-32 md:h-32 mb-2 flex items-center justify-center opacity-0">
+                    {/* Underglow Image - ORIGINAL SIZE: w-[180%] h-[180%] */}
                     <MotionImage
                         src="/images/decorative/star-glow.png"
                         alt="Star Glow"
@@ -187,7 +298,7 @@ export default function Hero() {
                         }}
                     />
 
-                    {/* Star Asset */}
+                    {/* Star Asset - ORIGINAL ANIMATION */}
                     <MotionImage
                         src="/images/decorative/shiny-star-v2.png"
                         alt="Shining Star"
@@ -206,20 +317,16 @@ export default function Hero() {
                     />
                 </div>
 
-                <motion.div
-                    initial="initial"
-                    animate="animate"
-                    variants={fadeInUp}
-                >
+                <div ref={contentRef}>
                     {/* SEO: Visually hidden H1 for search engines and screen readers */}
                     <h1 className="sr-only">
                         AI That Works for You - Kaelux AI Engineering Agency
                     </h1>
 
                     {/* Main Title - Image */}
-                    <motion.div
-                        variants={slideInFromRight}
-                        className="flex items-center justify-center"
+                    <div
+                        ref={titleRef}
+                        className="flex items-center justify-center opacity-0"
                     >
                         <Image
                             src="/hero-title.png"
@@ -232,35 +339,30 @@ export default function Hero() {
                                 filter: 'brightness(1.05) contrast(1.02)',
                             }}
                         />
-                    </motion.div>
+                    </div>
 
-                    <motion.p
-                        variants={fadeInUp}
-                        className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto"
+                    <p
+                        ref={subtitleRef}
+                        className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto opacity-0"
                     >
                         Tailored LLM infrastructure, AI engineering, and full-stack web services—
                         we build and host the complete technology backbone for your business.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        variants={fadeInUp}
+                    <div
+                        ref={buttonsRef}
                         className="flex flex-wrap gap-4 justify-center mt-8"
                     >
+                        {/* Clean White Button - No Gradient */}
                         <MagneticButton
                             onClick={() => scrollToSection("services")}
-                            className="px-8 py-4 text-black font-semibold rounded-full shadow-lg hover:shadow-2xl transition-shadow relative overflow-hidden"
-                            style={{
-                                background: 'linear-gradient(135deg, #ffffff 0%, #e8e8e8 25%, #b8b8b8 50%, #8c8c8c 75%, #b8b8b8 100%)',
-                                backgroundSize: '200% 200%',
-                                animation: 'gradientShift 3s ease infinite',
-                                filter: 'saturate(1.3) brightness(1.1)'
-                            }}
+                            className="px-8 py-4 bg-white text-black font-semibold rounded-full shadow-lg hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all duration-300 opacity-0"
                         >
                             Our Services
                         </MagneticButton>
                         <MagneticButton
                             onClick={() => scrollToSection("contact")}
-                            className="shadow-lg hover:shadow-2xl transition-shadow"
+                            className="shadow-lg hover:shadow-2xl transition-shadow opacity-0"
                         >
                             <GlassSurface
                                 width="100%"
@@ -271,27 +373,18 @@ export default function Hero() {
                                 <span className="font-semibold">Get In Touch</span>
                             </GlassSurface>
                         </MagneticButton>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
 
                 {/* Scroll indicator */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1, duration: 1 }}
-                    className="mt-16 flex justify-center"
+                <div
+                    ref={scrollIndicatorRef}
+                    className="mt-16 flex justify-center cursor-pointer opacity-0"
+                    onClick={() => scrollToSection("about")}
                 >
-                    <motion.div
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="cursor-pointer"
-                        onClick={() => scrollToSection("about")}
-                    >
-                        <HiArrowDown className="w-10 h-10 text-white" style={{ filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))' }} />
-                    </motion.div>
-                </motion.div>
+                    <HiArrowDown className="w-10 h-10 text-white" style={{ filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))' }} />
+                </div>
             </div>
         </section>
     );
 }
-
