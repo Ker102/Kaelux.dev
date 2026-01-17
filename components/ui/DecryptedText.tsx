@@ -58,7 +58,6 @@ export default function DecryptedText({
     useEffect(() => {
         if (!isAnimating) return;
 
-        let interval: NodeJS.Timeout;
         let currentIteration = 0;
 
         const availableChars = useOriginalCharsOnly
@@ -125,7 +124,7 @@ export default function DecryptedText({
             }
         };
 
-        interval = setInterval(() => {
+        const interval = setInterval(() => {
             setRevealedIndices(prevRevealed => {
                 if (sequential) {
                     if (prevRevealed.size < text.length) {

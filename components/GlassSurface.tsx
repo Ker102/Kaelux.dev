@@ -115,7 +115,6 @@ const GlassSurface = ({
   // Check for SVG filter support after mount (client-side only)
   useEffect(() => {
     setHasSVGFilterSupport(supportsSVGFilters());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -133,7 +132,6 @@ const GlassSurface = ({
     });
 
     gaussianBlurRef.current?.setAttribute('stdDeviation', displace.toString());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     width,
     height,
@@ -164,7 +162,6 @@ const GlassSurface = ({
     return () => {
       resizeObserver.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -179,12 +176,10 @@ const GlassSurface = ({
     return () => {
       resizeObserver.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     setTimeout(updateDisplacementMap, 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height]);
 
   const containerStyle: CSSProperties & { [key: string]: any } = {
