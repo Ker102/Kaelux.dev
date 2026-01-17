@@ -85,10 +85,10 @@ export default function FeatureShowcase() {
                                 <motion.div
                                     key={index}
                                     variants={itemVariants}
-                                    className="group flex gap-5"
+                                    className="group flex items-start gap-5"
                                 >
                                     {/* Icon with chrome/silver gradient */}
-                                    <div className="shrink-0 p-3 rounded-xl bg-gradient-to-br from-gray-700 to-gray-800 text-white border border-white/10 transition-transform duration-300 group-hover:scale-110">
+                                    <div className="shrink-0 self-start p-3 rounded-xl bg-gradient-to-br from-gray-700 to-gray-800 text-white border border-white/10 transition-transform duration-300 group-hover:scale-110">
                                         {feature.icon}
                                     </div>
                                     <div>
