@@ -52,7 +52,7 @@ const cardVariants = {
 
 export default function ThreePillars() {
     return (
-        <section className="py-28 px-6 bg-white relative overflow-hidden">
+        <section id="tailored-ai" className="py-28 px-6 bg-white relative overflow-hidden">
             <div className="container mx-auto max-w-7xl relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

@@ -38,13 +38,7 @@ const duplicatedServices = [...services, ...services];
 
 export default function AdditionalServicesSolutions() {
     return (
-        <section className="relative py-20 px-6 bg-white overflow-hidden">
-            {/* Aurora Background Effect */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-[20%] right-[10%] w-[1000px] h-[1000px] bg-purple-300/20 blur-[120px] rounded-full mix-blend-multiply opacity-70 animate-pulse" style={{ animationDuration: '8s' }} />
-                <div className="absolute top-[20%] left-[0%] w-[800px] h-[800px] bg-blue-200/20 blur-[100px] rounded-full mix-blend-multiply opacity-60" />
-                <div className="absolute bottom-[0%] right-[20%] w-[900px] h-[900px] bg-pink-200/20 blur-[120px] rounded-full mix-blend-multiply opacity-60" />
-            </div>
+        <section id="platform-solutions" className="relative py-20 px-6 bg-white overflow-hidden">
 
             <div className="container mx-auto max-w-6xl relative z-10">
                 {/* OR-style Divider */}

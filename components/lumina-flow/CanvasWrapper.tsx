@@ -1,73 +1,9 @@
 'use client';
 
-import React, { Suspense, useRef, useMemo, useEffect, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import React, { Suspense, useEffect, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
 import { WaveScene } from './Wave';
-import { IntroScene } from './IntroScene';
-import { ScrollControls, Scroll, useScroll } from '@react-three/drei';
 import { UIOverlay } from './UIOverlay';
-import { ChevronDown } from 'lucide-react';
-
-const FlyingTitle = () => {
-  const scroll = useScroll();
-  const letters = "KAELUX".split('');
-  const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
-
-  // Generate random explosion trajectories once
-  const trajectories = useMemo(() => {
-    return letters.map((_, i) => {
-      const xDir = i % 2 === 0 ? -1 : 1; // Alternate general direction
-      return {
-        x: (Math.random() * 1500 - 750) + (xDir * 200), // Random spread with bias
-        y: (Math.random() * 1000 - 500),                // Random vertical
-        r: (Math.random() * 120 - 60)                   // Random rotation
-      };
-    });
-  }, []);
-
-  useFrame(() => {
-    // Animate during the first 50% of the scroll (leaving the first page)
-    const r1 = scroll.range(0, 0.5);
-
-    if (letterRefs.current) {
-      letterRefs.current.forEach((span, i) => {
-        if (span) {
-          const t = trajectories[i];
-          // Interpolate position
-          const x = t.x * r1;
-          const y = t.y * r1;
-          const rot = t.r * r1;
-
-          // Blur effect increases with distance
-          const blur = r1 * 20;
-
-          // Fade out
-          const opacity = 1 - (r1 * 1.5);
-
-          span.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`;
-          span.style.filter = `blur(${blur}px)`;
-          span.style.opacity = `${Math.max(0, opacity)}`;
-        }
-      });
-    }
-  });
-
-  return (
-    <h1 className="text-[15vw] md:text-[180px] font-black text-[#1a1a1a] tracking-tighter flex justify-center">
-      {letters.map((char, i) => (
-        <span
-          key={i}
-          ref={(el) => {
-            letterRefs.current[i] = el;
-          }}
-          className="inline-block will-change-transform"
-        >
-          {char}
-        </span>
-      ))}
-    </h1>
-  );
-};
 
 export const CanvasWrapper: React.FC = () => {
   const [isReady, setIsReady] = useState(false);
@@ -94,55 +30,11 @@ export const CanvasWrapper: React.FC = () => {
 
           <ambientLight intensity={0.8} />
 
-          <ScrollControls pages={2} damping={0.2}>
-            {/* 3D Content */}
-            <IntroScene />
-            <WaveScene />
+          {/* 3D Wave Background */}
+          <WaveScene />
 
-            {/* HTML Overlay Content */}
-            <Scroll html style={{ width: '100%', height: '100%' }}>
-
-              {/* Page 1: Intro */}
-              <section className="w-screen h-screen relative flex flex-col items-center justify-center pointer-events-none">
-
-                {/* Main Title Content */}
-                <div className="relative z-10 text-center flex flex-col items-center transform -translate-y-12">
-                  {/* Top Tagline with Gradient */}
-                  <h3
-                    className="font-medium tracking-[0.2em] text-xs md:text-sm uppercase mb-2 bg-clip-text text-transparent"
-                    style={{
-                      backgroundImage: 'linear-gradient(90deg, #FF3BFF 0%, #ECBFBF 38.02%, #5C24FF 75.83%, #D94FD5 100%)'
-                    }}
-                  >
-                    A Developer Portfolio Portal
-                  </h3>
-
-                  {/* Big Typography */}
-                  <div className="relative leading-[0.85] select-none font-sans">
-                    <FlyingTitle />
-                  </div>
-
-                  {/* Scroll Down Indicator */}
-                  <div className="mt-16 flex flex-col items-center animate-bounce opacity-60">
-                    <span className="text-black font-bold tracking-widest text-[10px] uppercase mb-2">Scroll down</span>
-                    <ChevronDown size={20} className="text-black" />
-                  </div>
-                </div>
-
-                {/* Bottom Hint */}
-                <div className="absolute bottom-12 w-full flex justify-center z-10">
-                  <p className="text-black/30 text-[10px] md:text-xs tracking-[0.2em] uppercase font-medium animate-pulse">
-                    Press on the canvas to focus and interact
-                  </p>
-                </div>
-              </section>
-
-              {/* Page 2: Main Interface (Existing) */}
-              <section style={{ height: '100vh', width: '100vw', position: 'relative' }}>
-                <UIOverlay />
-              </section>
-            </Scroll>
-          </ScrollControls>
+          {/* HTML Overlay Content */}
+          <UIOverlay />
 
         </Suspense>
       </Canvas>
