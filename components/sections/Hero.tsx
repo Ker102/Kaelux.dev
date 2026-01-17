@@ -30,7 +30,7 @@ const starAnimation = {
     }
 };
 
-// Original glow animation for liquid flows - unchanged
+// Glow animation for liquid flows
 const glowAnimation = {
     initial: { filter: "drop-shadow(0 0 15px rgba(168,85,247,0.3))" },
     animate: {
@@ -253,10 +253,9 @@ export default function Hero() {
                     {/* Bottom Right Flow - ORIGINAL POSITION: translate-x-[5%] translate-y-[5%] */}
                     <div
                         ref={liquidFlow3Ref}
-                        className="absolute bottom-0 right-0 z-1 pointer-events-none select-none translate-x-[5%] translate-y-[5%] opacity-0"
+                        className="absolute bottom-0 right-0 z-1 pointer-events-none select-none translate-x-[5%] translate-y-[5%] opacity-0 overflow-visible p-12"
                         style={{
-                            maskImage: 'linear-gradient(to right, transparent, black 20%)',
-                            WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%)'
+                            margin: '-48px'
                         }}
                     >
                         <MotionImage
@@ -265,6 +264,10 @@ export default function Hero() {
                             width={900}
                             height={600}
                             className="w-[400px] md:w-[700px] lg:w-[900px] object-contain"
+                            style={{
+                                maskImage: 'linear-gradient(to right, transparent 0%, black 25%)',
+                                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 25%)'
+                            }}
                             initial="initial"
                             animate="animate"
                             variants={glowAnimation}
