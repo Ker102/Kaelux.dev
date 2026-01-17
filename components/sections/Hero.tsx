@@ -353,26 +353,42 @@ export default function Hero() {
                         ref={buttonsRef}
                         className="flex flex-wrap gap-4 justify-center mt-8"
                     >
-                        {/* Clean White Button - No Gradient */}
-                        <MagneticButton
+                        {/* Primary White Button with Modern Hover */}
+                        <motion.button
                             onClick={() => scrollToSection("services")}
-                            className="px-8 py-4 bg-white text-black font-semibold rounded-full shadow-lg hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all duration-300 opacity-0"
+                            className="group relative px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden opacity-0"
+                            whileHover={{
+                                scale: 1.05,
+                                boxShadow: "0 0 35px rgba(255,255,255,0.5), 0 10px 40px rgba(0,0,0,0.3)"
+                            }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >
-                            Our Services
-                        </MagneticButton>
-                        <MagneticButton
+                            {/* Shine sweep effect */}
+                            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+                            <span className="relative z-10">Our Services</span>
+                        </motion.button>
+
+                        {/* Secondary Glass Button with Modern Hover */}
+                        <motion.button
                             onClick={() => scrollToSection("contact")}
-                            className="shadow-lg hover:shadow-2xl transition-shadow opacity-0"
+                            className="group relative px-8 py-4 rounded-full overflow-hidden opacity-0
+                                bg-white/10 backdrop-blur-xl border border-white/20
+                                text-white font-semibold"
+                            whileHover={{
+                                scale: 1.05,
+                                y: -2,
+                                boxShadow: "0 0 30px rgba(255,255,255,0.2), 0 15px 35px rgba(0,0,0,0.4)"
+                            }}
+                            whileTap={{ scale: 0.95, y: 0 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >
-                            <GlassSurface
-                                width="100%"
-                                height="auto"
-                                borderRadius={9999}
-                                className="px-8 py-4"
-                            >
-                                <span className="font-semibold">Get In Touch</span>
-                            </GlassSurface>
-                        </MagneticButton>
+                            {/* Inner highlight */}
+                            <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                            {/* Glow effect on hover */}
+                            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-b from-white/10 to-transparent" />
+                            <span className="relative z-10">Get In Touch</span>
+                        </motion.button>
                     </div>
                 </div>
 
