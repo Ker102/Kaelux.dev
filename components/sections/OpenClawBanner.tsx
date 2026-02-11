@@ -30,7 +30,7 @@ export default function OpenClawBanner() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ type: "spring", stiffness: 60, damping: 18 }}
-                        className="flex justify-center mb-8"
+                        className="flex justify-center mb-4"
                     >
                         <div className="relative">
                             <Image
@@ -42,7 +42,7 @@ export default function OpenClawBanner() {
                                 priority
                             />
                             {/* Always-visible 3D ground shadow */}
-                            <div className="absolute -bottom-5 left-[15%] right-[15%] h-10 bg-black/15 blur-2xl rounded-full group-hover:bg-black/25 transition-all duration-500" />
+                            <div className="absolute -bottom-3 left-[5%] right-[5%] h-12 bg-black/30 blur-xl rounded-full group-hover:bg-black/40 transition-all duration-500" />
                         </div>
                     </motion.div>
 
