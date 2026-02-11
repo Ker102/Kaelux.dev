@@ -12,7 +12,7 @@ export default function OpenClawServiceCard() {
                 {/* Subtle separator */}
                 <div className="flex items-center justify-center gap-6 mb-14">
                     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-gray-200" />
-                    <span className="text-xs font-bold text-gray-400 tracking-[0.2em] uppercase">
+                    <span className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-600 to-gray-300 tracking-[0.2em] uppercase">
                         New Service
                     </span>
                     <div className="flex-1 h-px bg-gradient-to-l from-transparent via-gray-200 to-gray-200" />
@@ -41,14 +41,11 @@ export default function OpenClawServiceCard() {
                             </div>
                         </div>
 
-                        {/* Content — gradient text matching /openclaw */}
+                        {/* Content — black-to-white silver gradient text */}
                         <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-3 mb-2">
-                                <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
-                                    <span className="text-gray-900">OpenClaw </span>
-                                    <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#FF3BFF_0%,#ECBFBF_38%,#5C24FF_76%,#D94FD5_100%)]">
-                                        Cloud
-                                    </span>
+                                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-600 to-gray-300">
+                                    OpenClaw Cloud
                                 </h3>
                             </div>
                             <span className="text-xs font-semibold text-gray-500 uppercase tracking-[0.15em] mb-4 block">
@@ -72,7 +69,8 @@ export default function OpenClawServiceCard() {
                                     Starting from $29/mo
                                 </span>
                                 <span className="text-sm text-gray-400">|</span>
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/20">
+                                {/* NEW badge — black-to-white gradient */}
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase bg-gradient-to-b from-gray-900 via-gray-600 to-gray-300 text-white shadow-sm">
                                     <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                                     New
                                 </span>

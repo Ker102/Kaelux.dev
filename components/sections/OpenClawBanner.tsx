@@ -46,7 +46,7 @@ export default function OpenClawBanner() {
                         </div>
                     </motion.div>
 
-                    {/* Text content — centered, gradient text matching /openclaw */}
+                    {/* Text content — black-to-white silver gradient */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -54,11 +54,8 @@ export default function OpenClawBanner() {
                         transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.1 }}
                         className="text-center max-w-2xl mx-auto"
                     >
-                        <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
-                            <span className="text-gray-900">OpenClaw </span>
-                            <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#FF3BFF_0%,#ECBFBF_38%,#5C24FF_76%,#D94FD5_100%)]">
-                                in the Cloud
-                            </span>
+                        <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-600 to-gray-300">
+                            OpenClaw in the Cloud
                         </h3>
                         <p className="text-gray-500 mb-6 text-base leading-relaxed">
                             Skip the Mac Mini. We deploy, secure, and manage your OpenClaw AI agent
@@ -69,9 +66,9 @@ export default function OpenClawBanner() {
                             <FaArrowRight className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300" />
                         </span>
 
-                        {/* NEW badge inline */}
+                        {/* NEW badge — black-to-white gradient */}
                         <div className="mt-4">
-                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/20">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase bg-gradient-to-b from-gray-900 via-gray-600 to-gray-300 text-white shadow-sm">
                                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                                 New Service
                             </span>
