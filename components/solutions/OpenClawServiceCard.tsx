@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { HiOutlineCloudArrowUp } from "react-icons/hi2";
+import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 
 export default function OpenClawServiceCard() {
@@ -29,18 +29,32 @@ export default function OpenClawServiceCard() {
                         <div className="relative p-8 md:p-10 rounded-2xl border border-gray-200 bg-gradient-to-br from-white via-gray-50/50 to-white hover:border-gray-300 transition-all duration-500 overflow-hidden shadow-lg hover:shadow-xl">
 
                             {/* NEW Badge */}
-                            <div className="absolute top-5 right-5 md:top-6 md:right-6">
+                            <div className="absolute top-5 right-5 md:top-6 md:right-6 z-10">
                                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/20">
                                     <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                                     New
                                 </span>
                             </div>
 
-                            <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
-                                {/* Icon */}
-                                <div className="shrink-0 p-5 rounded-2xl bg-gradient-to-br from-gray-100 via-white to-gray-200 border border-gray-200 group-hover:scale-110 transition-transform duration-300 shadow-sm w-fit">
-                                    <HiOutlineCloudArrowUp className="w-10 h-10 text-gray-700" />
-                                </div>
+                            <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-10">
+                                {/* OpenClaw Logo Image */}
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                    className="shrink-0 relative"
+                                >
+                                    <Image
+                                        src="/openclaw-logo.png"
+                                        alt="OpenClaw"
+                                        width={340}
+                                        height={115}
+                                        className="object-contain drop-shadow-[0_12px_35px_rgba(0,0,0,0.25)] group-hover:drop-shadow-[0_18px_45px_rgba(0,0,0,0.35)] transition-all duration-500 group-hover:scale-[1.03]"
+                                    />
+                                    {/* Soft reflection/glow underneath for 3D pop */}
+                                    <div className="absolute -bottom-3 left-[10%] right-[10%] h-6 bg-gradient-to-r from-transparent via-black/10 to-transparent blur-2xl rounded-full" />
+                                </motion.div>
 
                                 {/* Content */}
                                 <div className="flex-1 min-w-0">
