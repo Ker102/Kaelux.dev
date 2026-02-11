@@ -34,10 +34,9 @@ export default function OpenClawServiceCard() {
                                     alt="OpenClaw"
                                     width={440}
                                     height={150}
-                                    className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_28px_60px_rgba(0,0,0,0.45)] group-hover:scale-[1.04] transition-all duration-500"
+                                    className="object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.4)] group-hover:drop-shadow-[0_35px_60px_rgba(0,0,0,0.55)] group-hover:scale-[1.04] transition-all duration-500"
                                 />
-                                {/* Always-visible 3D ground shadow */}
-                                <div className="absolute -bottom-3 left-[5%] right-[5%] h-10 bg-black/30 blur-xl rounded-full group-hover:bg-black/40 transition-all duration-500" />
+
                             </div>
                         </div>
 

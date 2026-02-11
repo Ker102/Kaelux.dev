@@ -35,22 +35,20 @@ export default function OpenClawHero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.2 }}
-                    className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-8 leading-[1.1]"
+                    className="relative text-5xl md:text-7xl font-bold tracking-tighter text-white mb-8 leading-[1.1]"
                 >
-                    {/* Mascot + "OpenClaw" on same line */}
-                    <span className="inline-flex items-center">
-                        <Image
-                            src="/openclaw-mascot.png"
-                            alt="OpenClaw Mascot"
-                            width={100}
-                            height={100}
-                            className="inline-block w-16 h-16 md:w-[100px] md:h-[100px] object-contain -mr-3 md:-mr-5 relative z-10 drop-shadow-[0_0_20px_rgba(168,85,247,0.4)]"
-                            priority
-                        />
-                        <LineShadowText shadowColor="white" className="text-white">
-                            OpenClaw
-                        </LineShadowText>
-                    </span>{" "}
+                    {/* Mascot positioned absolutely to the left of "OpenClaw" */}
+                    <Image
+                        src="/openclaw-mascot.png"
+                        alt="OpenClaw Mascot"
+                        width={140}
+                        height={140}
+                        className="absolute -left-20 md:-left-28 top-1/2 -translate-y-[60%] w-16 h-16 md:w-[140px] md:h-[140px] object-contain z-10 drop-shadow-[0_0_25px_rgba(168,85,247,0.5)]"
+                        priority
+                    />
+                    <LineShadowText shadowColor="white" className="text-white">
+                        OpenClaw
+                    </LineShadowText>{" "}
                     in the{" "}
                     <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#FF3BFF_0%,#ECBFBF_38%,#5C24FF_76%,#D94FD5_100%)]">
                         Cloud
