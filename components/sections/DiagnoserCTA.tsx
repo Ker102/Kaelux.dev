@@ -77,13 +77,13 @@ export default function DiagnoserCTA() {
                         </p>
                     </motion.div>
 
-                    {/* Chat Preview Box - Deep Black / Chrome Theme */}
+                    {/* Terminal Window — macOS style with traffic lights */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${isFocused
+                        className={`relative rounded-2xl overflow-hidden transition-all duration-500 ${isFocused
                             ? "shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/20 scale-[1.02]"
                             : "shadow-[0_20px_40px_-12px_rgba(0,0,0,0.3)]"
                             }`}
@@ -93,63 +93,91 @@ export default function DiagnoserCTA() {
                         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none" />
 
                         {/* Chrome Border */}
-                        <div className="absolute inset-0 rounded-3xl border border-white/10 pointer-events-none" />
+                        <div className="absolute inset-0 rounded-2xl border border-white/10 pointer-events-none" />
 
                         <div className="relative z-10">
-                            {/* Chat Header */}
-                            <div className="flex items-center gap-4 px-8 py-5 border-b border-white/5 bg-white/[0.02]">
-                                {/* Abstract Brand Icon */}
-                                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-950 border border-white/10 flex items-center justify-center shadow-lg relative overflow-hidden group">
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                                    </svg>
+                            {/* Terminal Header with Traffic Lights */}
+                            <div className="flex items-center gap-4 px-5 py-3.5 border-b border-white/5 bg-white/[0.02]">
+                                {/* Traffic Lights */}
+                                <div className="flex items-center gap-1.5">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-400 transition-colors" />
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-400 transition-colors" />
+                                    <div className="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-400 transition-colors" />
                                 </div>
-                                <div>
-                                    <h3 className="font-semibold text-white text-sm tracking-wide">Kaelux Neural Agent</h3>
-                                    <div className="flex items-center gap-2 mt-0.5">
-                                        <span className="relative flex h-2 w-2">
-                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                                        </span>
-                                        <span className="text-xs text-zinc-400 font-medium">System Online</span>
-                                    </div>
+
+                                {/* Terminal Title & Status */}
+                                <div className="flex-1 flex items-center justify-center">
+                                    <span className="text-xs font-mono text-zinc-500">Kaelux Neural Agent</span>
+                                </div>
+
+                                {/* Online indicator */}
+                                <div className="flex items-center gap-2">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                    </span>
+                                    <span className="text-[10px] text-zinc-500 font-mono">online</span>
                                 </div>
                             </div>
 
-                            {/* Initial Question - Clean, no avatar */}
-                            <div className="p-8">
-                                <div className="bg-zinc-900/80 border border-white/10 text-zinc-300 rounded-2xl px-6 py-5 shadow-inner backdrop-blur-sm">
-                                    <p className="text-[15px] font-medium text-white">
-                                        Describe your business and what you&apos;re looking to achieve.
-                                    </p>
+                            {/* Terminal Body — prompt-style messages */}
+                            <div className="p-6 font-mono text-sm space-y-3">
+                                {/* System init line */}
+                                <div className="flex items-center gap-2 text-zinc-600">
+                                    <span className="text-zinc-700 select-none">#</span>
+                                    <span>kaelux-agent v3.5 initialized</span>
+                                </div>
+
+                                {/* Ready prompt */}
+                                <div className="flex items-start gap-2">
+                                    <span className="text-white select-none shrink-0">❯</span>
+                                    <span className="text-zinc-300">Describe your business and what you&apos;re looking to achieve.</span>
+                                </div>
+
+                                {/* Cursor blink */}
+                                <div className="flex items-center gap-2">
+                                    <span className="text-white select-none">❯</span>
+                                    <span className="inline-block w-2 h-4 bg-white/70 animate-pulse" />
                                 </div>
                             </div>
 
                             {/* Input Area */}
-                            <form onSubmit={handleSubmit} className="p-5 border-t border-white/5 bg-black/20">
+                            <form onSubmit={handleSubmit} className="px-5 pb-5 pt-3 border-t border-white/5 bg-black/20">
                                 <div className="flex items-center gap-3 relative">
-                                    <input
-                                        value={input}
-                                        onChange={(e) => setInput(e.target.value)}
-                                        onFocus={() => setIsFocused(true)}
-                                        onBlur={() => setIsFocused(false)}
-                                        placeholder="Tell us about your business..."
-                                        className="w-full bg-zinc-900/50 border border-white/10 rounded-xl pl-5 pr-14 py-4 
-                                   text-white placeholder-zinc-600 focus:outline-none focus:ring-1 
-                                   focus:ring-white/20 focus:border-white/20 transition-all font-light text-sm"
-                                    />
+                                    <span className="text-white font-mono text-sm select-none">❯</span>
+                                    <div className="relative flex-1">
+                                        <input
+                                            value={input}
+                                            onChange={(e) => setInput(e.target.value)}
+                                            onFocus={() => setIsFocused(true)}
+                                            onBlur={() => setIsFocused(false)}
+                                            placeholder=""
+                                            className="w-full bg-transparent border-none rounded-none pl-0 pr-14 py-3
+                                       text-white placeholder-zinc-600 focus:outline-none font-mono text-sm caret-transparent"
+                                        />
+                                        {/* Blinking rectangle cursor after text */}
+                                        <span
+                                            className="absolute top-1/2 -translate-y-1/2 inline-block w-[8px] h-[18px] bg-white/80 animate-pulse pointer-events-none"
+                                            style={{ left: `${input.length * 8.4}px` }}
+                                        />
+                                        {/* Placeholder text when empty */}
+                                        {!input && !isFocused && (
+                                            <span className="absolute left-[14px] top-1/2 -translate-y-1/2 text-zinc-600 font-mono text-sm pointer-events-none">
+                                                Tell us about your business...
+                                            </span>
+                                        )}
+                                    </div>
                                     <motion.button
                                         type="submit"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="absolute right-2 p-2.5 rounded-lg bg-white text-black 
+                                        className="absolute right-0 p-2.5 rounded-lg bg-white text-black
                                    hover:bg-gray-100 transition-colors shadow-lg shadow-white/5"
                                     >
                                         <Send className="w-4 h-4" />
                                     </motion.button>
                                 </div>
-                                <p className="text-[11px] text-zinc-600 mt-4 text-center tracking-widest uppercase font-medium">
+                                <p className="text-[11px] text-zinc-600 mt-3 text-center tracking-widest uppercase font-mono">
                                     Press Enter to Initialize
                                 </p>
                             </form>

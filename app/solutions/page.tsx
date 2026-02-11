@@ -10,6 +10,7 @@ import SolutionsFooter from "@/components/solutions/SolutionsFooter";
 import SolutionsContact from "@/components/solutions/SolutionsContact";
 import GradientSpacer from "@/components/sections/GradientSpacer";
 import AdditionalServicesSolutions from "@/components/solutions/AdditionalServicesSolutions";
+import OpenClawServiceCard from "@/components/solutions/OpenClawServiceCard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -50,6 +51,7 @@ export default function SolutionsPage() {
             {/* White background sections */}
             <div className="bg-white text-gray-900">
                 <ThreePillars />
+                <OpenClawServiceCard />
                 <AdditionalServicesSolutions />
             </div>
 

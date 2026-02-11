@@ -79,3 +79,9 @@
     - `gradient-start`: #06b6d4 (Cyan)
     - `gradient-mid`: #10b981 (Green)
     - `gradient-end`: #fbbf24 (Yellow)
+
+## Current Task
+- **Objective**: OpenClaw UI refinements — pricing underglow, MagicUI LineShadowText, terminal chrome redesign
+- **Progress**: All UI refinements complete — gradient underglow on pricing cards, silver badge, step icon gradients, DiagnoserCTA terminal redesign, MagicUI LineShadowText on hero, white terminal arrows/cursor
+- **Blockers**: None
+- **Next Steps**: Add "Learn More" sub-pages for existing 3 core services + 4 platform services; wire up OpenClaw contact form to backend; connect pricing to payment flow

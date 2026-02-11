@@ -7,6 +7,7 @@ import ServiceIntroduction from "@/components/sections/ServiceIntroduction";
 import GradientSpacer from "@/components/sections/GradientSpacer";
 import PlatformServices from "@/components/sections/PlatformServices";
 import DiagnoserCTA from "@/components/sections/DiagnoserCTA";
+import OpenClawBanner from "@/components/sections/OpenClawBanner";
 import Projects from "@/components/sections/Projects";
 import AboutKaelux from "@/components/sections/AboutKaelux";
 import AboutMe from "@/components/sections/AboutMe";
@@ -63,6 +64,7 @@ export default function Home() {
 
       <div className="relative z-10">
         <PlatformServices />
+        <OpenClawBanner />
         <DiagnoserCTA />
       </div>
 

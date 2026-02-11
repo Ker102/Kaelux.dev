@@ -1,0 +1,204 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Send } from "lucide-react";
+
+export default function OpenClawContact() {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        company: "",
+        plan: "managed",
+        message: "",
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        // Simulate submission (replace with actual API call)
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+    };
+
+    return (
+        <section id="openclaw-contact" className="py-28 px-6 bg-black relative overflow-hidden">
+            <div className="container mx-auto max-w-2xl relative z-10">
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="text-center mb-12"
+                >
+                    <span className="text-gray-400 font-medium tracking-[0.2em] uppercase mb-4 block text-sm">
+                        Get Started
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                        Ready to{" "}
+                        <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#FF3BFF_0%,#ECBFBF_38%,#5C24FF_76%,#D94FD5_100%)]">
+                            Deploy
+                        </span>
+                        ?
+                    </h2>
+                    <p className="text-gray-400 max-w-lg mx-auto text-lg leading-relaxed">
+                        Fill out the form below and we&apos;ll get back to you within 24 hours with a deployment plan.
+                    </p>
+                </motion.div>
+
+                {/* Form Card */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="relative rounded-2xl overflow-hidden"
+                    style={{ background: '#09090b' }}
+                >
+                    {/* Chrome Border */}
+                    <div className="absolute inset-0 rounded-2xl border border-white/10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none" />
+
+                    <div className="relative z-10 p-8 md:p-10">
+                        {isSubmitted ? (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="text-center py-12"
+                            >
+                                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                                    <svg className="w-8 h-8 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-3">Message Sent!</h3>
+                                <p className="text-gray-400">
+                                    We&apos;ll get back to you within 24 hours with your deployment plan.
+                                </p>
+                            </motion.div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-5">
+                                {/* Name & Email Row */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                                            Name
+                                        </label>
+                                        <input
+                                            name="name"
+                                            type="text"
+                                            required
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            placeholder="Your name"
+                                            className="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-white/20 focus:border-white/20 transition-all text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                                            Email
+                                        </label>
+                                        <input
+                                            name="email"
+                                            type="email"
+                                            required
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            placeholder="you@company.com"
+                                            className="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-white/20 focus:border-white/20 transition-all text-sm"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Company */}
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                                        Company (Optional)
+                                    </label>
+                                    <input
+                                        name="company"
+                                        type="text"
+                                        value={formData.company}
+                                        onChange={handleChange}
+                                        placeholder="Your company"
+                                        className="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-white/20 focus:border-white/20 transition-all text-sm"
+                                    />
+                                </div>
+
+                                {/* Plan Selection */}
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                                        Interested In
+                                    </label>
+                                    <select
+                                        name="plan"
+                                        value={formData.plan}
+                                        onChange={handleChange}
+                                        className="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-white/20 focus:border-white/20 transition-all text-sm appearance-none cursor-pointer"
+                                    >
+                                        <option value="managed">Managed Hosting ($29/mo)</option>
+                                        <option value="custom">One-Time Setup (Enterprise)</option>
+                                        <option value="unsure">Not sure yet</option>
+                                    </select>
+                                </div>
+
+                                {/* Message */}
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                                        Message
+                                    </label>
+                                    <textarea
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        placeholder="Tell us about your use case, which messaging platforms you need, etc."
+                                        rows={4}
+                                        className="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-white/20 focus:border-white/20 transition-all text-sm resize-none"
+                                    />
+                                </div>
+
+                                {/* Submit */}
+                                <motion.button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="w-full py-4 rounded-full bg-white text-black font-semibold text-base flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {isSubmitting ? (
+                                        <span className="flex items-center gap-2">
+                                            <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                                                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" className="opacity-25" />
+                                                <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="opacity-75" />
+                                            </svg>
+                                            Sending...
+                                        </span>
+                                    ) : (
+                                        <>
+                                            Send Message
+                                            <Send className="w-4 h-4" />
+                                        </>
+                                    )}
+                                </motion.button>
+
+                                <p className="text-[11px] text-zinc-600 text-center tracking-widest uppercase font-medium">
+                                    We respond within 24 hours
+                                </p>
+                            </form>
+                        )}
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
