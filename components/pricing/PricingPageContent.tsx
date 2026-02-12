@@ -37,13 +37,13 @@ function PricingCategory({ title, description, plans, href, delay = 0 }: Pricing
             </div>
 
             {/* Plans */}
-            <div className={`grid gap-6 ${plans.length === 1 ? "max-w-lg" : "grid-cols-1 md:grid-cols-2"}`}>
+            <div className={`grid gap-6 ${plans.length === 1 ? "max-w-lg" : plans.length === 3 ? "grid-cols-1 md:grid-cols-3" : "grid-cols-1 md:grid-cols-2"}`}>
                 {plans.map((plan, index) => (
                     <div
                         key={index}
                         className={`relative p-6 rounded-2xl border transition-all duration-300 ${plan.highlighted
-                                ? "border-white/20 bg-white/[0.05]"
-                                : "border-white/10 bg-white/[0.02]"
+                            ? "border-white/20 bg-white/[0.05]"
+                            : "border-white/10 bg-white/[0.02]"
                             } hover:border-white/25 hover:bg-white/[0.06]`}
                     >
                         {plan.highlighted && (
@@ -84,8 +84,8 @@ function PricingCategory({ title, description, plans, href, delay = 0 }: Pricing
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 className={`w-full py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300 ${plan.highlighted
-                                        ? "bg-white text-black hover:bg-gray-100"
-                                        : "bg-white/10 text-white hover:bg-white/15 border border-white/10"
+                                    ? "bg-white text-black hover:bg-gray-100"
+                                    : "bg-white/10 text-white hover:bg-white/15 border border-white/10"
                                     }`}
                             >
                                 {plan.cta}
@@ -120,6 +120,74 @@ export default function PricingPageContent() {
 
                 {/* Pricing Categories */}
                 <div className="space-y-20">
+                    {/* Core AI Offerings */}
+                    <PricingCategory
+                        title="AI Solutions — Core Offerings"
+                        description="Custom LLM integration, agentic workflows, and managed AI infrastructure"
+                        plans={[
+                            {
+                                name: "Platform (SaaS)",
+                                subtitle: "Pre-Built Intelligence",
+                                price: "$499",
+                                period: "/mo",
+                                description: "Access our proprietary LLM tools with immediate plug-and-play integration.",
+                                features: [
+                                    "PromptTriage prompt engineering suite",
+                                    "Pre-built AI workflow templates",
+                                    "API access & webhook integrations",
+                                    "Usage-based compute billing",
+                                    "Standard SLA (99.5% uptime)",
+                                    "Community support + docs",
+                                ],
+                                cta: "Start Free Trial",
+                                ctaHref: "/solutions#contact-form",
+                                highlighted: false,
+                            },
+                            {
+                                name: "Custom Engineering",
+                                subtitle: "Tailored Automation",
+                                price: "Custom",
+                                period: "",
+                                description: "We build custom agents and RAG pipelines specific to your data and workflows.",
+                                features: [
+                                    "Dedicated AI engineering team",
+                                    "Custom agent & RAG pipeline build",
+                                    "Fine-tuned models on your data",
+                                    "Architecture design & review",
+                                    "Private deployment (your cloud or ours)",
+                                    "Priority SLA (99.9% uptime)",
+                                    "Dedicated Slack channel",
+                                ],
+                                cta: "Request a Proposal",
+                                ctaHref: "/solutions#contact-form",
+                                highlighted: true,
+                            },
+                            {
+                                name: "Managed LLMOps",
+                                subtitle: "Reliability at Scale",
+                                price: "$1,499",
+                                period: "/mo",
+                                description: "We handle fine-tuning, monitoring, and model updates so nothing breaks.",
+                                features: [
+                                    "Continuous model monitoring",
+                                    "Automated retraining pipelines",
+                                    "Drift detection & alerting",
+                                    "Model versioning & rollback",
+                                    "Cost optimization reports",
+                                    "24/7 on-call engineering support",
+                                    "Quarterly performance reviews",
+                                ],
+                                cta: "Schedule a Call",
+                                ctaHref: "/solutions#contact-form",
+                                highlighted: false,
+                            },
+                        ]}
+                        href="/solutions"
+                        delay={0.05}
+                    />
+
+                    <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
                     {/* OpenClaw Cloud */}
                     <PricingCategory
                         title="OpenClaw Cloud"
