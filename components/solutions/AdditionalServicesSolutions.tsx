@@ -14,22 +14,26 @@ const services = [
     {
         icon: HiOutlinePaintBrush,
         title: "UI/UX Design",
-        description: "Modern, responsive interfaces designed for optimal user experience and engagement."
+        description: "Modern, responsive interfaces designed for optimal user experience and engagement.",
+        slug: "ui-ux-design",
     },
     {
         icon: HiOutlineCodeBracket,
         title: "Full-Stack Development",
-        description: "End-to-end application development with robust backends and polished frontends."
+        description: "End-to-end application development with robust backends and polished frontends.",
+        slug: "full-stack-development",
     },
     {
         icon: HiOutlineCloud,
         title: "Cloud Infrastructure",
-        description: "Scalable hosting solutions with managed databases, CDN, and automated deployments."
+        description: "Scalable hosting solutions with managed databases, CDN, and automated deployments.",
+        slug: "cloud-infrastructure",
     },
     {
         icon: HiOutlineRocketLaunch,
         title: "Continuous Delivery",
-        description: "CI/CD pipelines, monitoring, and maintenance to keep your platform running smoothly."
+        description: "CI/CD pipelines, monitoring, and maintenance to keep your platform running smoothly.",
+        slug: "continuous-delivery",
     }
 ];
 

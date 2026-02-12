@@ -9,18 +9,22 @@ const services = [
     {
         title: "UI/UX Design",
         image: "/services/uiux.jpg",
+        slug: "ui-ux-design",
     },
     {
         title: "Full-Stack Development",
         image: "/services/fullstack.jpg",
+        slug: "full-stack-development",
     },
     {
         title: "Cloud Infrastructure",
         image: "/services/cloud.jpg",
+        slug: "cloud-infrastructure",
     },
     {
         title: "Continuous Delivery",
         image: "/services/cicd.jpg",
+        slug: "continuous-delivery",
     }
 ];
 
@@ -83,26 +87,27 @@ export default function PlatformServices() {
                     className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
                 >
                     {services.map((service, index) => (
-                        <motion.div
-                            key={index}
-                            variants={item}
-                            whileHover={{ scale: 1.03, y: -5 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer bg-gray-100"
-                        >
-                            {/* Image */}
-                            <div className="relative aspect-[16/9] w-full">
-                                <Image
-                                    src={service.image}
-                                    alt={service.title}
-                                    fill
-                                    className="object-cover"
-                                />
+                        <Link key={index} href={`/services/${service.slug}`}>
+                            <motion.div
+                                variants={item}
+                                whileHover={{ scale: 1.03, y: -5 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer bg-gray-100"
+                            >
+                                {/* Image */}
+                                <div className="relative aspect-[16/9] w-full">
+                                    <Image
+                                        src={service.image}
+                                        alt={service.title}
+                                        fill
+                                        className="object-cover"
+                                    />
 
-                                {/* Hover Overlay - Optional Shine/Tint */}
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
-                            </div>
-                        </motion.div>
+                                    {/* Hover Overlay - Optional Shine/Tint */}
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
+                                </div>
+                            </motion.div>
+                        </Link>
                     ))}
                 </motion.div>
 

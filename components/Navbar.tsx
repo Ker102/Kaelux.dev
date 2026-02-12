@@ -14,6 +14,7 @@ const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Projects", href: "#projects" },
   { name: "OpenClaw", href: "/openclaw", isExternal: true },
+  { name: "Pricing", href: "/pricing", isExternal: true },
   { name: "Wiki", href: "/wiki", isExternal: true },
   { name: "Contact", href: "#contact" },
 ];
@@ -25,6 +26,7 @@ const navCards = [
       { label: "Get Started", href: "#services" },
       { label: "Software", href: "#projects" },
       { label: "OpenClaw Cloud", href: "/openclaw", isExternal: true },
+      { label: "Pricing", href: "/pricing", isExternal: true },
     ],
   },
   {

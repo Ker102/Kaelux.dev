@@ -4,12 +4,36 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
+import { HiOutlineCloud, HiOutlineShieldCheck, HiOutlineBolt } from "react-icons/hi2";
+
+const highlights = [
+    {
+        icon: HiOutlineBolt,
+        label: "Always-On",
+        desc: "99.9% uptime SLA",
+    },
+    {
+        icon: HiOutlineCloud,
+        label: "Zero Hardware",
+        desc: "No Mac Mini needed",
+    },
+    {
+        icon: HiOutlineShieldCheck,
+        label: "Fully Managed",
+        desc: "Security & updates included",
+    },
+];
 
 export default function OpenClawBanner() {
     return (
-        <section className="relative py-20 px-6 overflow-hidden bg-white">
+        <section className="relative py-24 px-6 overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
+            {/* Subtle radial accent */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gray-200/40 rounded-full blur-3xl" />
+            </div>
+
             <div className="container mx-auto max-w-5xl relative z-10">
-                {/* Subtle separator */}
+                {/* Separator */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -24,7 +48,7 @@ export default function OpenClawBanner() {
                 </motion.div>
 
                 <Link href="/openclaw" className="block group">
-                    {/* Logo — large, standalone, no box */}
+                    {/* Logo */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -32,31 +56,28 @@ export default function OpenClawBanner() {
                         transition={{ type: "spring", stiffness: 60, damping: 18 }}
                         className="flex justify-center mb-4"
                     >
-                        <div className="relative">
-                            <Image
-                                src="/openclaw-logo.png"
-                                alt="OpenClaw"
-                                width={560}
-                                height={190}
-                                className="object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.4)] group-hover:drop-shadow-[0_35px_60px_rgba(0,0,0,0.55)] group-hover:scale-[1.04] transition-all duration-500"
-                                priority
-                            />
-
-                        </div>
+                        <Image
+                            src="/openclaw-logo.png"
+                            alt="OpenClaw"
+                            width={480}
+                            height={160}
+                            className="object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.35)] group-hover:drop-shadow-[0_35px_60px_rgba(0,0,0,0.5)] group-hover:scale-[1.03] transition-all duration-500"
+                            priority
+                        />
                     </motion.div>
 
-                    {/* Text content — black-to-white silver gradient */}
+                    {/* Text */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.1 }}
-                        className="text-center max-w-2xl mx-auto"
+                        className="text-center max-w-2xl mx-auto mb-10"
                     >
                         <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-600 to-gray-300">
                             OpenClaw in the Cloud
                         </h3>
-                        <p className="text-gray-500 mb-6 text-base leading-relaxed">
+                        <p className="text-gray-500 mb-5 text-base leading-relaxed">
                             Skip the Mac Mini. We deploy, secure, and manage your OpenClaw AI agent
                             in production-grade cloud infrastructure — always-on, zero headaches.
                         </p>
@@ -64,16 +85,49 @@ export default function OpenClawBanner() {
                             Learn More
                             <FaArrowRight className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300" />
                         </span>
-
-                        {/* NEW badge — black-to-white gradient */}
-                        <div className="mt-4">
-                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase bg-gradient-to-b from-gray-900 via-gray-600 to-gray-300 text-white shadow-sm">
-                                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                                New Service
-                            </span>
-                        </div>
                     </motion.div>
                 </Link>
+
+                {/* Feature Highlights */}
+                <motion.div
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.2 }}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto mb-8"
+                >
+                    {highlights.map((h, i) => (
+                        <div
+                            key={i}
+                            className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300"
+                        >
+                            <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                                <h.icon className="w-5 h-5 text-gray-700" />
+                            </div>
+                            <div>
+                                <p className="text-sm font-bold text-gray-900">{h.label}</p>
+                                <p className="text-xs text-gray-500">{h.desc}</p>
+                            </div>
+                        </div>
+                    ))}
+                </motion.div>
+
+                {/* Badge + Pricing hint */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                    className="flex flex-col items-center gap-3"
+                >
+                    <p className="text-sm text-gray-500">
+                        Starting at <span className="font-bold text-gray-900">$29/mo</span>
+                    </p>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase bg-gradient-to-b from-gray-900 via-gray-600 to-gray-300 text-white shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                        New Service
+                    </span>
+                </motion.div>
             </div>
         </section>
     );
