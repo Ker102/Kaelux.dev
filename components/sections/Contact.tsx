@@ -1,36 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import FloatingDecor from "@/components/FloatingDecor";
+import Link from "next/link";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SiGmail, SiLinkedin, SiGithub, SiInstagram } from "react-icons/si";
+import { FaArrowRight } from "react-icons/fa";
+import { HiOutlineBolt } from "react-icons/hi2";
 
-const contactInfo = [
+const contactChannels = [
   {
-    name: "Gmail",
+    name: "Email",
     icon: SiGmail,
-    value: "Kristoferjussmann@gmail.com",
+    label: "hello@kaelux.dev",
     href: "mailto:Kristoferjussmann@gmail.com",
     color: "#EA4335",
   },
   {
     name: "LinkedIn",
     icon: SiLinkedin,
-    value: "linkedin.com/in/kristofer-jussmann-b8a398382",
+    label: "Kaelux",
     href: "https://linkedin.com/in/kristofer-jussmann-b8a398382",
     color: "#0A66C2",
   },
   {
     name: "GitHub",
     icon: SiGithub,
-    value: "github.com/ker102",
+    label: "Ker102",
     href: "https://github.com/ker102",
-    color: "#181717",
+    color: "#ffffff",
   },
   {
     name: "Instagram",
     icon: SiInstagram,
-    value: "instagram.com/kaelux.dev",
+    label: "@kaelux.dev",
     href: "https://instagram.com/kaelux.dev",
     color: "#E4405F",
   },
@@ -40,31 +42,15 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative min-h-screen py-20 px-6 bg-black dark:bg-gray-50 flex items-center overflow-hidden"
+      className="relative py-32 px-6 bg-black overflow-hidden"
     >
-      {/* Floating Decorative Elements */}
-      <FloatingDecor
-        src="/images/decorative/liquid-2.png"
-        alt="Decorative element 2"
-        size={240}
-        xOffset={86}
-        yOffset={30}
-        delay={2.5}
-        duration={57}
-        opacity={0.95}
-      />
-      <FloatingDecor
-        src="/images/decorative/liquid-4.png"
-        alt="Decorative element 4"
-        size={190}
-        xOffset={-3}
-        yOffset={60}
-        delay={1.5}
-        duration={51}
-        opacity={0.98}
-      />
+      {/* Subtle background treatment */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-white/[0.015] rounded-full blur-3xl" />
+      </div>
 
-      <div className="relative z-10 container mx-auto max-w-4xl">
+      <div className="relative z-10 container mx-auto max-w-5xl">
         <motion.div
           initial="initial"
           whileInView="animate"
@@ -74,77 +60,105 @@ export default function Contact() {
         >
           {/* Header */}
           <motion.div variants={fadeInUp} className="text-center">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">
-              Let&apos;s <span className="gradient-text">Connect</span>
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500">
+              Get in Touch
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-              Feel free to reach out through any of these channels. I&apos;m always
-              open to discussing new projects and opportunities.
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              Have a project in mind? Ready to modernize your infrastructure?
+              Reach out — our team responds within 24 hours.
             </p>
           </motion.div>
 
-          {/* Contact Links */}
+          {/* Contact Grid */}
           <motion.div
             variants={staggerContainer}
-            className="flex flex-wrap items-center justify-center gap-12 md:gap-16"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
           >
-            {contactInfo.map((contact, index) => (
+            {contactChannels.map((channel) => (
               <motion.a
-                key={contact.name}
-                href={contact.href}
+                key={channel.name}
+                href={channel.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={fadeInUp}
-                whileHover={{ y: -4, scale: 1.02 }}
+                whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.97 }}
-                className="group flex flex-col items-center text-center space-y-2"
+                className="group relative flex flex-col items-center text-center p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-300"
               >
-                <div className="relative">
+                {/* Icon */}
+                <div className="relative mb-4">
                   <div
-                    className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"
-                    style={{ backgroundColor: contact.color }}
+                    className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 scale-150"
+                    style={{ backgroundColor: channel.color }}
                   />
-                  <div className="relative w-16 h-16 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                    <contact.icon
-                      className="w-8 h-8 dark:text-white transition-colors"
-                      style={{ color: contact.color }}
+                  <div className="relative w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <channel.icon
+                      className="w-7 h-7 text-white/70 group-hover:text-white transition-colors"
                     />
                   </div>
                 </div>
 
-                <h3 className="text-lg font-semibold text-white transition-colors">
-                  {contact.name}
+                <h3 className="text-base font-semibold text-white mb-1">
+                  {channel.name}
                 </h3>
+                <p className="text-xs text-gray-500">{channel.label}</p>
               </motion.a>
             ))}
           </motion.div>
 
-          {/* Collaboration Note */}
-          <motion.div
-            variants={fadeInUp}
-            className="text-center pt-8"
-          >
-            <div className="max-w-2xl mx-auto mb-8 p-6 rounded-2xl bg-gradient-to-r from-primary-purple/10 via-primary-cyan/10 to-primary-lavender/10 border border-primary-cyan/20">
-              <p className="text-lg md:text-xl text-white font-semibold mb-2">
-                🤝 Open to Collaboration
-              </p>
-              <p className="text-sm md:text-base text-gray-300">
-                I&apos;m actively seeking opportunities to partner, build innovative projects, and collaborate with like-minded creators. Let&apos;s bring ideas to life together!
-              </p>
-            </div>
+          {/* CTA Banner */}
+          <motion.div variants={fadeInUp}>
+            <div className="relative p-8 md:p-12 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden">
+              {/* Accent line */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-            <p className="text-sm text-gray-400">
-              Available for freelance opportunities
-            </p>
-            <div className="mt-4 flex items-center justify-center gap-2">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-              </span>
-              <span className="text-sm text-gray-300">
-                Currently available
-              </span>
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="text-center md:text-left">
+                  <div className="flex items-center justify-center md:justify-start gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                      <HiOutlineBolt className="w-5 h-5 text-white/70" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">
+                      Start a Project
+                    </h3>
+                  </div>
+                  <p className="text-gray-400 text-sm max-w-lg leading-relaxed">
+                    From AI-powered platforms to enterprise cloud deployments — Kaelux
+                    delivers end-to-end solutions tailored to your scale.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                    <Link
+                      href="/solutions#contact-form"
+                      className="group relative px-8 py-4 rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-white text-base font-semibold overflow-hidden transition-all duration-300 hover:bg-white/15 hover:border-white/30 flex items-center gap-2 whitespace-nowrap"
+                    >
+                      Request a Proposal
+                      <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </Link>
+                  </motion.div>
+
+                  <Link
+                    href="/pricing"
+                    className="text-gray-400 hover:text-white font-medium text-base border border-white/10 rounded-full px-6 py-4 hover:border-white/20 transition-all duration-300 text-center whitespace-nowrap"
+                  >
+                    View Pricing
+                  </Link>
+                </div>
+              </div>
             </div>
+          </motion.div>
+
+          {/* Status */}
+          <motion.div variants={fadeInUp} className="flex items-center justify-center gap-3">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+            </span>
+            <span className="text-sm text-gray-500 font-medium">
+              Accepting new projects
+            </span>
           </motion.div>
         </motion.div>
 
@@ -154,9 +168,9 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-20 pt-8 border-t border-gray-300 dark:border-gray-700 text-center"
+          className="mt-20 pt-8 border-t border-white/10 text-center"
         >
-          <p className="text-gray-400">
+          <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} Kaelux. All rights reserved.
           </p>
         </motion.footer>

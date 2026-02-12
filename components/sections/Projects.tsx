@@ -3,7 +3,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { featuredProjects, otherProjects, Project } from "@/data/projects";
 import GlassSurface from "@/components/GlassSurface";
-import FloatingDecor from "@/components/FloatingDecor";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { HiExternalLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
@@ -386,27 +385,12 @@ export default function Projects() {
       id="projects"
       className="relative min-h-screen py-20 px-6 bg-black dark:bg-white overflow-hidden"
     >
-      {/* Floating Decorative Elements */}
-      <FloatingDecor
-        src="/images/decorative/liquid-1.png"
-        alt="Decorative element 1"
-        size={260}
-        xOffset={-4}
-        yOffset={10}
-        delay={3}
-        duration={56}
-        opacity={0.95}
-      />
-      <FloatingDecor
-        src="/images/decorative/liquid-3.png"
-        alt="Decorative element 3"
-        size={200}
-        xOffset={85}
-        yOffset={60}
-        delay={1}
-        duration={54}
-        opacity={0.98}
-      />
+      {/* Subtle background - replaces removed liquid decorations */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-white/[0.01] rounded-full blur-3xl" />
+        <div className="absolute bottom-[30%] left-[5%] w-[500px] h-[300px] bg-white/[0.01] rounded-full blur-3xl" />
+      </div>
 
       <div className="relative z-10 container mx-auto max-w-7xl">
         {/* Featured Projects Section */}
@@ -417,11 +401,12 @@ export default function Projects() {
           variants={fadeInUp}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">
-            Featured <span className="gradient-text">Projects</span>
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500">
+            Our Work
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-            Flagship projects showcasing AI integration, workflow automation, and modern full-stack development.
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Platforms and tools built by Kaelux — showcasing AI integration,
+            workflow automation, and enterprise-grade engineering.
           </p>
         </motion.div>
 
@@ -435,11 +420,12 @@ export default function Projects() {
           variants={fadeInUp}
           className="text-center mb-16 mt-32"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">
-            Other <span className="gradient-text">Projects</span>
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500">
+            Open Source
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-            Additional work and side projects exploring AI assistants, chat applications, and creative tools.
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Community-driven projects exploring AI assistants,
+            conversational interfaces, and creative developer tooling.
           </p>
         </motion.div>
 
