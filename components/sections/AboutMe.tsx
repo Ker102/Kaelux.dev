@@ -39,27 +39,27 @@ export default function AboutMe() {
                 >
                     <motion.div variants={slideUpFade} className="flex flex-col gap-6">
                         <h2 className="text-4xl md:text-5xl font-medium tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500 drop-shadow-lg">
-                            About Me
+                            Meet the Founder
                         </h2>
 
                         <div className="flex items-center gap-3">
                             <span className="px-3 py-1 rounded-full bg-white/10 text-xs font-bold text-white uppercase tracking-wider border border-white/10">Founder</span>
                             <a href="https://github.com/Ker102" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
                                 <FaGithub className="w-5 h-5" />
-                                <span className="text-sm font-medium">@Ker102</span>
+                                <span className="text-sm font-medium">Kristofer Jussmann (@Ker102)</span>
                             </a>
                         </div>
 
                         <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
-                            Full-Stack Developer & AI Engineer based in Estonia, building
-                            intelligent tools that bridge the gap between automation, AI, and
-                            creative workflows.
+                            Agentic Systems Architect & Cloud Engineer based in Estonia,
+                            designing intelligent infrastructure that bridges LLM orchestration,
+                            autonomous agents, and enterprise-grade cloud deployments.
                         </p>
                         <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
-                            I specialize in crafting LLM-powered applications, workflow
-                            automation systems, and AI-integrated tools using modern
-                            frameworks. My projects blend cutting-edge AI capabilities with
-                            practical, production-ready solutions.
+                            Kristofer specializes in building agentic AI pipelines, RAG-powered
+                            workflows, and managed cloud platforms — from fine-tuned models
+                            to production-ready IaaS. Every system Kaelux ships is designed
+                            for reliability, scale, and real-world automation.
                         </p>
                     </motion.div>
                 </motion.div>
