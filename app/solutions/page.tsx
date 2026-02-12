@@ -11,6 +11,7 @@ import SolutionsContact from "@/components/solutions/SolutionsContact";
 import GradientSpacer from "@/components/sections/GradientSpacer";
 import AdditionalServicesSolutions from "@/components/solutions/AdditionalServicesSolutions";
 import OpenClawServiceCard from "@/components/solutions/OpenClawServiceCard";
+import CorePricing from "@/components/solutions/CorePricing";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -65,6 +66,7 @@ export default function SolutionsPage() {
             {/* Back to Black background sections */}
             <div className="bg-black">
                 <UseCaseCarousel />
+                <CorePricing />
                 <SolutionsContact />
             </div>
 

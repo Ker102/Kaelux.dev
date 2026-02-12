@@ -44,11 +44,7 @@ export default function Contact() {
       id="contact"
       className="relative py-32 px-6 bg-black overflow-hidden"
     >
-      {/* Subtle background treatment */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-white/[0.015] rounded-full blur-3xl" />
-      </div>
+
 
       <div className="relative z-10 container mx-auto max-w-5xl">
         <motion.div

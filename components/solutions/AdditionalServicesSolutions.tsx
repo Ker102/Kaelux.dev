@@ -104,14 +104,14 @@ export default function AdditionalServicesSolutions() {
                                 key={index}
                                 className="group flex-shrink-0 w-72 p-6 rounded-2xl bg-white border border-gray-200 hover:border-black/20 transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
                             >
-                                <div className="flex flex-col gap-4">
+                                <div className="flex flex-col gap-4 h-full">
                                     {/* Icon with Black/Chrome gradient */}
                                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gray-100 to-white border border-gray-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm group-hover:shadow-md">
                                         <service.icon className="w-7 h-7 text-gray-700 group-hover:text-black transition-colors" />
                                     </div>
 
                                     {/* Content */}
-                                    <div>
+                                    <div className="flex-1">
                                         <h3 className="text-lg font-bold text-gray-900 mb-2">
                                             {service.title}
                                         </h3>
@@ -119,6 +119,15 @@ export default function AdditionalServicesSolutions() {
                                             {service.description}
                                         </p>
                                     </div>
+
+                                    {/* Learn More Link */}
+                                    <Link
+                                        href={`/services/${service.slug}`}
+                                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-900 hover:text-black mt-2 group/link"
+                                    >
+                                        Learn More
+                                        <FaArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform duration-200" />
+                                    </Link>
                                 </div>
                             </div>
                         ))}

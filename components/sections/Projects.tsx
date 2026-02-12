@@ -385,12 +385,7 @@ export default function Projects() {
       id="projects"
       className="relative min-h-screen py-20 px-6 bg-black dark:bg-white overflow-hidden"
     >
-      {/* Subtle background - replaces removed liquid decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-white/[0.01] rounded-full blur-3xl" />
-        <div className="absolute bottom-[30%] left-[5%] w-[500px] h-[300px] bg-white/[0.01] rounded-full blur-3xl" />
-      </div>
+
 
       <div className="relative z-10 container mx-auto max-w-7xl">
         {/* Featured Projects Section */}
