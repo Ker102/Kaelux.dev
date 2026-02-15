@@ -9,7 +9,7 @@ When a CI workflow fails on the `main` branch, the system:
 2. **Copilot analyzes** the logs, identifies the root cause, and implements a fix
 3. **Opens a PR** with the fix
 4. **Calculates a confidence score** (0-100) based on multiple safety signals
-5. **Auto-merges** if confidence ≥ 80, or **requests human review** otherwise
+5. **Auto-merges** if confidence ≥ 80 (default threshold, [configurable](#adjusting-the-confidence-threshold)), or **requests human review** otherwise
 
 ---
 
