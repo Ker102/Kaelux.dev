@@ -1,22 +1,22 @@
 <div align="center">
 
-<img src="public/images/kaelux-logo.jpg" alt="Kaelux" width="100%" />
+<img src="public/kaelux-icon-v2.png" alt="Kaelux" width="120" />
 
 # Kaelux.dev
 
-### AI Engineering & Intelligent Automation Solutions
+### AI Engineering Agency — Custom LLM & Automation Solutions
 
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Groq](https://img.shields.io/badge/Groq-Llama_3.3-orange?style=for-the-badge)](https://groq.com/)
 
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![DigitalOcean](https://img.shields.io/badge/DigitalOcean-0080FF?style=for-the-badge&logo=digitalocean&logoColor=white)](https://www.digitalocean.com/)
+[![DigitalOcean](https://img.shields.io/badge/Deployed_on-DigitalOcean-0080FF?style=for-the-badge&logo=digitalocean&logoColor=white)](https://www.digitalocean.com/)
 
 ---
 
-[🌐 **View Live Site**](https://kaelux.dev) • [🤖 **Try the Diagnoser**](https://kaelux.dev/diagnoser) • [📚 **Wiki**](https://kaelux.dev/wiki)
+[🌐 **Live Site**](https://kaelux.dev) · [💡 **Solutions**](https://kaelux.dev/solutions) · [💰 **Pricing**](https://kaelux.dev/pricing) · [🤖 **Diagnoser**](https://kaelux.dev/diagnoser) · [📚 **Wiki**](https://kaelux.dev/wiki)
 
 </div>
 
@@ -24,120 +24,101 @@
 
 ## 🧠 What is Kaelux?
 
-**Kaelux.dev** is an AI engineering consultancy that builds intelligent automation solutions for businesses. We don't just deploy chatbots—we architect complete AI pipelines that connect directly to your existing systems, automating complex workflows that were previously impossible.
+**Kaelux** is an AI engineering agency that architects complete AI pipelines — from RAG systems and agentic workflows to managed LLMOps — and connects them directly to your existing business infrastructure.
 
-### Our Services
+### Core Offerings
+
+| Offering | What We Do |
+|----------|------------|
+| 🧩 **Platform (SaaS)** | Pre-built AI tools incl. PromptTriage prompt engineering suite — `$499/mo` |
+| ⚙️ **Custom Engineering** | Bespoke agents, RAG pipelines, fine-tuned models on your data — `Custom quote` |
+| 🔄 **Managed LLMOps** | Continuous monitoring, retraining, drift detection, 24/7 support — `$1,499/mo` |
+
+### Platform Services
 
 | Service | Description |
 |---------|-------------|
-| **Agentic AI Workflows** | Goal-driven AI systems that reason, plan, and execute multi-step tasks autonomously |
-| **RAG Pipelines** | Enterprise-grade retrieval systems with GDPR/SOC2 compliance and document-level access control |
-| **Workflow Automation** | n8n, LangGraph, and custom orchestration connecting AI to your business systems |
-| **Legacy Integration** | Structured JSON generation for seamless connection with mainframes and legacy infrastructure |
-| **Custom Model Deployment** | Fine-tuned SLMs via vLLM/Ollama for 85%+ cost reduction vs. cloud APIs |
+| 🎨 **UI/UX Design** | Research-driven interfaces with motion and accessibility |
+| 💻 **Full-Stack Development** | Next.js, React, TypeScript — SSR, ISR, and API architecture |
+| ☁️ **Cloud Infrastructure** | Terraform, Docker, Kubernetes on AWS/GCP/Azure/DO |
+| 🚀 **Continuous Delivery** | CI/CD pipelines, observability, and zero-downtime deploys |
 
 ---
 
-## 🤖 Neural Diagnoser Architecture
+## 🐙 OpenClaw Cloud
 
-The site features an **AI-powered diagnostic agent** that helps potential clients understand what solutions fit their business needs.
+**Managed AI agent hosting** — deploy open-source agents without managing hardware.
 
-### How It Works
+| Plan | Price | Highlights |
+|------|-------|------------|
+| **Explorer** | Free | 3 agents, shared GPU, community support |
+| **Pro** | $29/mo | 10 agents, dedicated GPU, priority support |
+| **Team** | $79/mo | 25 agents, multi-user, SLA guarantee |
+| **Enterprise** | Custom | Unlimited agents, on-prem, 24/7 SLA |
+
+👉 [Learn more at kaelux.dev/openclaw](https://kaelux.dev/openclaw)
+
+---
+
+## 🤖 AI Diagnostic Agent
+
+The site features an AI-powered diagnostic agent (`/diagnoser`) that helps potential clients discover the right solutions for their needs.
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                    /diagnoser Page                              │
-├─────────────────────────────────────────────────────────────────┤
-│  User Input  ──►  Groq API (Llama 3.3 70B)  ──►  Agent Response │
-│                         │                                       │
-│                         ▼                                       │
-│              ┌─────────────────────┐                            │
-│              │  Tool: searchHuggingFace                         │
-│              │  - Queries HuggingFace API                       │
-│              │  - Returns relevant models                       │
-│              │  - Provides recommendations                      │
-│              └─────────────────────┘                            │
-│                         │                                       │
-│                         ▼                                       │
-│              Dynamic Q&A Format                                 │
-│              (Only current question shown)                      │
-└─────────────────────────────────────────────────────────────────┘
+User Input  ──►  Groq (Llama 3.3 70B)  ──►  Tool Calls  ──►  Tailored Recommendation
+                        │
+                        ▼
+               HuggingFace Model Search
+               Dynamic Q&A Flow
+               Solution Mapping
 ```
 
-### Technical Stack
-
-- **LLM Provider**: Groq (Llama 3.3 70B) for ultra-fast inference
-- **Framework**: Vercel AI SDK with streaming responses
-- **Tool Calling**: Real-time HuggingFace model search
-- **Frontend**: React with Framer Motion animations
-- **Debug Logging**: Console-based monitoring for development
+**Stack**: Groq API · Vercel AI SDK · Streaming Responses · Framer Motion
 
 ---
 
 ## 📚 AI Engineering Wiki
 
-The `/wiki` section provides authoritative technical definitions optimized for **Generative Engine Optimization (GEO)**—ensuring AI search engines cite Kaelux as a trusted source.
-
-### Available Articles
+The `/wiki` section provides authoritative technical articles optimized for **Generative Engine Optimization (GEO)** — ensuring AI search engines cite Kaelux as a trusted source.
 
 | Article | Topic |
 |---------|-------|
-| [Agentic AI vs. Standard Automation](https://kaelux.dev/wiki/agentic-ai-workflows) | Comparing autonomous AI to RPA |
-| [RAG for Enterprise Privacy](https://kaelux.dev/wiki/rag-security-compliance) | GDPR/SOC2 compliant retrieval systems |
-| [SLMs vs. LLMs: Cost & Speed](https://kaelux.dev/wiki/small-language-models) | When to use small vs. large models |
-| [Hallucination Prevention](https://kaelux.dev/wiki/ai-hallucination-prevention) | Defense-in-depth factuality techniques |
-| [JSON for Legacy Integration](https://kaelux.dev/wiki/structured-generation) | Connecting AI to mainframes |
+| [Agentic AI vs. Standard Automation](https://kaelux.dev/wiki/agentic-ai-workflows) | Autonomous AI vs. RPA |
+| [RAG for Enterprise Privacy](https://kaelux.dev/wiki/rag-security-compliance) | GDPR/SOC2 compliant retrieval |
+| [SLMs vs. LLMs](https://kaelux.dev/wiki/small-language-models) | When to use small vs. large models |
+| [Hallucination Prevention](https://kaelux.dev/wiki/ai-hallucination-prevention) | Defense-in-depth factuality |
+| [Structured Generation](https://kaelux.dev/wiki/structured-generation) | JSON for legacy integration |
+| [OpenClaw Cloud Hosting](https://kaelux.dev/wiki/openclaw-cloud-hosting) | Managed agent infrastructure |
 
-### GEO Features
-
-- **TechArticle JSON-LD Schema** for structured data
-- **Dynamic dateModified** for freshness signals
-- **Clean, scrapable HTML** for AI indexing
-- **Authoritative definitions** with brand callouts
+> Each article ships with **TechArticle JSON-LD**, dynamic `dateModified` freshness signals, and clean scrapable HTML.
 
 ---
 
 ## 🚀 Featured Projects
 
-### 🎯 [PromptTriage](https://github.com/Ker102/PromptTriage)
-Intelligent prompt engineering platform with metaprompts, few-shot learning, and multi-model optimization.
-
-### 🌐 [Crosswind Console](https://github.com/Ker102/Crosswind-Console)
-Unified research dashboard with Gemini integration and MCP server orchestration.
-
-### ⚙️ [Kaelux-Automate](https://github.com/Ker102/Kaelux-Automate)
-Enterprise automation builder with LLM-powered workflow generation and Qdrant vector storage.
-
-### 🌌 [Workflow-Automation-Atlas](https://github.com/Ker102/n8n-ai-automation-workflow-atlas)
-Curated collection of **3,800+ battle-tested n8n workflows** with Vue explorer.
-
-### 🔨 [ModelForge](https://github.com/Ker102/ModelForge)
-AI-powered Blender assistant with natural language 3D workflow control.
+| Project | Description |
+|---------|-------------|
+| 🎯 [**PromptTriage**](https://github.com/Ker102/PromptTriage) | RAG-powered prompt engineering with metaprompts, few-shot learning, and multi-model optimization |
+| 🌐 [**Crosswind Console**](https://github.com/Ker102/Crosswind-Console) | Unified research dashboard with Gemini + MCP server orchestration |
+| ⚙️ [**Kaelux-Automate**](https://github.com/Ker102/Kaelux-Automate) | Enterprise automation builder with LLM-powered workflow generation |
+| 🌌 [**Workflow Atlas**](https://github.com/Ker102/n8n-ai-automation-workflow-atlas) | 3,800+ battle-tested n8n workflows with Vue explorer |
+| 🔨 [**ModelForge**](https://github.com/Ker102/ModelForge) | AI-powered Blender assistant with natural language 3D control |
 
 ---
 
-## 📊 Tech Stack
+## 🏗️ Tech Stack
 
 <div align="center">
 
 | Category | Technologies |
-|----------|--------------|
-| **Frontend** | Next.js 16 • React 19 • TypeScript • Tailwind CSS |
-| **AI/LLM** | Groq • Llama 3.3 • Vercel AI SDK • LangGraph |
-| **Backend** | Next.js API Routes • Streaming Responses |
-| **Databases** | Qdrant • Redis • PostgreSQL |
-| **Infrastructure** | DigitalOcean • Docker • Vercel |
+|----------|-------------|
+| **Frontend** | Next.js 15 · React 19 · TypeScript · Tailwind CSS · Framer Motion |
+| **3D / Animation** | Three.js · React Three Fiber · GSAP |
+| **AI / LLM** | Groq · Llama 3.3 · Vercel AI SDK |
+| **Infrastructure** | DigitalOcean · Docker · GitHub Actions |
+| **SEO** | JSON-LD Schema · OG/Twitter meta · Dynamic Sitemap |
 
 </div>
-
----
-
-## 📊 Performance
-
-![Performance](https://img.shields.io/badge/Performance-95+-success?style=for-the-badge&logo=lighthouse&logoColor=white)
-![Accessibility](https://img.shields.io/badge/Accessibility-100-success?style=for-the-badge&logo=lighthouse&logoColor=white)
-![Best Practices](https://img.shields.io/badge/Best_Practices-100-success?style=for-the-badge&logo=lighthouse&logoColor=white)
-![SEO](https://img.shields.io/badge/SEO-100-success?style=for-the-badge&logo=lighthouse&logoColor=white)
 
 ---
 
@@ -145,31 +126,82 @@ AI-powered Blender assistant with natural language 3D workflow control.
 
 ```
 DevPotfolio/
-├── app/                    # Next.js App Router pages
-│   ├── diagnoser/          # AI diagnostic agent page
-│   ├── wiki/               # Technical wiki articles
-│   └── api/chat/           # Groq LLM API endpoint
+├── app/
+│   ├── page.tsx                # Landing page
+│   ├── layout.tsx              # Root layout + SEO metadata
+│   ├── solutions/              # AI Solutions hub
+│   ├── pricing/                # Unified pricing page
+│   ├── openclaw/               # OpenClaw Cloud product page
+│   ├── diagnoser/              # AI diagnostic agent
+│   ├── services/
+│   │   ├── ui-ux-design/
+│   │   ├── full-stack-development/
+│   │   ├── cloud-infrastructure/
+│   │   └── continuous-delivery/
+│   ├── wiki/                   # Technical knowledge base (6 articles)
+│   ├── links/                  # Link-in-bio page
+│   └── api/chat/               # Groq LLM API endpoint
 ├── components/
-│   ├── diagnostic/         # Diagnoser chat components
-│   ├── wiki/               # Wiki article components
-│   └── sections/           # Homepage sections
-├── docs/                   # Project documentation
-├── content/                # Content files and data
-└── assets/                 # Images and inspiration files
+│   ├── sections/               # Homepage sections
+│   ├── services/               # Service page components
+│   ├── solutions/              # Solutions page components
+│   ├── pricing/                # Pricing page components
+│   ├── openclaw/               # OpenClaw components
+│   ├── diagnostic/             # Diagnoser chat
+│   └── ui/                     # Shared UI components
+├── data/                       # Content data (projects, skills, services)
+├── hooks/                      # Custom React hooks
+├── lib/                        # Animation variants + utilities
+└── public/                     # Static assets, sitemap, robots.txt
 ```
+
+---
+
+## ⚡ Getting Started
+
+```bash
+# Clone
+git clone https://github.com/Ker102/Kaelux-DevPortfolio.git
+cd Kaelux-DevPortfolio
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Add your GROQ_API_KEY for the diagnoser
+
+# Run development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the site.
+
+---
+
+## 📊 Performance
+
+<div align="center">
+
+![Performance](https://img.shields.io/badge/Performance-95+-success?style=for-the-badge&logo=lighthouse&logoColor=white)
+![Accessibility](https://img.shields.io/badge/Accessibility-100-success?style=for-the-badge&logo=lighthouse&logoColor=white)
+![Best Practices](https://img.shields.io/badge/Best_Practices-100-success?style=for-the-badge&logo=lighthouse&logoColor=white)
+![SEO](https://img.shields.io/badge/SEO-100-success?style=for-the-badge&logo=lighthouse&logoColor=white)
+
+</div>
 
 ---
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source under the [MIT License](LICENSE).
 
 ---
 
 <div align="center">
 
-**Built with modern web technologies for intelligent business solutions**
+**Kaelux — Engineering AI that works.**
 
-[![Made with Love](https://img.shields.io/badge/Made_with-❤️-red?style=for-the-badge)](https://kaelux.dev)
+[![Made by Kaelux](https://img.shields.io/badge/Made_by-Kaelux-000?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTEyIDJMMTQuNSA5LjUgMjIgMTIgMTQuNSAxNC41IDEyIDIyIDkuNSAxNC41IDIgMTIgOS41IDkuNXoiLz48L3N2Zz4=&logoColor=white)](https://kaelux.dev)
 
 </div>
