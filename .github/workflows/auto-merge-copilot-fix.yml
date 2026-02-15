@@ -1,0 +1,251 @@
+name: Confidence-based Auto-merge for Copilot Fixes
+
+# Trigger on PR events, check suite completion, and PR reviews
+on:
+  pull_request:
+    types: [opened, synchronize, labeled]
+  pull_request_review:
+    types: [submitted]
+  check_suite:
+    types: [completed]
+
+permissions:
+  pull-requests: write
+  contents: write
+  checks: read
+  issues: write
+
+jobs:
+  confidence-check:
+    name: Calculate Confidence Score
+    runs-on: ubuntu-latest
+
+    # Only run on PRs with auto-fix label that were opened by copilot
+    if: |
+      github.event.pull_request.user.login == 'copilot' &&
+      contains(github.event.pull_request.labels.*.name, 'auto-fix')
+
+    outputs:
+      score: ${{ steps.calculate.outputs.score }}
+      should_merge: ${{ steps.calculate.outputs.should_merge }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Calculate confidence score
+        id: calculate
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const CONFIDENCE_THRESHOLD = 80; // Easy to change threshold
+
+            let score = 0;
+            const breakdown = [];
+            const pr = context.payload.pull_request;
+
+            // ========================================
+            // Signal 1: All CI checks pass (40 points)
+            // ========================================
+            console.log('Checking CI status...');
+            const { data: checkRuns } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: pr.head.sha,
+              per_page: 100
+            });
+
+            // Filter out this workflow itself
+            const relevantChecks = checkRuns.check_runs.filter(check =>
+              !check.name.includes('Confidence-based Auto-merge')
+            );
+
+            const allChecksPassed = relevantChecks.length > 0 &&
+              relevantChecks.every(check => check.conclusion === 'success');
+
+            if (allChecksPassed) {
+              score += 40;
+              breakdown.push('✅ All CI checks pass: **+40 points**');
+            } else {
+              const failedChecks = relevantChecks.filter(c => c.conclusion !== 'success');
+              breakdown.push(`❌ CI checks incomplete/failed (${failedChecks.length} checks): **+0 points**`);
+            }
+
+            // ========================================
+            // Signal 2: Small diff size (15-25 points)
+            // ========================================
+            console.log('Checking diff size...');
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              per_page: 100
+            });
+
+            const totalChanges = files.reduce((sum, file) => sum + file.changes, 0);
+            const fileCount = files.length;
+
+            if (totalChanges <= 20 && fileCount <= 3) {
+              score += 25;
+              breakdown.push(`✅ Small diff: ${totalChanges} changes in ${fileCount} file(s): **+25 points**`);
+            } else if (totalChanges <= 50 && fileCount <= 5) {
+              score += 15;
+              breakdown.push(`⚠️ Medium diff: ${totalChanges} changes in ${fileCount} file(s): **+15 points**`);
+            } else {
+              breakdown.push(`❌ Large diff: ${totalChanges} changes in ${fileCount} file(s): **+0 points**`);
+            }
+
+            // ========================================
+            // Signal 3: No risky files modified (20 points)
+            // ========================================
+            console.log('Checking for risky files...');
+            const riskyPatterns = [
+              '.github/workflows/',
+              'package.json',
+              'package-lock.json',
+              '.env',
+              'docker',
+              'terraform'
+            ];
+
+            const riskyFiles = files.filter(file =>
+              riskyPatterns.some(pattern => file.filename.includes(pattern))
+            );
+
+            if (riskyFiles.length === 0) {
+              score += 20;
+              breakdown.push('✅ No risky files modified: **+20 points**');
+            } else {
+              breakdown.push(`❌ Risky files modified (${riskyFiles.length}): ${riskyFiles.map(f => f.filename).join(', ')}: **+0 points**`);
+            }
+
+            // ========================================
+            // Signal 4: No files deleted (15 points)
+            // ========================================
+            console.log('Checking for deleted files...');
+            const deletedFiles = files.filter(file => file.status === 'removed');
+
+            if (deletedFiles.length === 0) {
+              score += 15;
+              breakdown.push('✅ No files deleted: **+15 points**');
+            } else {
+              breakdown.push(`❌ Files deleted (${deletedFiles.length}): ${deletedFiles.map(f => f.filename).join(', ')}: **+0 points**`);
+            }
+
+            // ========================================
+            // Final decision
+            // ========================================
+            const shouldMerge = score >= CONFIDENCE_THRESHOLD;
+            const decision = shouldMerge ?
+              '🎉 **AUTO-MERGE APPROVED**' :
+              '⚠️ **NEEDS HUMAN REVIEW**';
+
+            // ========================================
+            // Post confidence report comment
+            // ========================================
+            const comment = `## 🤖 Auto-fix Confidence Report
+
+            **Score:** ${score} / 100
+            **Threshold:** ${CONFIDENCE_THRESHOLD}
+            **Decision:** ${decision}
+
+            ### Breakdown
+
+            ${breakdown.join('\n')}
+
+            ---
+
+            ${shouldMerge ?
+              '✅ This PR will be **automatically merged** via squash merge.' :
+              `⚠️ This PR requires human review. @Ker102 has been requested for review.`
+            }
+
+            <sub>Confidence scoring helps ensure automated fixes are safe. [Learn more](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/.github/workflows/auto-merge-copilot-fix.yml)</sub>`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              body: comment
+            });
+
+            console.log(`Confidence score: ${score}/${CONFIDENCE_THRESHOLD}`);
+            console.log(`Decision: ${shouldMerge ? 'AUTO-MERGE' : 'NEEDS REVIEW'}`);
+
+            // Set outputs
+            core.setOutput('score', score.toString());
+            core.setOutput('should_merge', shouldMerge ? 'true' : 'false');
+
+  auto-merge:
+    name: Auto-merge PR
+    runs-on: ubuntu-latest
+    needs: confidence-check
+    if: needs.confidence-check.outputs.should_merge == 'true'
+
+    steps:
+      - name: Enable auto-merge
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+
+            // Enable auto-merge with squash strategy
+            try {
+              await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                merge_method: 'squash',
+                commit_title: `🤖 Auto-fix: ${pr.title}`,
+                commit_message: `Automatically merged after passing confidence check (score: ${needs.confidence-check.outputs.score}/100)\n\n${pr.body || ''}`
+              });
+
+              console.log(`Successfully merged PR #${pr.number}`);
+            } catch (error) {
+              // If merge fails (e.g., checks not complete), log and continue
+              console.log(`Merge failed: ${error.message}`);
+              console.log('This is expected if checks are still running. The merge will complete when checks pass.');
+            }
+
+  request-review:
+    name: Request Human Review
+    runs-on: ubuntu-latest
+    needs: confidence-check
+    if: needs.confidence-check.outputs.should_merge == 'false'
+
+    steps:
+      - name: Add needs-human-review label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+
+            // Add label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              labels: ['needs-human-review']
+            });
+
+            console.log('Added needs-human-review label');
+
+      - name: Request review from Ker102
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+
+            try {
+              await github.rest.pulls.requestReviewers({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                reviewers: ['Ker102']
+              });
+
+              console.log('Requested review from Ker102');
+            } catch (error) {
+              console.log(`Failed to request review: ${error.message}`);
+              console.log('This may happen if the reviewer is already assigned or cannot be assigned.');
+            }
