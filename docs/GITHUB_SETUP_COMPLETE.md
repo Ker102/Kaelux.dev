@@ -21,6 +21,7 @@ This repository now has a complete professional GitHub setup.
 - ✅ **First-time Greetings** - Welcomes new contributors
 - ✅ **Release Drafter** - Auto-generates release notes
 - ✅ **Dependabot Auto-merge** - Auto-merges safe dependency updates
+- ✅ **Self-Healing CI/CD** - Automatically detects, fixes, and merges CI failures ([docs](SELF_HEALING_CICD.md))
 
 ### 📝 Templates
 
@@ -118,6 +119,8 @@ https://github.com/Ker102/DevPotfolio/discussions
 | Auto-assign           | New issues & PRs                |
 | Release Drafter       | Push to main, PRs               |
 | Dependabot Auto-merge | Dependabot PRs                  |
+| **Auto-fix on Failure** | **When any workflow fails on main** |
+| **Auto-merge Copilot Fix** | **On Copilot fix PRs (confidence-based)** |
 
 ## 📁 File Structure
 
@@ -140,7 +143,9 @@ https://github.com/Ker102/DevPotfolio/discussions
 │   ├── greetings.yml
 │   ├── auto-assign.yml
 │   ├── release-drafter.yml
-│   └── dependabot-auto-merge.yml
+│   ├── dependabot-auto-merge.yml
+│   ├── auto-fix-on-failure.yml
+│   └── auto-merge-copilot-fix.yml
 ├── CONTRIBUTING.md
 ├── CODE_OF_CONDUCT.md
 ├── SECURITY.md
