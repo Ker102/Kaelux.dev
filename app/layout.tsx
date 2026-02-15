@@ -35,19 +35,20 @@ export const metadata: Metadata = {
     siteName: "Kaelux AI Engineering",
     images: [
       {
-        url: "/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Kaelux Logo",
+        url: "https://kaelux.dev/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Kaelux – AI Engineering Agency",
+        type: "image/png",
       },
     ],
     locale: "en_US",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Kaelux | AI Engineering Agency",
     description: "Custom LLM systems, intelligent automation, and production-ready AI infrastructure for businesses.",
-    images: ["/logo.png"],
+    images: ["https://kaelux.dev/logo.png"],
   },
   robots: {
     index: true,
@@ -72,13 +73,16 @@ export default function RootLayout({
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
+    "@type": "Organization",
     "name": "Kaelux",
     "url": "https://kaelux.dev",
     "logo": "https://kaelux.dev/logo.png",
     "image": "https://kaelux.dev/logo.png",
     "description": "AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses.",
-    "jobTitle": "Founder & AI Engineer",
+    "founder": {
+      "@type": "Person",
+      "name": "Kristofer Jussmann"
+    },
     "sameAs": [
       "https://github.com/Ker102"
     ]
