@@ -160,7 +160,7 @@ jobs:
               `⚠️ This PR requires human review. @Ker102 has been requested for review.`
             }
 
-            <sub>Confidence scoring helps ensure automated fixes are safe. [Learn more](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/.github/workflows/auto-merge-copilot-fix.yml)</sub>`;
+            <sub>Confidence scoring helps ensure automated fixes are safe. [Learn more](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/docs/SELF_HEALING_CICD.md)</sub>`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
@@ -185,9 +185,12 @@ jobs:
     steps:
       - name: Enable auto-merge
         uses: actions/github-script@v7
+        env:
+          CONFIDENCE_SCORE: ${{ needs.confidence-check.outputs.score }}
         with:
           script: |
             const pr = context.payload.pull_request;
+            const score = process.env.CONFIDENCE_SCORE;
 
             // Enable auto-merge with squash strategy
             try {
@@ -197,7 +200,7 @@ jobs:
                 pull_number: pr.number,
                 merge_method: 'squash',
                 commit_title: `🤖 Auto-fix: ${pr.title}`,
-                commit_message: `Automatically merged after passing confidence check (score: ${needs['confidence-check'].outputs.score}/100)\n\n${pr.body || ''}`
+                commit_message: `Automatically merged after passing confidence check (score: ${score}/100)\n\n${pr.body || ''}`
               });
 
               console.log(`Successfully merged PR #${pr.number}`);
