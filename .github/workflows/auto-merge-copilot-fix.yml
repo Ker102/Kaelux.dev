@@ -197,7 +197,7 @@ jobs:
                 pull_number: pr.number,
                 merge_method: 'squash',
                 commit_title: `🤖 Auto-fix: ${pr.title}`,
-                commit_message: `Automatically merged after passing confidence check (score: ${needs.confidence-check.outputs.score}/100)\n\n${pr.body || ''}`
+                commit_message: `Automatically merged after passing confidence check (score: ${needs['confidence-check'].outputs.score}/100)\n\n${pr.body || ''}`
               });
 
               console.log(`Successfully merged PR #${pr.number}`);
