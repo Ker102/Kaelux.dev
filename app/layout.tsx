@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Kaelux AI Engineering",
     images: [
       {
-        url: "https://kaelux.dev/logo.png",
+        url: "https://kaelux.dev/kaelux-icon-v2.png",
         width: 512,
         height: 512,
         alt: "Kaelux – AI Engineering Agency",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Kaelux | AI Engineering Agency",
     description: "Custom LLM systems, intelligent automation, and production-ready AI infrastructure for businesses.",
-    images: ["https://kaelux.dev/logo.png"],
+    images: ["https://kaelux.dev/kaelux-icon-v2.png"],
   },
   robots: {
     index: true,
@@ -76,8 +76,8 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "Kaelux",
     "url": "https://kaelux.dev",
-    "logo": "https://kaelux.dev/logo.png",
-    "image": "https://kaelux.dev/logo.png",
+    "logo": "https://kaelux.dev/kaelux-icon-v2.png",
+    "image": "https://kaelux.dev/kaelux-icon-v2.png",
     "description": "AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses.",
     "founder": {
       "@type": "Person",
