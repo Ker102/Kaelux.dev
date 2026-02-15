@@ -5,6 +5,12 @@ export const metadata: Metadata = {
   title: "Kaelux Links | Immersive Link-In-Bio",
   description:
     "Ultra modern link-in-bio built with motion and 3D. Explore Kaelux work, socials, labs, and instant contact in one neon surface.",
+  openGraph: {
+    title: "Kaelux Links",
+    description: "All Kaelux links in one place — socials, projects, and contact.",
+    type: "website",
+    url: "https://kaelux.dev/links",
+  },
   alternates: {
     canonical: "https://kaelux.dev/links",
   },

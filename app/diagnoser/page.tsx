@@ -6,8 +6,12 @@ export const metadata: Metadata = {
     description: 'Get a personalized AI solution assessment for your business. Our diagnostic agent will understand your needs and recommend tailored solutions.',
     openGraph: {
         title: 'AI Diagnostic | Kaelux',
-        description: 'Get a personalized AI solution assessment for your business',
+        description: 'Get a personalized AI solution assessment for your business.',
         type: 'website',
+        url: 'https://kaelux.dev/diagnoser',
+    },
+    alternates: {
+        canonical: 'https://kaelux.dev/diagnoser',
     },
 };
 

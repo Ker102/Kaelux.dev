@@ -71,22 +71,37 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Kaelux",
-    "url": "https://kaelux.dev",
-    "logo": "https://kaelux.dev/kaelux-icon-v2.png",
-    "image": "https://kaelux.dev/kaelux-icon-v2.png",
-    "description": "AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses.",
-    "founder": {
-      "@type": "Person",
-      "name": "Kristofer Jussmann"
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Kaelux",
+      "url": "https://kaelux.dev",
+      "logo": "https://kaelux.dev/kaelux-icon-v2.png",
+      "image": "https://kaelux.dev/kaelux-icon-v2.png",
+      "description": "AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses.",
+      "founder": {
+        "@type": "Person",
+        "name": "Kristofer Jussmann"
+      },
+      "sameAs": [
+        "https://github.com/Ker102",
+        "https://instagram.com/kaelux.dev",
+        "https://x.com/kerprocessing"
+      ]
     },
-    "sameAs": [
-      "https://github.com/Ker102"
-    ]
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Kaelux",
+      "url": "https://kaelux.dev",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://kaelux.dev/wiki?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ];
 
   return (
     <html lang="en" suppressHydrationWarning>

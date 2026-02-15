@@ -1,6 +1,10 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Disallow: /api/
+
+# Host
+Host: https://kaelux.dev
 
 # Sitemap
 Sitemap: https://kaelux.dev/sitemap.xml

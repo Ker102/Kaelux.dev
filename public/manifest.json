@@ -1,11 +1,11 @@
 {
-  "name": "Kaelux Developer Page",
+  "name": "Kaelux — AI Engineering Agency",
   "short_name": "Kaelux",
-  "description": "Independent studio shipping AI copilots, immersive experiences, and high-performance web systems.",
+  "description": "AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#06b6d4",
+  "theme_color": "#000000",
   "icons": [
     {
       "src": "/favicon-16x16.png",
@@ -23,7 +23,7 @@
       "type": "image/png"
     },
     {
-      "src": "/logo.png",
+      "src": "/kaelux-icon-v2.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
