@@ -1,9 +1,10 @@
 name: Auto-fix on CI Failure
 
-# Trigger when any workflow run completes
+# Trigger when the CI/CD Pipeline workflow completes
+# NOTE: workflow_run requires exact workflow names, not globs
 on:
   workflow_run:
-    workflows: ["*"]
+    workflows: ["CI/CD Pipeline"]
     types: [completed]
 
 permissions:

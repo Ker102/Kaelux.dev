@@ -20,9 +20,10 @@ jobs:
     name: Calculate Confidence Score
     runs-on: ubuntu-latest
 
-    # Only run on PRs with auto-fix label that were opened by copilot
+    # Only run on PRs with auto-fix label that were opened by Copilot
+    # Copilot coding agent may appear as 'copilot' or 'Copilot'
     if: |
-      github.event.pull_request.user.login == 'copilot' &&
+      contains(fromJSON('["copilot", "Copilot", "copilot[bot]"]'), github.event.pull_request.user.login) &&
       contains(github.event.pull_request.labels.*.name, 'auto-fix')
 
     outputs:
