@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { SiGmail, SiLinkedin, SiGithub, SiInstagram } from "react-icons/si";
-import { FaArrowRight } from "react-icons/fa";
+import { SiGmail, SiGithub, SiInstagram } from "react-icons/si";
+import { FaArrowRight, FaLinkedin } from "react-icons/fa";
 import { HiOutlineBolt } from "react-icons/hi2";
 
 const contactChannels = [
@@ -17,7 +17,7 @@ const contactChannels = [
   },
   {
     name: "LinkedIn",
-    icon: SiLinkedin,
+    icon: FaLinkedin,
     label: "Kaelux",
     href: "https://linkedin.com/in/kristofer-jussmann-b8a398382",
     color: "#0A66C2",

@@ -13,7 +13,7 @@ import {
   SiJavascript,
   SiTailwindcss,
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiVuedotjs,
   SiNodedotjs,
   SiExpress,
@@ -24,13 +24,12 @@ import {
   SiGraphql,
   SiGit,
   SiDocker,
-  SiAmazon,
   SiVercel,
   SiFigma,
   SiJest,
   SiLinux,
 } from "react-icons/si";
-import { FaCode } from "react-icons/fa";
+import { FaCode, FaAws } from "react-icons/fa";
 
 const iconMap: { [key: string]: any } = {
   React: SiReact,
@@ -39,7 +38,7 @@ const iconMap: { [key: string]: any } = {
   JavaScript: SiJavascript,
   "Tailwind CSS": SiTailwindcss,
   HTML5: SiHtml5,
-  CSS3: SiCss3,
+  CSS3: SiCss,
   "Vue.js": SiVuedotjs,
   "Node.js": SiNodedotjs,
   Express: SiExpress,
@@ -50,7 +49,7 @@ const iconMap: { [key: string]: any } = {
   GraphQL: SiGraphql,
   Git: SiGit,
   Docker: SiDocker,
-  AWS: SiAmazon,
+  AWS: FaAws,
   Vercel: SiVercel,
   Figma: SiFigma,
   Jest: SiJest,
