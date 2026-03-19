@@ -81,9 +81,9 @@
     - `gradient-end`: #fbbf24 (Yellow)
 
 ## Current Task
-- **Objective**: CI/CD pipeline repair + self-healing workflow fixes
-- **Progress**: Fixed 3 workflow files: `auto-fix-on-failure.yml` (wildcard trigger), `auto-merge-copilot-fix.yml` (Copilot user.login), `dependabot-auto-merge.yml` (added build verification gate). Confirmed `ci.yml` is fine — `actions/checkout@v6` is valid. Local build passes.
-- **Blockers**: Need to investigate exact CI build failure (logs require auth). Need user to set up branch protection rules.
-- **Next Steps**: Push workflow fixes, verify CI pipeline passes, investigate DO deployment logs.
+- **Objective**: SEO sitemap & indexing fix — Google indexing only 6 of 18 pages
+- **Progress**: Replaced static `public/sitemap.xml` and `public/robots.txt` with dynamic Next.js equivalents (`app/sitemap.ts`, `app/robots.ts`). All 18 URLs included with fresh `lastmod` timestamps on every build. Build passes.
+- **Blockers**: None.
+- **Next Steps**: Push changes, re-submit sitemap in Google Search Console, request re-indexing.
 
 
