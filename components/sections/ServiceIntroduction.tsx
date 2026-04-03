@@ -5,47 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
-// Smoother custom animation variants
-const smoothTransition = {
-    type: "spring" as const,
-    damping: 40,
-    stiffness: 100,
-    mass: 1,
-};
+import { staggerContainer, fadeInUp, textStagger, textReveal, premiumEase } from "@/lib/animations";
 
-const slideUpFade = {
-    initial: { opacity: 0, y: 40 },
-    animate: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            ...smoothTransition,
-            duration: 1.0
-        }
-    },
-};
-
-const stagger = {
-    animate: {
-        transition: {
-            staggerChildren: 0.2,
-            delayChildren: 0.1,
-        },
-    },
-};
-
-const imageReveal = {
-    initial: { opacity: 0, scale: 0.9, filter: "blur(20px)" },
-    animate: {
-        opacity: 1,
-        scale: 1,
-        filter: "blur(0px)",
-        transition: {
-            duration: 1.5,
-            ease: [0.22, 1, 0.36, 1] as const
-        }
-    },
-};
+// Removed local implementations of stagger, slideUpFade, imageReveal since we use the optimized ones from lib/animations
 
 export default function ServiceIntroduction() {
     return (
@@ -67,17 +29,21 @@ export default function ServiceIntroduction() {
                     initial="initial"
                     whileInView="animate"
                     viewport={{ once: true, margin: "-10%" }}
-                    variants={stagger}
+                    variants={staggerContainer}
                     className="flex flex-col w-full"
                 >
                     {/* Top Header Section */}
-                    <motion.div variants={slideUpFade} className="mb-12 lg:mb-20 w-full text-center lg:text-left">
-                        <h2 className="text-5xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-transparent bg-clip-text bg-gradient-to-b from-gray-800 via-white to-white drop-shadow-lg">
-                            Beyond Chatbots: <br />
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-purple-300 to-cyan-300 animate-gradient-x bg-[length:200%_auto]">
+                    <motion.div variants={textStagger} className="mb-12 lg:mb-20 w-full text-center lg:text-left">
+                        <h2 className="text-5xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[1.1] flex flex-col gap-2">
+                            <motion.span variants={textReveal} className="text-transparent bg-clip-text bg-gradient-to-b from-gray-800 via-white to-white drop-shadow-lg inline-block">
+                                Beyond Chatbots:
+                            </motion.span>
+                            <motion.span variants={textReveal} className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-purple-300 to-cyan-300 animate-gradient-x bg-[length:200%_auto] inline-block">
                                 Intelligent Infrastructure
-                            </span>{" "}
-                            <span className="text-gray-400">for Business</span>
+                            </motion.span>
+                            <motion.span variants={textReveal} className="text-gray-400 inline-block">
+                                for Business
+                            </motion.span>
                         </h2>
                     </motion.div>
 
@@ -85,12 +51,15 @@ export default function ServiceIntroduction() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
                         {/* Left Column: Description & CTA */}
-                        <motion.div variants={slideUpFade} className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
-                            <p className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-10 max-w-2xl">
-                                Generic AI models don&apos;t understand your business. We build and tune custom solutions that do. By combining our tailored AI software with hands-on engineering services, we connect LLMs directly to your existing systems—automating complex tasks and workflows.
-                            </p>
+                        <motion.div variants={textStagger} className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+                            <motion.p variants={textReveal} className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-6 max-w-2xl">
+                                Generic AI models don&apos;t understand your business. We build and tune custom solutions that do.
+                            </motion.p>
+                            <motion.p variants={textReveal} className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-10 max-w-2xl">
+                                By combining our tailored AI software with hands-on engineering services, we connect LLMs directly to your existing systems—automating complex tasks and workflows.
+                            </motion.p>
 
-                            <div className="flex flex-col items-center lg:items-start space-y-6">
+                            <motion.div variants={textReveal} className="flex flex-col items-center lg:items-start space-y-6">
                                 <Link href="/solutions" passHref>
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
@@ -114,7 +83,7 @@ export default function ServiceIntroduction() {
 
                         {/* Right Column: Visual Graphic - FULL SIZE / NO CONSTRAINTS */}
                         <motion.div
-                            variants={imageReveal}
+                            variants={fadeInUp}
                             className="order-1 lg:order-2 w-full flex items-center justify-center lg:justify-end"
                         >
                             {/* Removed max-w constraints to allow original size */}

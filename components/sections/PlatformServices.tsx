@@ -28,20 +28,7 @@ const services = [
     }
 ];
 
-const container = {
-    hidden: { opacity: 0 },
-    show: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.15,
-        },
-    },
-};
-
-const item = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring" as const, stiffness: 50, damping: 15 } },
-};
+import { staggerContainer, fadeInUp, textStagger, textReveal, premiumEase } from "@/lib/animations";
 
 export default function PlatformServices() {
     return (
@@ -63,33 +50,36 @@ export default function PlatformServices() {
 
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    variants={textStagger}
+                    initial="initial"
+                    whileInView="animate"
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-medium tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-700 to-gray-500 mb-6">
-                        Complete Platform Solutions
+                    <h2 className="text-4xl md:text-5xl font-medium tracking-tighter flex flex-col gap-2 mb-6">
+                        <motion.span variants={textReveal} className="text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-700 to-gray-500 inline-block">
+                            Complete Platform Solutions
+                        </motion.span>
                     </h2>
-                    <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                    <motion.p variants={textReveal} className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed inline-block">
                         Beyond AI engineering, we design, build, and host your entire application—from
                         pixel-perfect interfaces to enterprise-grade cloud infrastructure. Everything
                         your business needs, under one roof.
-                    </p>
+                    </motion.p>
                 </motion.div>
 
                 {/* Services Grid (Images) */}
                 <motion.div
-                    variants={container}
-                    initial="hidden"
-                    whileInView="show"
+                    variants={staggerContainer}
+                    initial="initial"
+                    whileInView="animate"
                     viewport={{ once: true, margin: "-10%" }}
                     className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
                 >
                     {services.map((service, index) => (
                         <Link key={index} href={`/services/${service.slug}`}>
                             <motion.div
-                                variants={item}
+                                variants={fadeInUp}
                                 whileHover={{ scale: 1.03, y: -5 }}
                                 whileTap={{ scale: 0.98 }}
                                 className="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer bg-gray-100"

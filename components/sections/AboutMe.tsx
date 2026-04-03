@@ -4,21 +4,16 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 
-const smoothTransition = {
-    type: "spring" as const,
-    damping: 40,
-    stiffness: 100,
-    mass: 1,
-};
+const premiumEase = [0.16, 1, 0.3, 1] as const;
 
 const slideUpFade = {
-    initial: { opacity: 0, y: 40 },
+    initial: { opacity: 0, y: 50 },
     animate: {
         opacity: 1,
         y: 0,
         transition: {
-            ...smoothTransition,
-            duration: 1.0,
+            duration: 1.2,
+            ease: premiumEase,
         },
     },
 };
@@ -66,10 +61,10 @@ export default function AboutMe() {
 
                 {/* Optional Visual/Stats or just layout balance - keeping it simple for now or adding a subtle visual if needed */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1.4, ease: premiumEase }}
                     className="order-1 md:order-2 flex justify-center md:justify-end"
                 >
                     <div className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">

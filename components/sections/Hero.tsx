@@ -66,22 +66,21 @@ const TypewriterText = ({ text }: { text: string }) => {
     }, [text]);
 
     // Terminal cursor — smooth pulsing opacity using Framer Motion
-    const Cursor = ({ style }: { style?: React.CSSProperties }) => (
+    const Cursor = ({ className = "", style }: { className?: string, style?: any }) => (
         <motion.span
-            animate={{ opacity: [1, 0.3, 1] }}
-            transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute z-10 pointer-events-none"
+            animate={{ opacity: [1, 0.4, 1], backgroundColor: ["#ffffff", "#6b7280", "#ffffff"] }}
+            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+            className={`absolute z-10 pointer-events-none rounded-[1px] ${className}`}
             style={{
-                width: '8px',
-                height: '18px',
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                width: '10px',
+                height: '0.8em',
                 top: '50%',
-                transform: 'translateY(-50%)',
+                transform: 'translateY(-40%)',
+                boxShadow: '0 0 10px rgba(255, 255, 255, 0.4)',
                 ...style,
             }}
         />
     );
-
     return (
         <motion.div
             initial="hidden"
@@ -90,7 +89,7 @@ const TypewriterText = ({ text }: { text: string }) => {
             variants={{
                 hidden: { opacity: 0 },
                 visible: { opacity: 1 },
-                exit: { opacity: 0, y: -5, filter: "blur(5px)", transition: { duration: 0.3 } }
+                exit: { opacity: 0, y: -5, transition: { duration: 0.3 } }
             }}
             className="inline-block w-full text-center"
             style={{ perspective: "1000px" }} // Required for 3D rotateX
@@ -109,17 +108,14 @@ const TypewriterText = ({ text }: { text: string }) => {
                                         opacity: 0, 
                                         y: 20, 
                                         rotateX: -60, 
-                                        scale: 0.9, 
-                                        filter: "blur(8px)" 
+                                        scale: 0.9 
                                     },
                                     visible: { 
                                         opacity: 1, 
                                         y: 0, 
                                         rotateX: 0, 
                                         scale: 1, 
-                                        filter: "blur(0px)",
-                                        // Cinematic float up: long duration, smooth extreme easeOut
-                                        transition: { delay: currentIndex * 0.05, duration: 1, ease: [0.16, 1, 0.3, 1] } 
+                                        transition: { delay: currentIndex * 0.05, duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
                                     }
                                 }}
                                 className="inline-block origin-bottom"
