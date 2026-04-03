@@ -81,9 +81,7 @@
     - `gradient-end`: #fbbf24 (Yellow)
 
 ## Current Task
-- **Objective**: SEO sitemap & indexing fix — Google indexing only 6 of 18 pages
-- **Progress**: Replaced static `public/sitemap.xml` and `public/robots.txt` with dynamic Next.js equivalents (`app/sitemap.ts`, `app/robots.ts`). All 18 URLs included with fresh `lastmod` timestamps on every build. Build passes.
+- **Objective**: Refine animations and micro-animations on the hero page, specifically fixing mobile UI glitches and making subtle animations more modern and aggressive.
+- **Progress**: Mobile Hero typewriter animation has been resolved using a cinematic 3D reveal and a Framer Motion-based pulsing cursor.
 - **Blockers**: None.
-- **Next Steps**: Push changes, re-submit sitemap in Google Search Console, request re-indexing.
-
-
+- **Next Steps**: Investigate existing hero section animations, identify bugs/glitches on mobile, propose more premium 'float' or aggressive animation strategies, and apply fixes.

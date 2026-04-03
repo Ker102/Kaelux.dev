@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-terminal-blink {
+  animation: terminal-blink 1s step-end infinite;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,10 +19,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   @apply bg-black dark:bg-white text-white dark:text-gray-900 transition-colors duration-300;
+  overflow-x: hidden;
 }
 
 /* Custom Scrollbar - Thinner & Auto-fade */

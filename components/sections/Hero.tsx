@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useMemo, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -49,6 +49,113 @@ const glowAnimation = {
     }
 };
 
+const TypewriterText = ({ text }: { text: string }) => {
+    let globalIndex = 0;
+    const words = text.split(" ");
+    
+    // Dynamic index matching the framer-motion delay (50ms per char)
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const start = Date.now();
+        const interval = setInterval(() => {
+            const elapsed = Date.now() - start;
+            setActiveIndex(Math.floor(elapsed / 50));
+        }, 16);
+        return () => clearInterval(interval);
+    }, [text]);
+
+    // Terminal cursor — smooth pulsing opacity using Framer Motion
+    const Cursor = ({ style }: { style?: React.CSSProperties }) => (
+        <motion.span
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute z-10 pointer-events-none"
+            style={{
+                width: '8px',
+                height: '18px',
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                ...style,
+            }}
+        />
+    );
+
+    return (
+        <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1 },
+                exit: { opacity: 0, y: -5, filter: "blur(5px)", transition: { duration: 0.3 } }
+            }}
+            className="inline-block w-full text-center"
+            style={{ perspective: "1000px" }} // Required for 3D rotateX
+        >
+            {words.map((word, wordIndex) => {
+                const wordElements = word.split("").map((char) => {
+                    const currentIndex = globalIndex++;
+                    const showCursorBefore = currentIndex === activeIndex;
+                    
+                    return (
+                        <span key={currentIndex} className="relative inline-block">
+                            {showCursorBefore && <Cursor style={{ left: '0px' }} />}
+                            <motion.span
+                                variants={{
+                                    hidden: { 
+                                        opacity: 0, 
+                                        y: 20, 
+                                        rotateX: -60, 
+                                        scale: 0.9, 
+                                        filter: "blur(8px)" 
+                                    },
+                                    visible: { 
+                                        opacity: 1, 
+                                        y: 0, 
+                                        rotateX: 0, 
+                                        scale: 1, 
+                                        filter: "blur(0px)",
+                                        // Cinematic float up: long duration, smooth extreme easeOut
+                                        transition: { delay: currentIndex * 0.05, duration: 1, ease: [0.16, 1, 0.3, 1] } 
+                                    }
+                                }}
+                                className="inline-block origin-bottom"
+                            >
+                                {char}
+                            </motion.span>
+                            {/* Final cursor when typing is complete */}
+                            {(currentIndex === text.length - 1 && activeIndex > currentIndex) && (
+                                <Cursor style={{ right: '-12px' }} />
+                            )}
+                        </span>
+                    );
+                });
+
+                // Spacing logic
+                const spaceIndex = globalIndex++;
+                const isSpaceActive = spaceIndex === activeIndex;
+
+                return (
+                    <span 
+                        key={wordIndex} 
+                        className="inline-block whitespace-nowrap relative"
+                        style={{ marginRight: '7px' }}
+                    >
+                        {wordElements}
+                        {/* Cursor perfectly placed in the space between words */}
+                        {wordIndex < words.length - 1 && isSpaceActive && (
+                            <Cursor style={{ right: '-8px' }} />
+                        )}
+                    </span>
+                );
+            })}
+        </motion.div>
+    );
+};
+
 export default function Hero() {
     const [isMounted, setIsMounted] = useState(false);
 
@@ -63,6 +170,12 @@ export default function Hero() {
     const liquidFlow1Ref = useRef<HTMLDivElement>(null);
     const liquidFlow2Ref = useRef<HTMLDivElement>(null);
     const liquidFlow3Ref = useRef<HTMLDivElement>(null);
+
+    const mobileTexts = [
+        "Tailored LLM infrastructure, AI engineering, and full-stack web services.",
+        "We build and host the complete technology backbone for your business."
+    ];
+    const [mobileTextIndex, setMobileTextIndex] = useState(0);
 
     // Generate star properties once and keep them stable across re-renders
     const stars = useMemo(() => {
@@ -79,6 +192,10 @@ export default function Hero() {
     // Only render stars on client side to avoid hydration mismatch
     useEffect(() => {
         setIsMounted(true);
+        const interval = setInterval(() => {
+            setMobileTextIndex((prev) => (prev + 1) % 2);
+        }, 5500);
+        return () => clearInterval(interval);
     }, []);
 
     // GSAP Entrance Animations
@@ -344,13 +461,22 @@ export default function Hero() {
                         />
                     </div>
 
-                    <p
-                        ref={subtitleRef}
-                        className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto opacity-0"
-                    >
-                        Tailored LLM infrastructure, AI engineering, and full-stack web services—
-                        we build and host the complete technology backbone for your business.
-                    </p>
+                    <div ref={subtitleRef} className="opacity-0 w-full z-20">
+                        {/* Desktop: show all text */}
+                        <p className="hidden md:block text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-md">
+                            Tailored LLM infrastructure, AI engineering, and full-stack web services—
+                            we build and host the complete technology backbone for your business.
+                        </p>
+                        
+                        {/* Mobile: Animated rotating text */}
+                        <div className="block md:hidden h-[60px] text-lg text-gray-300 mx-auto w-full relative px-4 drop-shadow-md">
+                            <AnimatePresence mode="wait">
+                                <div key={mobileTextIndex} className="absolute inset-x-0 mx-auto flex items-center justify-center text-center px-2">
+                                    <TypewriterText text={mobileTexts[mobileTextIndex]} />
+                                </div>
+                            </AnimatePresence>
+                        </div>
+                    </div>
 
                     <div
                         ref={buttonsRef}
