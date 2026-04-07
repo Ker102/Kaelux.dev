@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useState, useMemo, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -49,106 +49,84 @@ const glowAnimation = {
     }
 };
 
-const TypewriterText = ({ text }: { text: string }) => {
-    let globalIndex = 0;
-    const words = text.split(" ");
-    
-    // Dynamic index matching the framer-motion delay (50ms per char)
-    const [activeIndex, setActiveIndex] = useState(0);
+const MOBILE_TEXT_ROTATION_MS = 5500;
 
-    useEffect(() => {
-        const start = Date.now();
-        const interval = setInterval(() => {
-            const elapsed = Date.now() - start;
-            setActiveIndex(Math.floor(elapsed / 50));
-        }, 16);
-        return () => clearInterval(interval);
-    }, [text]);
+const MobileSubtitleRotator = ({
+    phrases,
+    activeIndex,
+}: {
+    phrases: string[];
+    activeIndex: number;
+}) => {
+    const prefersReducedMotion = useReducedMotion();
+    const activePhrase = phrases[activeIndex];
 
-    // Terminal cursor — smooth pulsing opacity using Framer Motion
-    const Cursor = ({ className = "", style }: { className?: string, style?: any }) => (
-        <motion.span
-            animate={{ opacity: [1, 0.4, 1], backgroundColor: ["#ffffff", "#6b7280", "#ffffff"] }}
-            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-            className={`absolute z-10 pointer-events-none rounded-[1px] ${className}`}
-            style={{
-                width: '10px',
-                height: '0.8em',
-                top: '50%',
-                transform: 'translateY(-40%)',
-                boxShadow: '0 0 10px rgba(255, 255, 255, 0.4)',
-                ...style,
-            }}
-        />
-    );
     return (
-        <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 },
-                exit: { opacity: 0, y: -5, transition: { duration: 0.3 } }
-            }}
-            className="inline-block w-full text-center"
-            style={{ perspective: "1000px" }} // Required for 3D rotateX
-        >
-            {words.map((word, wordIndex) => {
-                const wordElements = word.split("").map((char) => {
-                    const currentIndex = globalIndex++;
-                    const showCursorBefore = currentIndex === activeIndex;
-                    
-                    return (
-                        <span key={currentIndex} className="relative inline-block">
-                            {showCursorBefore && <Cursor style={{ left: '0px' }} />}
-                            <motion.span
-                                variants={{
-                                    hidden: { 
-                                        opacity: 0, 
-                                        y: 20, 
-                                        rotateX: -60, 
-                                        scale: 0.9 
-                                    },
-                                    visible: { 
-                                        opacity: 1, 
-                                        y: 0, 
-                                        rotateX: 0, 
-                                        scale: 1, 
-                                        transition: { delay: currentIndex * 0.05, duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
-                                    }
-                                }}
-                                className="inline-block origin-bottom"
-                            >
-                                {char}
-                            </motion.span>
-                            {/* Final cursor when typing is complete */}
-                            {(currentIndex === text.length - 1 && activeIndex > currentIndex) && (
-                                <Cursor style={{ right: '-12px' }} />
-                            )}
-                        </span>
-                    );
-                });
+        <div className="block md:hidden w-full px-2">
+            <div className="mx-auto max-w-md">
+                <div className="relative min-h-[4.75rem] overflow-hidden">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeIndex}
+                            initial={
+                                prefersReducedMotion
+                                    ? { opacity: 0 }
+                                    : { opacity: 0, y: 16, scale: 0.985 }
+                            }
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={
+                                prefersReducedMotion
+                                    ? { opacity: 0 }
+                                    : { opacity: 0, y: -14, scale: 0.985 }
+                            }
+                            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                            className="absolute inset-0 flex items-center justify-center text-center"
+                        >
+                            <p className="max-w-[18rem] text-[1.02rem] font-medium leading-snug text-gray-200">
+                                {activePhrase.split(" ").map((word, wordIndex) => (
+                                    <motion.span
+                                        key={`${activeIndex}-${word}-${wordIndex}`}
+                                        initial={
+                                            prefersReducedMotion
+                                                ? false
+                                                : { opacity: 0, y: 10 }
+                                        }
+                                        animate={
+                                            prefersReducedMotion
+                                                ? { opacity: 1 }
+                                                : { opacity: 1, y: 0 }
+                                        }
+                                        transition={{
+                                            duration: 0.32,
+                                            delay: prefersReducedMotion ? 0 : 0.08 + wordIndex * 0.035,
+                                            ease: [0.22, 1, 0.36, 1],
+                                        }}
+                                        className="mr-[0.32em] inline-block last:mr-0"
+                                    >
+                                        {word}
+                                    </motion.span>
+                                ))}
+                            </p>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
 
-                // Spacing logic
-                const spaceIndex = globalIndex++;
-                const isSpaceActive = spaceIndex === activeIndex;
-
-                return (
-                    <span 
-                        key={wordIndex} 
-                        className="inline-block whitespace-nowrap relative"
-                        style={{ marginRight: '7px' }}
-                    >
-                        {wordElements}
-                        {/* Cursor perfectly placed in the space between words */}
-                        {wordIndex < words.length - 1 && isSpaceActive && (
-                            <Cursor style={{ right: '-8px' }} />
-                        )}
-                    </span>
-                );
-            })}
-        </motion.div>
+                <div className="mx-auto mt-3 max-w-[18rem]">
+                    <div className="relative h-px overflow-hidden bg-white/12">
+                        <motion.div
+                            key={`progress-${activeIndex}`}
+                            initial={{ scaleX: 0, originX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{
+                                duration: (MOBILE_TEXT_ROTATION_MS - 350) / 1000,
+                                ease: "linear",
+                            }}
+                            className="absolute inset-y-0 left-0 right-0 bg-gradient-to-r from-transparent via-white to-white/20"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 
@@ -189,8 +167,8 @@ export default function Hero() {
     useEffect(() => {
         setIsMounted(true);
         const interval = setInterval(() => {
-            setMobileTextIndex((prev) => (prev + 1) % 2);
-        }, 5500);
+            setMobileTextIndex((prev) => (prev + 1) % mobileTexts.length);
+        }, MOBILE_TEXT_ROTATION_MS);
         return () => clearInterval(interval);
     }, []);
 
@@ -465,13 +443,10 @@ export default function Hero() {
                         </p>
                         
                         {/* Mobile: Animated rotating text */}
-                        <div className="block md:hidden h-[60px] text-lg text-gray-300 mx-auto w-full relative px-4 drop-shadow-md">
-                            <AnimatePresence mode="wait">
-                                <div key={mobileTextIndex} className="absolute inset-x-0 mx-auto flex items-center justify-center text-center px-2">
-                                    <TypewriterText text={mobileTexts[mobileTextIndex]} />
-                                </div>
-                            </AnimatePresence>
-                        </div>
+                        <MobileSubtitleRotator
+                            phrases={mobileTexts}
+                            activeIndex={mobileTextIndex}
+                        />
                     </div>
 
                     <div

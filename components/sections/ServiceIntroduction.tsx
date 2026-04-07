@@ -1,17 +1,53 @@
 "use client";
 
-import { motion } from "framer-motion";
+import {
+    motion,
+    useReducedMotion,
+    useScroll,
+    useSpring,
+    useTransform,
+} from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
-import { staggerContainer, fadeInUp, textStagger, textReveal, premiumEase } from "@/lib/animations";
+import { staggerContainer, fadeInUp, textStagger, textReveal } from "@/lib/animations";
 
 // Removed local implementations of stagger, slideUpFade, imageReveal since we use the optimized ones from lib/animations
 
 export default function ServiceIntroduction() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const prefersReducedMotion = useReducedMotion();
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    const progress = useSpring(scrollYProgress, {
+        stiffness: 170,
+        damping: 28,
+        mass: 0.24,
+    });
+
+    const headerY = useTransform(
+        progress,
+        [0, 0.45, 1],
+        [prefersReducedMotion ? 10 : 28, 0, prefersReducedMotion ? -4 : -14]
+    );
+    const copyY = useTransform(
+        progress,
+        [0, 0.5, 1],
+        [prefersReducedMotion ? 8 : 22, 0, prefersReducedMotion ? -4 : -12]
+    );
+
     return (
-        <section id="services" className="relative min-h-screen pt-12 md:pt-24 pb-24 px-6 bg-black overflow-hidden flex flex-col justify-start">
+        <section
+            ref={sectionRef}
+            id="services"
+            className="relative min-h-screen pt-12 md:pt-24 pb-24 px-6 bg-black overflow-hidden flex flex-col justify-start"
+        >
 
             {/* Top Gradient Fade for Smooth Entry - Extended height for smoother blend */}
             <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black via-black/40 to-transparent z-20 pointer-events-none" />
@@ -33,7 +69,11 @@ export default function ServiceIntroduction() {
                     className="flex flex-col w-full"
                 >
                     {/* Top Header Section */}
-                    <motion.div variants={textStagger} className="mb-12 lg:mb-20 w-full text-center lg:text-left">
+                    <motion.div
+                        variants={textStagger}
+                        style={{ y: headerY }}
+                        className="mb-12 lg:mb-20 w-full text-center lg:text-left will-change-transform"
+                    >
                         <h2 className="text-5xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[1.1] flex flex-col gap-2">
                             <motion.span variants={textReveal} className="text-transparent bg-clip-text bg-gradient-to-b from-gray-800 via-white to-white drop-shadow-lg inline-block">
                                 Beyond Chatbots:
@@ -51,7 +91,11 @@ export default function ServiceIntroduction() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
                         {/* Left Column: Description & CTA */}
-                        <motion.div variants={textStagger} className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+                        <motion.div
+                            variants={textStagger}
+                            style={{ y: copyY }}
+                            className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 will-change-transform"
+                        >
                             <motion.p variants={textReveal} className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-6 max-w-2xl">
                                 Generic AI models don&apos;t understand your business. We build and tune custom solutions that do.
                             </motion.p>
@@ -78,7 +122,7 @@ export default function ServiceIntroduction() {
                                 <p className="text-sm text-gray-500 font-medium tracking-widest uppercase opacity-60">
                                     Tailored for your business
                                 </p>
-                            </div>
+                            </motion.div>
                         </motion.div>
 
                         {/* Right Column: Visual Graphic - FULL SIZE / NO CONSTRAINTS */}

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import Image from "next/image";
+import { useState } from "react";
 
 const members = [
     { name: "Ker102", role: "Founder", color: "from-white to-gray-300", image: "/images/team/ker102.jpg" },
@@ -33,6 +33,30 @@ const item = {
         transition: { duration: 1.2, ease: premiumEase } 
     },
 };
+
+function MemberAvatar({ image, name }: { image: string; name: string }) {
+    const [hasError, setHasError] = useState(false);
+
+    if (!image || hasError) {
+        return (
+            <span className="text-2xl font-bold text-white">
+                {name.charAt(0)}
+            </span>
+        );
+    }
+
+    return (
+        <Image
+            src={image}
+            alt={name}
+            fill
+            unoptimized
+            onError={() => setHasError(true)}
+            className="object-cover object-center"
+            sizes="112px"
+        />
+    );
+}
 
 export default function Team() {
     return (
@@ -69,19 +93,7 @@ export default function Team() {
                                 {/* Avatar Placeholder with Gradient */}
                                 <div className={`w-28 h-28 rounded-full bg-gradient-to-br ${member.color} p-[2px]`}>
                                     <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden relative">
-                                        {member.image ? (
-                                            <Image
-                                                src={member.image}
-                                                alt={member.name}
-                                                fill
-                                                className="object-cover object-top"
-                                                sizes="(max-width: 768px) 100vw, 33vw"
-                                            />
-                                        ) : (
-                                            <span className="text-2xl font-bold text-white">
-                                                {member.name.charAt(0)}
-                                            </span>
-                                        )}
+                                        <MemberAvatar image={member.image} name={member.name} />
                                     </div>
                                 </div>
 

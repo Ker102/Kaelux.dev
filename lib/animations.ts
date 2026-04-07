@@ -1,7 +1,7 @@
 import { Variants } from "framer-motion";
 
 // Modern, aggressive yet smooth cinematic curve (custom cubic-bezier)
-export const premiumEase = [0.22, 1, 0.36, 1];
+export const premiumEase = [0.22, 1, 0.36, 1] as const;
 
 export const fadeInUp: Variants = {
   initial: {
