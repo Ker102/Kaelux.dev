@@ -10,7 +10,7 @@ import { GoArrowUpRight } from "react-icons/go";
 
 const navLinks = [
   { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
+  { name: "About", href: "/about", isExternal: true },
   { name: "Services", href: "#services" },
   { name: "Projects", href: "#projects" },
   { name: "OpenClaw", href: "/openclaw", isExternal: true },
@@ -51,7 +51,7 @@ const navCards = [
     links: [
       { label: "About me", href: "#about" },
       { label: "Team", href: "#team" },
-      { label: "About Kaelux", href: "#about-kaelux" },
+      { label: "About Kaelux", href: "/about", isExternal: true },
     ],
   },
 ];
