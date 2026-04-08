@@ -7,7 +7,6 @@ import gsap from "gsap";
 import MagneticButton from "@/components/MagneticButton";
 import GlassSurface from "@/components/GlassSurface";
 import FloatingDecor from "@/components/FloatingDecor";
-import { ScrollUnderline } from "@/components/ui/ScrollUnderline";
 import { HiArrowDown } from "react-icons/hi";
 
 const MotionImage = motion(Image);
@@ -52,7 +51,7 @@ const glowAnimation = {
 
 const MOBILE_TEXT_ROTATION_MS = 5500;
 
-const MobileSubtitleRotator = ({
+const SubtitleRotator = ({
     phrases,
     activeIndex,
 }: {
@@ -63,7 +62,7 @@ const MobileSubtitleRotator = ({
     const activePhrase = phrases[activeIndex];
 
     return (
-        <div className="block md:hidden w-full px-2">
+        <div className="w-full px-2">
             <div className="mx-auto max-w-md">
                 <div className="relative min-h-[4.75rem] overflow-hidden">
                     <AnimatePresence mode="wait">
@@ -139,7 +138,7 @@ export default function Hero() {
     const starContainerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLDivElement>(null);
-    const subtitleRef = useRef<HTMLParagraphElement>(null);
+    const subtitleRef = useRef<HTMLDivElement>(null);
     const buttonsRef = useRef<HTMLDivElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
     const liquidFlow1Ref = useRef<HTMLDivElement>(null);
@@ -437,21 +436,7 @@ export default function Hero() {
                     </div>
 
                     <div ref={subtitleRef} className="opacity-0 w-full z-20">
-                        {/* Desktop: show all text */}
-                        <p className="hidden md:block text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-md">
-                            Tailored{" "}
-                            <ScrollUnderline underlineClassName="via-white/85">
-                                LLM infrastructure
-                            </ScrollUnderline>
-                            , AI engineering, and full-stack web services—we build and host the complete{" "}
-                            <ScrollUnderline underlineClassName="via-white/85">
-                                technology backbone
-                            </ScrollUnderline>{" "}
-                            for your business.
-                        </p>
-                        
-                        {/* Mobile: Animated rotating text */}
-                        <MobileSubtitleRotator
+                        <SubtitleRotator
                             phrases={mobileTexts}
                             activeIndex={mobileTextIndex}
                         />

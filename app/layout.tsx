@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "Kaelux is an AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses. From RAG pipelines to workflow agents—we engineer AI that works.",
   keywords: ["AI engineering agency", "custom LLM solutions", "AI automation", "RAG pipelines", "workflow agents", "AI infrastructure", "full-stack development", "Next.js", "React", "TypeScript", "enterprise AI", "intelligent automation"],
   authors: [{ name: "Kaelux" }],
+  creator: "Kaelux",
+  publisher: "Kaelux",
   metadataBase: new URL('https://kaelux.dev'),
   manifest: '/manifest.json',
   icons: {
@@ -32,10 +34,10 @@ export const metadata: Metadata = {
     description: "Kaelux is an AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses.",
     type: "website",
     url: "https://kaelux.dev",
-    siteName: "Kaelux AI Engineering",
+    siteName: "Kaelux",
     images: [
       {
-        url: "https://kaelux.dev/kaelux-icon-v2.png",
+        url: "https://kaelux.dev/kaelux-icon-v3.png",
         width: 512,
         height: 512,
         alt: "Kaelux – AI Engineering Agency",
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Kaelux | AI Engineering Agency",
     description: "Custom LLM systems, intelligent automation, and production-ready AI infrastructure for businesses.",
-    images: ["https://kaelux.dev/kaelux-icon-v2.png"],
+    images: ["https://kaelux.dev/kaelux-icon-v3.png"],
   },
   robots: {
     index: true,
@@ -78,8 +80,8 @@ export default function RootLayout({
       "name": "Kaelux",
       "alternateName": ["Kaelux.dev", "Kaelux AI Engineering", "Kaelux Agency"],
       "url": "https://kaelux.dev",
-      "logo": "https://kaelux.dev/kaelux-icon-v2.png",
-      "image": "https://kaelux.dev/kaelux-icon-v2.png",
+      "logo": "https://kaelux.dev/kaelux-icon-v3.png",
+      "image": "https://kaelux.dev/kaelux-icon-v3.png",
       "description": "AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses worldwide.",
       "areaServed": "Worldwide",
       "knowsAbout": [
@@ -110,44 +112,6 @@ export default function RootLayout({
         "target": "https://kaelux.dev/wiki?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is Kaelux?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Kaelux is a global AI engineering agency (kaelux.dev) that builds custom LLM systems, RAG pipelines, intelligent automation agents, and production-ready web infrastructure for businesses worldwide. It was founded by Kristofer Jussmann."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What services does Kaelux offer?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Kaelux offers custom LLM integration, Retrieval-Augmented Generation (RAG) pipelines, AI agent development, full-stack web development with Next.js and React, cloud infrastructure setup, UI/UX design, and managed OpenClaw AI hosting."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who founded Kaelux?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Kaelux was founded by Kristofer Jussmann, a full-stack engineer and AI researcher specializing in retrieval-augmented generation, multi-model architectures, and scalable cloud infrastructure."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is Kaelux a YouTube channel?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Kaelux (kaelux.dev) is an AI engineering agency, not a YouTube channel. The agency builds custom AI systems and web infrastructure for businesses globally."
-          }
-        }
-      ]
     }
   ];
 
