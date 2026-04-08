@@ -3,6 +3,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { featuredProjects, otherProjects, Project } from "@/data/projects";
 import GlassSurface from "@/components/GlassSurface";
+import { AnimatedNumericText } from "@/components/ui/AnimatedNumberText";
+import { ScrollUnderline } from "@/components/ui/ScrollUnderline";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { HiExternalLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
@@ -313,9 +315,11 @@ function ProjectList({ projects, startIndex = 0 }: { projects: Project[]; startI
             <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500">
               {project.name}
             </h3>
-            <p className="text-lg text-gray-300">
-              {project.description}
-            </p>
+            <AnimatedNumericText
+              text={project.description}
+              className="text-lg text-gray-300"
+              numberClassName="font-semibold text-white"
+            />
 
             {/* Tech Stack */}
             <div className="flex flex-wrap gap-2">
@@ -400,8 +404,15 @@ export default function Projects() {
             Our Work
           </h2>
           <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Platforms and tools built by Kaelux — showcasing AI integration,
-            workflow automation, and enterprise-grade engineering.
+            Platforms and tools built by Kaelux — showcasing{" "}
+            <ScrollUnderline underlineClassName="via-white/80">
+              AI integration
+            </ScrollUnderline>
+            , workflow automation, and{" "}
+            <ScrollUnderline underlineClassName="via-white/80">
+              enterprise-grade engineering
+            </ScrollUnderline>
+            .
           </p>
         </motion.div>
 
@@ -419,8 +430,15 @@ export default function Projects() {
             Open Source
           </h2>
           <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Community-driven projects exploring AI assistants,
-            conversational interfaces, and creative developer tooling.
+            Community-driven projects exploring{" "}
+            <ScrollUnderline underlineClassName="via-white/80">
+              AI assistants
+            </ScrollUnderline>
+            , conversational interfaces, and{" "}
+            <ScrollUnderline underlineClassName="via-white/80">
+              creative developer tooling
+            </ScrollUnderline>
+            .
           </p>
         </motion.div>
 

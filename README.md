@@ -102,7 +102,7 @@ The `/wiki` section provides authoritative technical articles optimized for **Ge
 | 🌐 [**Crosswind Console**](https://github.com/Ker102/Crosswind-Console) | Unified research dashboard with Gemini + MCP server orchestration |
 | ⚙️ [**Kaelux-Automate**](https://github.com/Ker102/Kaelux-Automate) | Enterprise automation builder with LLM-powered workflow generation |
 | 🌌 [**Workflow Atlas**](https://github.com/Ker102/n8n-ai-automation-workflow-atlas) | 3,800+ battle-tested n8n workflows with Vue explorer |
-| 🔨 [**ModelForge**](https://github.com/Ker102/ModelForge) | AI-powered Blender assistant with natural language 3D control |
+| 🔨 [**ViperMesh**](https://github.com/Ker102/ViperMesh) | AI-powered Blender assistant and neural 3D hub with a LangChain-driven workflow |
 
 ---
 

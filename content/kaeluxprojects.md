@@ -12,4 +12,4 @@
 
     Kaelocs-AI - https://github.com/Ker102/Kaelocs - Read Readme.md file from the project repository
 
-    ModelForge(BlenderAI) - https://github.com/Ker102/ModelForge - Read Readme.md file from the project repository
+    ViperMesh - https://github.com/Ker102/ViperMesh - Read Readme.md file from the project repository

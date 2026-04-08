@@ -154,7 +154,7 @@ export const UIOverlay: React.FC = () => {
     { id: 1, label: 'n8n Workflow Atlas', icon: Github, href: 'https://ker102.github.io/n8n-ai-automation-workflow-atlas/' },
     { id: 2, label: 'Kaelux-Automate', icon: Github, href: 'https://github.com/Ker102/Kaelux-Automate' },
     { id: 3, label: 'Crosswind Console', icon: Github, href: 'https://github.com/Ker102/Crosswind-Console' },
-    { id: 4, label: 'ModelForge', icon: Github, href: 'https://github.com/Ker102/ModelForge' },
+    { id: 4, label: 'ViperMesh', icon: Github, href: 'https://github.com/Ker102/ViperMesh' },
     { id: 5, label: 'PromptTriage', icon: Github, href: 'https://github.com/Ker102/PromptTriage' },
     { id: 6, label: 'Astroblogauto', icon: Github, href: 'https://github.com/Ker102/Astroblogauto' },
   ];

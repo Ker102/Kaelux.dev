@@ -59,12 +59,12 @@ export const otherProjects: Project[] = [
     githubUrl: "https://github.com/Ker102/Kaelocs",
   },
   {
-    id: "modelforge",
-    name: "ModelForge (BlenderAI)",
-    description: "AI-powered Blender assistant that transforms 3D workflows through natural conversation. Features ReAct-style planning with Gemini orchestration, smart material application, scene auditing, and subscription tiers.",
-    techStack: ["Next.js 15", "Electron", "Prisma", "PostgreSQL", "Blender MCP", "Stripe"],
+    id: "vipermesh",
+    name: "ViperMesh",
+    description: "AI-powered Blender assistant and neural 3D hub with a LangChain v1 agent, hybrid RAG pipeline, dynamic addon detection, and a premium dashboard for conversational 3D workflows.",
+    techStack: ["Next.js 16", "TypeScript", "Supabase", "LangChain v1", "Electron", "Blender"],
     image: "/projects/modelforge.jpg",
-    githubUrl: "https://github.com/Ker102/ModelForge",
+    githubUrl: "https://github.com/Ker102/ViperMesh",
   },
 ];
 

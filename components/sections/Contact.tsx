@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { AnimatedNumericText } from "@/components/ui/AnimatedNumberText";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SiGmail, SiGithub, SiInstagram } from "react-icons/si";
 import { FaArrowRight, FaLinkedin } from "react-icons/fa";
@@ -60,8 +61,10 @@ export default function Contact() {
               Get in Touch
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Have a project in mind? Ready to modernize your infrastructure?
-              Reach out — our team responds within 24 hours.
+              <AnimatedNumericText
+                text="Have a project in mind? Ready to modernize your infrastructure? Reach out — our team responds within 24 hours."
+                numberClassName="font-semibold text-white"
+              />
             </p>
           </motion.div>
 

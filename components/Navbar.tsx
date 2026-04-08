@@ -139,11 +139,12 @@ function CompactNavbar() {
         className="md:hidden fixed top-6 left-4 z-50 pointer-events-auto"
       >
         <Image
-          src="/logo.png"
-          alt="Kaelux Logo"
-          width={32}
-          height={32}
-          className="w-8 h-8 object-contain"
+          src="/kaelux-icon-v3.png"
+          alt="Kaelux Icon"
+          width={40}
+          height={40}
+          priority
+          className="h-10 w-10 rounded-[12px] object-contain drop-shadow-[0_0_14px_rgba(255,255,255,0.22)]"
         />
       </Link>
 

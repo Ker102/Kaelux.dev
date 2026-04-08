@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 
+import { ScrollUnderline } from "@/components/ui/ScrollUnderline";
 import { fadeInUp, premiumEase, staggerContainer, textStagger, textReveal } from "@/lib/animations";
 
 const services = [
@@ -119,8 +120,15 @@ export default function PlatformServices() {
                         className="mx-auto inline-block max-w-3xl text-lg leading-relaxed text-gray-600"
                     >
                         Beyond AI engineering, we design, build, and host your entire
-                        application—from pixel-perfect interfaces to enterprise-grade cloud
-                        infrastructure. Everything your business needs, under one roof.
+                        application, from{" "}
+                        <ScrollUnderline underlineClassName="via-gray-900/75">
+                            pixel-perfect interfaces
+                        </ScrollUnderline>{" "}
+                        to{" "}
+                        <ScrollUnderline underlineClassName="via-gray-900/75">
+                            enterprise-grade cloud infrastructure
+                        </ScrollUnderline>
+                        . Everything your business needs, under one roof.
                     </motion.p>
                 </motion.div>
 

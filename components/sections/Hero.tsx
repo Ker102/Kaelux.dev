@@ -7,6 +7,7 @@ import gsap from "gsap";
 import MagneticButton from "@/components/MagneticButton";
 import GlassSurface from "@/components/GlassSurface";
 import FloatingDecor from "@/components/FloatingDecor";
+import { ScrollUnderline } from "@/components/ui/ScrollUnderline";
 import { HiArrowDown } from "react-icons/hi";
 
 const MotionImage = motion(Image);
@@ -438,8 +439,15 @@ export default function Hero() {
                     <div ref={subtitleRef} className="opacity-0 w-full z-20">
                         {/* Desktop: show all text */}
                         <p className="hidden md:block text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-md">
-                            Tailored LLM infrastructure, AI engineering, and full-stack web services—
-                            we build and host the complete technology backbone for your business.
+                            Tailored{" "}
+                            <ScrollUnderline underlineClassName="via-white/85">
+                                LLM infrastructure
+                            </ScrollUnderline>
+                            , AI engineering, and full-stack web services—we build and host the complete{" "}
+                            <ScrollUnderline underlineClassName="via-white/85">
+                                technology backbone
+                            </ScrollUnderline>{" "}
+                            for your business.
                         </p>
                         
                         {/* Mobile: Animated rotating text */}

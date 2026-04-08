@@ -6,6 +6,9 @@ import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import { HiOutlineCloud, HiOutlineShieldCheck, HiOutlineBolt } from "react-icons/hi2";
 
+import { AnimatedNumericText } from "@/components/ui/AnimatedNumberText";
+import { ScrollUnderline } from "@/components/ui/ScrollUnderline";
+
 const highlights = [
     {
         icon: HiOutlineBolt,
@@ -79,7 +82,15 @@ export default function OpenClawBanner() {
                         </h3>
                         <p className="text-gray-500 mb-5 text-base leading-relaxed">
                             Skip the Mac Mini. We deploy, secure, and manage your OpenClaw AI agent
-                            in production-grade cloud infrastructure — always-on, zero headaches.
+                            in{" "}
+                            <ScrollUnderline underlineClassName="via-gray-900/75">
+                                production-grade cloud infrastructure
+                            </ScrollUnderline>{" "}
+                            for{" "}
+                            <ScrollUnderline underlineClassName="via-gray-900/75">
+                                always-on delivery
+                            </ScrollUnderline>
+                            , zero headaches.
                         </p>
                         <span className="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 group-hover:gap-3 transition-all duration-300">
                             Learn More
@@ -106,7 +117,11 @@ export default function OpenClawBanner() {
                             </div>
                             <div>
                                 <p className="text-sm font-bold text-gray-900">{h.label}</p>
-                                <p className="text-xs text-gray-500">{h.desc}</p>
+                                <AnimatedNumericText
+                                    text={h.desc}
+                                    className="text-xs text-gray-500"
+                                    numberClassName="font-semibold text-gray-900"
+                                />
                             </div>
                         </div>
                     ))}
@@ -120,9 +135,11 @@ export default function OpenClawBanner() {
                     transition={{ delay: 0.3 }}
                     className="flex flex-col items-center gap-3"
                 >
-                    <p className="text-sm text-gray-500">
-                        Starting at <span className="font-bold text-gray-900">$29/mo</span>
-                    </p>
+                    <AnimatedNumericText
+                        text="Starting at $29/mo"
+                        className="text-sm text-gray-500"
+                        numberClassName="font-bold text-gray-900"
+                    />
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase bg-gradient-to-b from-gray-900 via-gray-600 to-gray-300 text-white shadow-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                         New Service

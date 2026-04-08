@@ -12,6 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
+import { ScrollUnderline } from "@/components/ui/ScrollUnderline";
 import { staggerContainer, fadeInUp, textStagger, textReveal } from "@/lib/animations";
 
 // Removed local implementations of stagger, slideUpFade, imageReveal since we use the optimized ones from lib/animations
@@ -97,10 +98,26 @@ export default function ServiceIntroduction() {
                             className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 will-change-transform"
                         >
                             <motion.p variants={textReveal} className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-6 max-w-2xl">
-                                Generic AI models don&apos;t understand your business. We build and tune custom solutions that do.
+                                Generic AI models don&apos;t understand your{" "}
+                                <ScrollUnderline underlineClassName="via-white/85">
+                                    business
+                                </ScrollUnderline>
+                                . We build and tune{" "}
+                                <ScrollUnderline underlineClassName="via-white/85">
+                                    custom solutions
+                                </ScrollUnderline>{" "}
+                                that do.
                             </motion.p>
                             <motion.p variants={textReveal} className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-10 max-w-2xl">
-                                By combining our tailored AI software with hands-on engineering services, we connect LLMs directly to your existing systems—automating complex tasks and workflows.
+                                By combining our tailored AI software with{" "}
+                                <ScrollUnderline underlineClassName="via-white/85">
+                                    hands-on engineering services
+                                </ScrollUnderline>
+                                , we connect LLMs directly to your existing systems, automating{" "}
+                                <ScrollUnderline underlineClassName="via-white/85">
+                                    complex tasks and workflows
+                                </ScrollUnderline>
+                                .
                             </motion.p>
 
                             <motion.div variants={textReveal} className="flex flex-col items-center lg:items-start space-y-6">
