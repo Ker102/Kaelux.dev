@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Check for existing auto-fix issues
         id: check-existing
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             // Search for open issues with the auto-fix label
@@ -54,7 +54,7 @@ jobs:
 
       - name: Create GitHub issue for Copilot
         if: steps.check-existing.outputs.skip == 'false'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const workflowRun = context.payload.workflow_run;
