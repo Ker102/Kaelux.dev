@@ -15,10 +15,6 @@ updates:
     commit-message:
       prefix: "chore(deps)"
       include: "scope"
-    labels:
-      - "dependencies"
-      - "automated"
-      - "npm"
     # Group updates for better PR management
     groups:
       development-dependencies:
@@ -45,8 +41,3 @@ updates:
     commit-message:
       prefix: "ci"
       include: "scope"
-    labels:
-      - "ci/cd"
-      - "dependencies"
-      - "automated"
-      - "github-actions"
