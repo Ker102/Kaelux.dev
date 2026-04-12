@@ -45,15 +45,12 @@ export default function AboutKaelux() {
                         variants={slideUpFade}
                         className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-3xl"
                     >
-                        Kaelux is a premier AI engineering agency dedicated to bridging the
-                        gap between cutting-edge artificial intelligence and practical
-                        business applications. We don &apos;t just build software; we engineer
-                        intelligent ecosystems. From custom LLM retrieval pipelines to
-                        automated workflow agents, our mission is to empower creators and
-                        enterprises with infrastructure that thinks, adapts, and scales.
-                        We combine robust full-stack engineering with state-of-the-art AI
-                        research to deliver solutions that are not only powerful but also
-                        reliable and production-ready.
+                        Kaelux builds AI systems, software platforms, and cloud
+                        infrastructure for companies that need more than generic
+                        digital services. From retrieval pipelines and agentic
+                        workflows to managed environments across IaaS, PaaS, and
+                        SaaS, the focus is on shipping systems that stay useful
+                        as the market and the underlying technology keep moving.
                     </motion.p>
                 </motion.div>
             </div>

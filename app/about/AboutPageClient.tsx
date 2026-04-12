@@ -22,32 +22,32 @@ const slideUpFade = {
 
 const services = [
     {
-        title: "Custom LLM Systems",
+        title: "Custom AI Systems",
         description:
-            "We design and deploy fine-tuned language models, prompt engineering architectures, and multi-model routing systems tailored to your specific domain.",
+            "Kaelux designs and deploys production AI systems with custom LLM workflows, routing layers, and domain-specific orchestration tuned for real operating environments.",
     },
     {
-        title: "RAG Pipelines & Knowledge Retrieval",
+        title: "Knowledge and Retrieval Infrastructure",
         description:
-            "From naive retrieval to Corrective RAG (CRAG) with Brave Search fallback, we engineer retrieval pipelines that ground AI responses in your proprietary data.",
+            "From internal search to retrieval-augmented generation, Kaelux builds data pipelines that ground responses in company knowledge instead of generic public output.",
     },
     {
-        title: "Intelligent Automation & AI Agents",
+        title: "Agents and Operational Automation",
         description:
-            "Autonomous workflow agents using LangGraph and n8n that reason, plan, and execute multi-step business processes — replacing fragile RPA scripts.",
+            "Kaelux engineers agentic workflows and execution systems that automate repetitive operations, coordinate tools, and reduce dependence on brittle manual processes.",
     },
     {
-        title: "Enterprise Systems Architecture",
+        title: "IaaS, PaaS, and SaaS Delivery",
         description:
-            "High-performance distributed systems featuring edge-native delivery, real-time data synchronization, and managed private-cloud infrastructure — replacing generic monolithic stacks.",
+            "Kaelux ships managed infrastructure, platform layers, and software products that help businesses operate on modern stacks instead of lagging behind fast-moving technical shifts.",
     },
 ];
 
 const facts = [
     {
         label: "Entity Type",
-        value: "AI Engineering Agency",
-        detail: "Delivery partner for custom LLM systems, AI agents, and production infrastructure.",
+        value: "Engineering and Platform Company",
+        detail: "Kaelux builds and operates AI systems, software platforms, and production infrastructure.",
     },
     {
         label: "Founder",
@@ -61,15 +61,15 @@ const facts = [
     },
     {
         label: "Core Focus",
-        value: "LLMs, RAG, Agents, Cloud",
-        detail: "From retrieval pipelines to managed infrastructure and distributed systems.",
+        value: "IaaS, PaaS, SaaS, AI",
+        detail: "From managed infrastructure and platform layers to applied AI systems and software products.",
     },
 ];
 
 const faqs = [
     {
         question: "What is Kaelux?",
-        answer: "Kaelux is an AI engineering agency and software consultancy that designs custom LLM systems, retrieval pipelines, intelligent automation, and cloud infrastructure for businesses.",
+        answer: "Kaelux is an engineering and platform company that builds AI systems, managed infrastructure, internal platforms, and software products for businesses.",
     },
     {
         question: "Who founded Kaelux?",
@@ -77,11 +77,11 @@ const faqs = [
     },
     {
         question: "What kind of work does Kaelux do?",
-        answer: "Kaelux builds custom AI agents, RAG systems, workflow automation, distributed application architecture, and managed cloud platforms such as OpenClaw.",
+        answer: "Kaelux delivers production AI systems, retrieval infrastructure, agentic automation, managed cloud environments, and platform offerings across IaaS, PaaS, and SaaS.",
     },
     {
         question: "Is Kaelux a software company or a content channel?",
-        answer: "Kaelux is an engineering company. The brand represents an AI engineering agency and consulting practice, not a media or entertainment channel.",
+        answer: "Kaelux is an engineering company and product builder, not a media or entertainment channel.",
     },
 ];
 
@@ -121,18 +121,17 @@ export default function AboutPageClient() {
                             className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed max-w-3xl"
                         >
                             <strong className="text-white">Kaelux</strong> is an
-                            AI engineering agency and software consultancy that
-                            builds custom LLM systems, agentic workflows,
-                            retrieval pipelines, and enterprise cloud
-                            infrastructure for businesses that need reliable
-                            production-grade AI.
+                            engineering and platform company that builds AI
+                            systems, agentic workflows, retrieval pipelines,
+                            and infrastructure across IaaS, PaaS, and SaaS for
+                            businesses that need durable technical advantage.
                         </motion.p>
 
                         <motion.p
                             variants={slideUpFade}
                             className="max-w-2xl text-sm uppercase tracking-[0.28em] text-gray-500"
                         >
-                            Last updated April 8, 2026
+                            Last updated April 12, 2026
                         </motion.p>
                     </motion.div>
                 </div>
@@ -158,7 +157,8 @@ export default function AboutPageClient() {
                                 This page exists to make the Kaelux brand easy to
                                 identify, cite, and understand across search
                                 engines, AI assistants, partner directories, and
-                                social platforms.
+                                social platforms as a company that builds and
+                                operates production systems.
                             </p>
                         </motion.div>
 
@@ -206,23 +206,23 @@ export default function AboutPageClient() {
                             className="rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.05] p-7 text-lg text-gray-200 leading-relaxed"
                         >
                             Kaelux is an engineering company focused on AI
-                            systems and infrastructure. It is the operating brand
-                            under which Kristofer Jussmann delivers consulting,
-                            architecture, implementation, and productized
-                            infrastructure work for clients who need dependable
-                            production systems.
+                            systems, infrastructure, and software platforms. It
+                            is the operating brand under which Kristofer
+                            Jussmann builds, ships, and manages production
+                            systems for companies that need modern technical
+                            leverage, not generic advisory work.
                         </motion.div>
                         <motion.p
                             variants={slideUpFade}
                             className="text-lg text-gray-300 font-light leading-relaxed"
                         >
                             The brand is centered on practical delivery: custom
-                            LLM applications, retrieval systems, multi-step AI
-                            agents, modern web platforms, and managed cloud
-                            environments. Kaelux is not positioned as a media or
-                            entertainment channel; it is a professional
-                            engineering practice built around shipping technical
-                            outcomes.
+                            AI applications, retrieval systems, multi-step
+                            agents, modern software platforms, and managed cloud
+                            environments. Kaelux is not an advisory label or a
+                            media property; it is a technical company built
+                            around operating useful systems and keeping clients
+                            ahead of rapid infrastructure shifts.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -253,20 +253,20 @@ export default function AboutPageClient() {
                                     Kristofer Jussmann
                                 </strong>{" "}
                                 to help businesses modernize faster than their
-                                legacy systems allow. Many companies know AI can
-                                improve operations, but they struggle to turn
-                                fragmented tools and experiments into stable
-                                production systems.
+                                current stack allows. Many teams know AI,
+                                automation, and cloud-native platforms matter,
+                                but they struggle to turn disconnected tools
+                                into systems that actually improve execution.
                             </p>
                             <p>
                                 Kaelux closes that gap by combining AI systems
-                                engineering, application development, and cloud
-                                infrastructure into one delivery model. Whether a
-                                client needs internal knowledge retrieval,
-                                workflow automation, private AI infrastructure, or
-                                a new digital product, the goal is the same:
-                                build systems that are useful, maintainable, and
-                                ready to scale.
+                                engineering, platform development, and cloud
+                                infrastructure into one operating model. Whether
+                                a client needs internal knowledge retrieval,
+                                workflow automation, private AI infrastructure,
+                                platform foundations, or a new software product,
+                                the goal is the same: ship systems that create
+                                lasting operational advantage.
                             </p>
                         </motion.div>
                     </motion.div>
@@ -335,18 +335,19 @@ export default function AboutPageClient() {
                             infrastructure that bridges LLM orchestration,
                             autonomous agents, and enterprise-grade cloud
                             deployments. He focuses on engineering advanced
-                            retrieval systems, multi-model architectures, and
-                            scalable AI solutions that solve complex automation
-                            challenges for modern enterprises.
+                            retrieval systems, multi-model architectures,
+                            scalable AI products, and infrastructure layers that
+                            help businesses stay current as the technical
+                            landscape moves.
                         </motion.p>
                         <motion.p
                             variants={slideUpFade}
                             className="text-lg text-gray-400 font-light leading-relaxed"
                         >
                             Under the Kaelux brand, he combines hands-on
-                            engineering with clear technical strategy so clients
-                            can move from AI experimentation to durable systems
-                            with measurable operational value.
+                            engineering with platform thinking so clients can
+                            move from scattered experimentation to durable
+                            systems with measurable operational value.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -405,9 +406,10 @@ export default function AboutPageClient() {
                             Ready to Build Something Intelligent?
                         </h2>
                         <p className="text-gray-400 text-lg">
-                            Whether you need a custom AI agent, a RAG pipeline,
-                            or a high-performance distributed system — Kaelux
-                            engineers the infrastructure of the future.
+                            Whether you need AI infrastructure, a platform
+                            layer, or a software system that can keep pace with
+                            the market, Kaelux builds technical foundations that
+                            are meant to stay useful under pressure.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4 pt-4">
                             <Link

@@ -7,9 +7,9 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kaelux | AI Engineering Agency — Custom LLM & Automation Solutions",
-  description: "Kaelux is an AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses. From RAG pipelines to workflow agents—we engineer AI that works.",
-  keywords: ["AI engineering agency", "custom LLM solutions", "AI automation", "RAG pipelines", "workflow agents", "AI infrastructure", "full-stack development", "Next.js", "React", "TypeScript", "enterprise AI", "intelligent automation"],
+  title: "Kaelux | AI Systems, Platforms, and Infrastructure",
+  description: "Kaelux builds AI systems, software platforms, and production infrastructure for businesses. From retrieval pipelines and agentic workflows to IaaS, PaaS, and SaaS delivery, we ship systems built to keep pace with fast-moving technology.",
+  keywords: ["AI engineering company", "custom AI systems", "AI automation", "RAG pipelines", "workflow agents", "AI infrastructure", "IaaS", "PaaS", "SaaS", "enterprise AI", "platform engineering"],
   authors: [{ name: "Kaelux" }],
   creator: "Kaelux",
   publisher: "Kaelux",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Kaelux | AI Engineering Agency — Custom LLM & Automation Solutions",
-    description: "Kaelux is an AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses.",
+    title: "Kaelux | AI Systems, Platforms, and Infrastructure",
+    description: "Kaelux builds AI systems, software platforms, and production infrastructure for businesses across IaaS, PaaS, and SaaS.",
     type: "website",
     url: "https://kaelux.dev",
     siteName: "Kaelux",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         url: "https://kaelux.dev/kaelux-icon-v3.png",
         width: 512,
         height: 512,
-        alt: "Kaelux – AI Engineering Agency",
+        alt: "Kaelux – AI Systems, Platforms, and Infrastructure",
         type: "image/png",
       },
     ],
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Kaelux | AI Engineering Agency",
-    description: "Custom LLM systems, intelligent automation, and production-ready AI infrastructure for businesses.",
+    title: "Kaelux | AI Systems, Platforms, and Infrastructure",
+    description: "AI systems, platform engineering, and production infrastructure for businesses across IaaS, PaaS, and SaaS.",
     images: ["https://kaelux.dev/kaelux-icon-v3.png"],
   },
   robots: {
@@ -78,19 +78,21 @@ export default function RootLayout({
       "@context": "https://schema.org",
       "@type": ["Organization", "ProfessionalService"],
       "name": "Kaelux",
-      "alternateName": ["Kaelux.dev", "Kaelux AI Engineering", "Kaelux Agency"],
+      "alternateName": ["Kaelux.dev", "Kaelux Infrastructure", "Kaelux Platform Engineering"],
       "url": "https://kaelux.dev",
       "logo": "https://kaelux.dev/kaelux-icon-v3.png",
       "image": "https://kaelux.dev/kaelux-icon-v3.png",
-      "description": "AI engineering agency building custom LLM systems, intelligent automation, and production-ready web infrastructure for businesses worldwide.",
+      "description": "Kaelux builds AI systems, software platforms, and production infrastructure for businesses worldwide.",
       "areaServed": "Worldwide",
       "knowsAbout": [
         "Artificial Intelligence",
         "Large Language Models (LLMs)",
         "Intelligent Automation",
         "Retrieval-Augmented Generation (RAG)",
-        "Full-Stack Web Development",
-        "Next.js"
+        "Cloud Infrastructure",
+        "Infrastructure as a Service (IaaS)",
+        "Platform as a Service (PaaS)",
+        "Software as a Service (SaaS)"
       ],
       "founder": {
         "@type": "Person",
