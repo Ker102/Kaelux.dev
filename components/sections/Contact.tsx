@@ -12,15 +12,15 @@ const contactChannels = [
   {
     name: "Email",
     icon: SiGmail,
-    label: "hello@kaelux.dev",
-    href: "mailto:Kristoferjussmann@gmail.com",
+    label: "business@kaelux.dev",
+    href: "mailto:business@kaelux.dev",
     color: "#EA4335",
   },
   {
     name: "LinkedIn",
     icon: FaLinkedin,
     label: "Kaelux",
-    href: "https://linkedin.com/in/kristofer-jussmann-b8a398382",
+    href: "https://www.linkedin.com/company/kaelux-dev/",
     color: "#0A66C2",
   },
   {

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaPaperPlane, FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
+import { submitContactForm } from "@/lib/contact-form";
 
 export default function SolutionsContact() {
     const [formData, setFormData] = useState({
@@ -11,12 +12,33 @@ export default function SolutionsContact() {
         email: "",
         details: ""
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const subject = `Project Inquiry from ${formData.name}`;
-        const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0ADetails:%0D%0A${formData.details}`;
-        window.location.href = `mailto:ker102@kaelux.dev?subject=${subject}&body=${body}`;
+        setIsSubmitting(true);
+        setErrorMessage("");
+
+        try {
+            await submitContactForm({
+                source: "Solutions Contact",
+                name: formData.name,
+                email: formData.email,
+                details: formData.details,
+            });
+            setIsSubmitted(true);
+            setFormData({ name: "", email: "", details: "" });
+        } catch (error) {
+            setErrorMessage(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while sending your request.",
+            );
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,10 +46,10 @@ export default function SolutionsContact() {
     };
 
     const socials = [
-        { icon: FaEnvelope, href: "mailto:ker102@kaelux.dev", label: "Email" },
-        { icon: FaLinkedin, href: "https://linkedin.com", label: "LinkedIn" },
+        { icon: FaEnvelope, href: "mailto:business@kaelux.dev", label: "Email" },
+        { icon: FaLinkedin, href: "https://www.linkedin.com/company/kaelux-dev/", label: "LinkedIn" },
         { icon: FaGithub, href: "https://github.com/ker102", label: "GitHub" },
-        { icon: FaTwitter, href: "https://x.com/kerprocessing", label: "Twitter" },
+        { icon: FaTwitter, href: "https://x.com/ker102dev", label: "Twitter" },
         { icon: FaInstagram, href: "https://instagram.com/kaelux.dev", label: "Instagram" }
     ];
 
@@ -71,61 +93,76 @@ export default function SolutionsContact() {
                             }}
                         />
                         <div className="relative bg-zinc-900/95 border border-white/15 rounded-2xl p-8 md:p-12 backdrop-blur-sm group-hover:border-white/25 transition-colors duration-500">
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {isSubmitted ? (
+                                <div className="py-10 text-center">
+                                    <h3 className="text-2xl font-semibold text-white mb-3">
+                                        Request sent
+                                    </h3>
+                                    <p className="text-gray-400 max-w-lg mx-auto">
+                                        Your inquiry has been sent to business@kaelux.dev. We&apos;ll get back to you within 24 hours.
+                                    </p>
+                                </div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div className="space-y-2">
+                                            <label htmlFor="name" className="text-sm font-medium text-gray-400 ml-1">Name</label>
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                id="name"
+                                                required
+                                                value={formData.name}
+                                                onChange={handleChange}
+                                                className="w-full bg-zinc-900/80 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/30 transition-all duration-300"
+                                                placeholder="Alex from Kaelux"
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label htmlFor="email" className="text-sm font-medium text-gray-400 ml-1">Work Email</label>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                id="email"
+                                                required
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                                className="w-full bg-zinc-900/80 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/30 transition-all duration-300"
+                                                placeholder="alex@company.com"
+                                            />
+                                        </div>
+                                    </div>
+
                                     <div className="space-y-2">
-                                        <label htmlFor="name" className="text-sm font-medium text-gray-400 ml-1">Name</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            id="name"
+                                        <label htmlFor="details" className="text-sm font-medium text-gray-400 ml-1">Project Details</label>
+                                        <textarea
+                                            name="details"
+                                            id="details"
                                             required
-                                            value={formData.name}
+                                            rows={4}
+                                            value={formData.details}
                                             onChange={handleChange}
-                                            className="w-full bg-zinc-900/80 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/30 transition-all duration-300"
-                                            placeholder="Alex from Kaelux"
+                                            className="w-full bg-zinc-900/80 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/30 transition-all duration-300 resize-none"
+                                            placeholder="Tell us about your automation goals..."
                                         />
                                     </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="email" className="text-sm font-medium text-gray-400 ml-1">Work Email</label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            id="email"
-                                            required
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            className="w-full bg-zinc-900/80 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/30 transition-all duration-300"
-                                            placeholder="alex@kaelux.dev"
-                                        />
-                                    </div>
-                                </div>
 
-                                <div className="space-y-2">
-                                    <label htmlFor="details" className="text-sm font-medium text-gray-400 ml-1">Project Details</label>
-                                    <textarea
-                                        name="details"
-                                        id="details"
-                                        required
-                                        rows={4}
-                                        value={formData.details}
-                                        onChange={handleChange}
-                                        className="w-full bg-zinc-900/80 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/30 transition-all duration-300 resize-none"
-                                        placeholder="Tell us about your automation goals..."
-                                    />
-                                </div>
+                                    {errorMessage ? (
+                                        <p className="text-sm text-red-400">{errorMessage}</p>
+                                    ) : null}
 
-                                {/* Glass-style Submit Button */}
-                                <motion.button
-                                    type="submit"
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="w-full py-4 border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/30 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
-                                >
-                                    <FaPaperPlane className="text-sm" />
-                                    Send Request
-                                </motion.button>
-                            </form>
+                                    <motion.button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="w-full py-4 border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/30 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                                    >
+                                        <FaPaperPlane className="text-sm" />
+                                        {isSubmitting ? "Sending..." : "Send Request"}
+                                    </motion.button>
+                                </form>
+                            )}
                         </div>
                     </motion.div>
 

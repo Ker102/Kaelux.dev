@@ -99,7 +99,8 @@ export default function RootLayout({
       "sameAs": [
         "https://github.com/Ker102",
         "https://instagram.com/kaelux.dev",
-        "https://x.com/kerprocessing"
+        "https://x.com/ker102dev",
+        "https://www.linkedin.com/company/kaelux-dev/"
       ]
     },
     {

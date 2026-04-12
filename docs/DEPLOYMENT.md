@@ -105,10 +105,10 @@ Currently, your portfolio doesn't require any environment variables. If you add 
 
 ### Example for future use:
 ```env
-# For email service (if you add it later)
-EMAIL_API_KEY=your_api_key
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
+# For email service
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_FROM_EMAIL="Kaelux <business@kaelux.dev>"
+CONTACT_TO_EMAIL=business@kaelux.dev
 
 # Analytics (optional)
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX

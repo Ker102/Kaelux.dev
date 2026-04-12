@@ -136,7 +136,7 @@ export const UIOverlay: React.FC = () => {
   const socials = [
     { id: 1, label: 'Website', icon: Globe, href: 'https://kaelux.dev' },
     { id: 2, label: 'GitHub', icon: Github, href: 'https://github.com/Ker102' },
-    { id: 3, label: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/kristofer-jussmann-b8a398382/' },
+    { id: 3, label: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/kaelux-dev/' },
     { id: 4, label: 'Instagram', icon: Instagram, href: 'https://instagram.com/kaelux.dev' },
     { id: 5, label: 'Hugging Face', icon: SiHuggingface, href: 'https://huggingface.co/ker102' },
   ];

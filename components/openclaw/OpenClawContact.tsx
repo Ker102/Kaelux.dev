@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
+import { submitContactForm } from "@/lib/contact-form";
 
 export default function OpenClawContact() {
     const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ export default function OpenClawContact() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,12 +24,33 @@ export default function OpenClawContact() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-
-        // Simulate submission (replace with actual API call)
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+        setErrorMessage("");
+        try {
+            await submitContactForm({
+                source: "OpenClaw Contact",
+                name: formData.name,
+                email: formData.email,
+                company: formData.company,
+                plan: formData.plan,
+                message: formData.message,
+            });
+            setIsSubmitted(true);
+            setFormData({
+                name: "",
+                email: "",
+                company: "",
+                plan: "managed",
+                message: "",
+            });
+        } catch (error) {
+            setErrorMessage(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while sending your request.",
+            );
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -190,6 +213,10 @@ export default function OpenClawContact() {
                                         </>
                                     )}
                                 </motion.button>
+
+                                {errorMessage ? (
+                                    <p className="text-sm text-red-400 text-center">{errorMessage}</p>
+                                ) : null}
 
                                 <p className="text-[11px] text-zinc-600 text-center tracking-widest uppercase font-medium">
                                     We respond within 24 hours
