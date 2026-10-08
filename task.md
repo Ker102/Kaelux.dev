@@ -65,3 +65,34 @@ The site should communicate:
 - Review URL: http://127.0.0.1:3001/.
 - Work is local on `codex/collaborative-lab-review-2026-10-08`.
   Do not push, open a PR, or deploy Kaelux until the user reviews it.
+
+## October 8, 2026 Hero And Artwork Correction
+
+- Preserve the approved navigation, button styling, and lower page sections.
+- Restore the original liquid-art scale and prominence, phrase rotation, and
+  a restrained star shimmer; remove the extra Kaelux label under the star.
+- Match the new headline image to the original polished chrome material.
+- Anchor an enlarged robot and the tilted "Bring a problem" CTA inside one
+  responsive composition, accounting for the source image's transparent padding.
+- Let the approach artwork finish before the project section paints over it;
+  avoid clipped edges, duplicate imagery, or a hard hero-to-approach boundary.
+- Validate desktop, mobile, short screens, reduced motion, phrase rotation,
+  link hit areas, and the boundaries with screenshots and layout measurements.
+- Keep all changes local pending review.
+
+### Correction Validation
+
+- Restored all three original liquid assets at full strength, added a gentle
+  star shimmer, restored phrase rotation, and removed the duplicated brand label.
+- Added the brighter generated chrome asset without deleting earlier headlines.
+- The enlarged robot holds one tilted, fully clickable CTA. Its original image
+  remains unchanged; the crop and button offsets share one local coordinate system.
+- A single complete approach background now fades into the project section.
+  Readability is preserved by a feathered copy scrim rather than a boxed panel.
+- Six width checks (320 through 2560px) pass. Additional short-screen checks at
+  320x568, 375x667, and 1366x768 confirm visible buttons, a next-section hint,
+  fitting text and headline pixels, and no horizontal overflow.
+- Rotation, pause/resume, reduced motion, navbar focus, and CTA hit areas pass
+  browser checks without console or hydration errors.
+- 25 focused tests, lint, and production build pass.
+- Local preview remains http://127.0.0.1:3001/. No Kaelux push is authorized yet.

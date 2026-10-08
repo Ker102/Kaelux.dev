@@ -66,3 +66,14 @@
 4. [x] Verify lint, TypeScript, regression tests, build, and desktop/mobile preview.
 5. [x] Start the local review server on port 3001.
 6. [ ] User review and explicit approval before any Kaelux push or deployment.
+
+## Hero And Artwork Correction Plan
+
+1. [x] Compare the review branch with the original hero/approach implementation;
+   measure the headline, robot, and background image bounds.
+2. [x] Generate a brighter chrome-material headline without changing its wording.
+3. [x] Restore liquid artwork, a gentle star shimmer, and stable rotating copy.
+4. [x] Recompose the approach CTA and robot in a shared responsive coordinate system.
+5. [x] Repair the background stacking and give the complete artwork enough room.
+6. [x] Run focused tests, lint, build, desktop/mobile visual and motion checks.
+7. [ ] Commit only this correction locally; do not push.

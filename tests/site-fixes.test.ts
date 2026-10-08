@@ -17,7 +17,7 @@ test("hero uses the approved semantic copy and omits the venture inventory phras
     /MedAI, ViperMesh, Harneloop, PromptTriage, and Nullstate sit under the Kaelux group\./,
   );
   assert.match(source, /Let&apos;s solve real problems\./);
-  assert.match(source, /src="\/hero-title-real-problems\.png"/);
+  assert.match(source, /src="\/hero-title-real-problems-chrome\.png"/);
   assert.match(source, /alt="" aria-hidden="true"/);
 });
 
@@ -77,7 +77,7 @@ test("ventures use the clean editorial modular system", async () => {
 test("hero title bypasses lossy Next image optimization", async () => {
   const source = await read("components/sections/Hero.tsx");
   const titleImage =
-    source.match(/<Image\s+src="\/hero-title-real-problems\.png"[\s\S]*?\/>/)?.[0] ?? "";
+    source.match(/<Image\s+src="\/hero-title-real-problems-chrome\.png"[\s\S]*?\/>/)?.[0] ?? "";
 
   assert.match(titleImage, /\bunoptimized\b/);
 });

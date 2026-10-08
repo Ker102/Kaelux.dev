@@ -19,6 +19,7 @@ test("rendered motion components use the hydration-safe preference hook", async 
     "components/sections/DiagnoserCTA.tsx",
     "components/sections/Contact.tsx",
     "components/sections/Projects.tsx",
+    "components/sections/Hero.tsx",
     "components/ui/ScrollUnderline.tsx",
   ]) {
     const source = await readFile(path, "utf8");

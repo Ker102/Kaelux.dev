@@ -12,6 +12,61 @@
 }
 .lab-hero-title { max-width: 16ch; font-size: 2.75rem; line-height: 1.1; font-weight: 650; letter-spacing: 0; }
 .lab-star { filter: drop-shadow(0 2px 8px rgb(255 255 255 / 0.12)); }
+.lab-intro-artwork { position: relative; isolation: isolate; overflow: hidden; background: #000; }
+.hero-liquid-art { mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); }
+.hero-liquid { filter: drop-shadow(0 0 20px rgb(168 85 247 / 0.35)); }
+.hero-liquid-bottom { mask-image: linear-gradient(to right, transparent 0%, black 25%); }
+.hero-star-shimmer { animation: hero-star-shimmer 6s ease-in-out infinite; }
+.hero-star-halo { opacity: 0.3; animation: hero-star-halo 6s ease-in-out infinite; }
+@keyframes hero-star-shimmer {
+  0%, 100% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 8px rgb(255 255 255 / 0.22)); }
+  50% { transform: scale(1.035); filter: brightness(1.18) drop-shadow(0 0 14px rgb(255 255 255 / 0.38)); }
+}
+@keyframes hero-star-halo { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.38; } }
+.hero-subtitle-copy { display: grid; place-items: center; height: 7.5rem; }
+.hero-subtitle-controls { display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; }
+.hero-rotation-toggle { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 4px; }
+.hero-rotation-toggle:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+.lab-approach-stage { position: relative; min-height: calc(78.779vw - 8rem); padding-bottom: 4rem; }
+.lab-approach-art {
+  position: absolute; left: 0; right: 0; top: -8rem; z-index: 0;
+  aspect-ratio: 2752 / 2168;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 80%, transparent 100%);
+}
+.approach-handoff { position: relative; isolation: isolate; justify-self: center; width: min(100%, 21rem); aspect-ratio: 440 / 500; }
+.approach-held-cta { position: absolute; left: -0.75rem; top: 14.5%; z-index: 1; width: 13.3rem; transform: rotate(8deg); white-space: nowrap; }
+.approach-robot-crop { pointer-events: none; position: absolute; right: 0; top: 0; z-index: 2; width: 80%; aspect-ratio: 1000 / 1150; overflow: hidden; }
+/* The source character occupies only the right third of its transparent canvas. */
+.approach-robot-image { position: absolute; left: -155%; top: -17.391%; width: 275.2%; height: auto; max-width: none; }
+#approach::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / 0.9) 10%, rgb(0 0 0 / 0.9) 52%, transparent 76%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 80%, transparent 100%);
+}
+@media (min-width: 768px) { .hero-subtitle-copy { height: 6rem; } }
+@media (min-width: 1024px) { .approach-handoff { justify-self: end; width: min(100%, 28rem); } }
+@media (max-width: 767px) {
+  .lab-approach-stage { min-height: 0; padding-bottom: 3rem; }
+  .lab-approach-art { top: -6rem; height: calc(100% + 6rem); aspect-ratio: auto; }
+  #approach::before { background: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.86) 5rem, rgb(0 0 0 / 0.86) 65%, transparent 82%); mask-image: none; }
+}
+@media (min-width: 768px) and (max-height: 850px) {
+  .lab-hero { min-height: calc(100svh - 6rem); padding: 6rem 0 2.5rem; }
+  .hero-star-scene { width: 6rem; height: 6rem; }
+  .hero-title-frame { height: 6rem; }
+  .hero-subtitle-copy { height: 5rem; }
+  .lab-approach-stage > .relative > section:first-child { padding-top: 2rem; }
+}
+@media (max-width: 767px) and (max-height: 740px) {
+  .lab-hero { min-height: calc(100svh - 4rem); padding: 5.5rem 0 1.5rem; }
+  .hero-star-scene { width: 3.5rem; height: 3.5rem; margin-bottom: 0.75rem; }
+  .hero-title-frame { height: 2.75rem; }
+  .hero-subtitle { margin-top: 0.5rem; }
+  .hero-subtitle-copy { height: 6rem; }
+  .hero-subtitle-copy p { line-height: 1.5; }
+  .hero-actions { margin-top: 0.75rem; }
+  .lab-approach-stage > .relative > section:first-child { padding-top: 1.5rem; }
+}
 .lab-button {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem;
   min-height: 3rem; padding: 0.8rem 1.25rem;
@@ -42,6 +97,7 @@ section[id] { scroll-margin-top: 6rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .lab-enter { animation: none; }
+  .hero-star-shimmer, .hero-star-halo { animation: none; }
   .lab-button, .lab-nav-toggle, .lab-nav-link { transition: none; }
 }
 
