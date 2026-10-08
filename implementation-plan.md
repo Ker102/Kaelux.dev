@@ -92,4 +92,4 @@
 1. [x] Compare the raw image with the remaining broad shadow and test text-local contrast.
 2. [x] Remove the wide scrim; add a neutral, static, asymmetrically faded hero grid.
 3. [x] Verify the wave pixels, copy readability, responsive layout, controls, tests, and build.
-4. [ ] Commit the scoped preview locally, with no push. All validation is complete.
+4. [x] Commit the scoped preview locally, with no push. Source checkpoint: `5a19041`.

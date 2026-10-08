@@ -167,3 +167,4 @@ The site should communicate:
 - Mobile and desktop screenshots confirm the original waves and robot composition
   are visible; only the letters receive contrast treatment.
 - All 29 focused tests, lint, and the production build pass. Keep this local.
+- Source checkpoint: `5a19041`. No changes have been pushed.
