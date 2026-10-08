@@ -65,7 +65,7 @@
 3. [x] Simplify hero CTAs and automation layout; stabilize navigation and motion.
 4. [x] Verify lint, TypeScript, regression tests, build, and desktop/mobile preview.
 5. [x] Start the local review server on port 3001.
-6. [ ] User review and explicit approval before any Kaelux push or deployment.
+6. [x] User review and explicit push approval received on October 8, 2026.
 
 ## Hero And Artwork Correction Plan
 
@@ -101,3 +101,14 @@
 3. [x] Add mobile-only navigation, artwork, robot CTA, typography, and input refinements.
 4. [x] Verify phone interactions, all landing sections, and unchanged desktop rendering.
 5. [x] Run tests, lint, build, and make scoped local commits without pushing. Source checkpoint: `a3bb754`.
+
+## Production Approval
+
+- The user approved pushing the reviewed Kaelux state on October 8, 2026.
+- Retain the current grid for now; alternative background designs are suggestions,
+  not part of this release.
+- Promote the reviewed commits to production `main` without force-pushing.
+- This approval supersedes earlier local-review holds. Keep generated browser logs,
+  screenshots, and agent-generated files out of the release.
+- All 33 focused tests pass again; the reviewed source already passed lint and
+  the production build. Verify GitHub checks and deployment after pushing.

@@ -199,3 +199,13 @@ The site should communicate:
 - All 33 focused tests, lint, and the production build pass. The CSS parser
   regression test requires every new style rule to remain below 768px.
 - Source checkpoint: `a3bb754`. The local preview remains on port 3001; no push.
+
+## October 8, 2026 Production Approval
+
+The user has now reviewed the changes and explicitly authorized a push. This
+supersedes the earlier instructions to keep Kaelux local pending review. Retain
+the grid for this release despite the user's reservations; do not redesign it
+while publishing. Promote the reviewed branch to production `main` without a
+force push, then verify the remote checks and deployment. Browser output and
+generated agent files remain local. All 33 focused tests pass on the release
+checkpoint; lint and the production build passed after the final mobile changes.
