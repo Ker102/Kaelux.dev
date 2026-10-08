@@ -97,3 +97,17 @@ The site should communicate:
 - 25 focused tests, lint, and production build pass.
 - Local preview remains http://127.0.0.1:3001/. No Kaelux push is authorized yet.
 - Correction committed locally as `0bc99d2`; production remains unchanged.
+
+## Hero Spacing Follow-Up
+
+- Increase the hero's lower breathing room without changing its content position.
+- Remove the approach wave's negative top offset on desktop and mobile so it
+  no longer overlaps the hero liquids.
+- Preserve the full background extent before the projects section begins.
+- Keep small-screen sizing, original artwork, motion, buttons, and navigation.
+- Desktop hero height grows by 32px while the headline and buttons retain their
+  existing positions. The approach artwork begins 160px lower than before on desktop.
+- Checks at 1909x938, 1366x768, 390x844, and 320x568 pass: no decorative overlap,
+  clipping, page overflow, broken images, or browser errors; buttons remain visible.
+- All 26 focused tests, lint, and the production build pass.
+- Keep this follow-up local, without pushing.

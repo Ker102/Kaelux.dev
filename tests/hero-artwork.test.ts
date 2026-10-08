@@ -26,7 +26,17 @@ test("the approach background has a single aspect-aware layer without negative b
   assert.match(source, /lab-approach-stage/);
   assert.doesNotMatch(source, /-bottom-56|-bottom-72|-bottom-\[22rem\]/);
   assert.match(css, /aspect-ratio: 2752 \/ 2168/);
-  assert.match(css, /min-height: calc\(78\.779vw - 8rem\)/);
+  assert.match(css, /min-height: 78\.779vw/);
+});
+
+test("approach artwork stays below the hero instead of overlapping its liquids", async () => {
+  const css = await readFile("app/globals.css", "utf8");
+  const layers = css.match(/\.lab-approach-art\s*\{[^}]+\}/g) ?? [];
+  assert.equal(layers.length, 2);
+  assert.match(layers[0], /top: 0/);
+  for (const layer of layers) assert.doesNotMatch(layer, /top:\s*-|100% \+ 6rem/);
+  assert.match(css, /min-height: min\(50rem,/);
+  assert.match(css, /padding: 7rem 0 7rem/);
 });
 
 test("robot and tilted CTA share a single composition with one accessible link", async () => {
