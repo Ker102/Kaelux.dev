@@ -17,8 +17,8 @@ export default function ServiceIntroduction() {
         <p className="mt-6 max-w-2xl text-base leading-7 text-white/70 md:text-lg md:leading-8">
           Kaelux is a collaborative lab. We combine research, practical engineering, and firsthand experience to build tools that work in the real world.
         </p>
-        <div className="mt-10 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          <ol className="divide-y divide-white/15">
+        <div className="approach-content-grid mt-10 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+          <ol className="approach-step-list divide-y divide-white/15">
             {steps.map((step) => (
               <li key={step.title} className="py-5">
                 <h3 className="text-lg font-semibold">{step.title}</h3>
@@ -28,7 +28,7 @@ export default function ServiceIntroduction() {
           </ol>
           <div className="approach-handoff">
             <Link href="/pricing" className="lab-button lab-button-primary approach-held-cta">
-              Bring a problem <ArrowUpRight size={17} aria-hidden="true" />
+              <span>Bring a problem</span> <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
             <div className="approach-robot-crop" aria-hidden="true">
               <Image src="/Now_remove_all_202604241650-Picsart-BackgroundRemover.png" alt=""

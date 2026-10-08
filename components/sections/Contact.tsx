@@ -190,7 +190,7 @@ export default function Contact() {
                 ? { duration: 0 }
                 : { ...revealTransition, delay: 0.78 }
             }
-            className="border border-white/15 bg-[#0d0d0f] p-6 md:p-8 lg:p-10"
+            className="contact-panel border border-white/15 bg-[#0d0d0f] p-6 md:p-8 lg:p-10"
           >
             <div className="border-b border-white/15 pb-8">
               <HiOutlineBolt

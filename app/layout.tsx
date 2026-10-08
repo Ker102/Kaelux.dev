@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./mobile.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
 import MotionPreferences from "@/components/MotionPreferences";

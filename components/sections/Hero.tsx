@@ -66,7 +66,7 @@ export default function Hero() {
         <Image src="/images/decorative/liquid-flow-1.png" alt="" width={571} height={1024} loading="eager"
           className="hero-liquid hero-liquid-upper" />
         <Image src="/images/decorative/liquid-flow-left-hq.png" alt="" width={1000} height={1000} loading="eager"
-          className="hero-liquid absolute left-0 top-0 w-[150px] -translate-x-[20%] md:w-[600px] lg:w-[800px]" />
+          className="hero-liquid hero-liquid-left absolute left-0 top-0 w-[150px] -translate-x-[20%] md:w-[600px] lg:w-[800px]" />
         <Image src="/images/decorative/liquid-flow-3.png" alt="" width={1024} height={571} loading="eager"
           className="hero-liquid hero-liquid-bottom" />
       </div>

@@ -168,3 +168,33 @@ The site should communicate:
   are visible; only the letters receive contrast treatment.
 - All 29 focused tests, lint, and the production build pass. Keep this local.
 - Source checkpoint: `5a19041`. No changes have been pushed.
+
+## Phone-Only Layout Refinement
+
+- Audit the complete landing page at real phone sizes, not a scaled desktop.
+- Move hero liquids toward screen edges and reserve space for copy and controls.
+- Resize and align the robot-held CTA; keep its label, arrow, and touch target clear.
+- Improve navigation, mobile intake typography, and phone input usability.
+- Use a separate mobile stylesheet, with every rule scoped below 768px.
+- Preserve desktop geometry and compare against baseline screenshots.
+- Plan: `docs/plans/2026-10-08-mobile-refinement.md`. Commit locally; do not push.
+
+### Phone Validation
+
+- Five mobile sizes: 320x568, 375x667, 390x844, 430x932, and 767x900.
+  No horizontal overflow, missing images, or browser page errors. Hero actions
+  stay in the first viewport and artwork stays clear of the main copy.
+- The three mobile navigation targets are 44px high. The 320px drawer fits its
+  viewport and scrolls to the footer link; Escape closes it and restores focus.
+- A touch-enabled browser verifies project hash navigation, correct anchor
+  clearance, and the robot CTA's `/pricing` destination. No messages were sent.
+- Robot alpha-pixel checks at 320px confirm no overlap with the CTA label or icon.
+  Text and arrow stay readable while the hands still hold the board edge.
+- Contact fields and intake input use 16px text. Long input scrolls horizontally,
+  the native caret remains visible, and the old custom caret is hidden on phones.
+- All landing-page sections were inspected in phone viewports. The approach
+  image decorates the robot area rather than passing behind the text.
+- Desktop screenshots were compared at 1440px and 1909px. The recorded hero,
+  liquid artwork, robot, and CTA rectangles match the 1440px baseline exactly.
+- All 33 focused tests, lint, and the production build pass. The CSS parser
+  regression test requires every new style rule to remain below 768px.

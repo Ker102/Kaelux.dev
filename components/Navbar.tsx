@@ -39,11 +39,11 @@ function CompactNavbar() {
   }, [isOpen]);
   const contactHref = pathname === "/medai" ? "#medai-contact" : homeHref("#contact");
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-5 z-50 flex justify-center px-4">
-      <Link href="/" aria-label="Kaelux home" className="pointer-events-auto fixed left-4 top-5 md:hidden">
+    <header className="lab-nav pointer-events-none fixed inset-x-0 top-5 z-50 flex justify-center px-4">
+      <Link href="/" aria-label="Kaelux home" className="lab-nav-home pointer-events-auto fixed left-4 top-5 md:hidden">
         <Image src="/kaelux-icon-v3.png" alt="" width={1536} height={1565} className="h-10 w-10 rounded-lg object-contain" />
       </Link>
-      <div ref={containerRef} className="pointer-events-auto relative">
+      <div ref={containerRef} className="lab-nav-disclosure pointer-events-auto relative">
         <button ref={toggleRef} type="button" aria-expanded={isOpen} aria-controls="kaelux-navigation"
           onClick={() => setIsOpen((open) => !open)}
           onKeyDown={(event) => {
@@ -53,7 +53,7 @@ function CompactNavbar() {
           {isOpen ? <X size={17} aria-hidden="true" /> : <Menu size={17} aria-hidden="true" />}
           {isOpen ? "Close" : "Explore"}
         </button>
-        <div className="absolute left-1/2 top-[3.5rem] w-[min(48rem,calc(100vw-2rem))] -translate-x-1/2">
+        <div className="lab-nav-drawer absolute left-1/2 top-[3.5rem] w-[min(48rem,calc(100vw-2rem))] -translate-x-1/2">
         <AnimatePresence>
           {isOpen && (
             <motion.nav id="kaelux-navigation" aria-label="Main navigation"
@@ -70,7 +70,7 @@ function CompactNavbar() {
                   </Link>
                 ))}
               </div>
-              <div className="mt-3 flex items-center justify-between gap-4 border-t border-white/15 px-4 pt-4 pb-1 text-sm">
+              <div className="lab-nav-footer mt-3 flex items-center justify-between gap-4 border-t border-white/15 px-4 pt-4 pb-1 text-sm">
                 <span className="text-white/55">Research, tools, and collaboration.</span>
                 <Link href="/links" className="text-white underline underline-offset-4" onClick={() => setIsOpen(false)}>All links</Link>
               </div>
@@ -79,7 +79,7 @@ function CompactNavbar() {
         </AnimatePresence>
         </div>
       </div>
-      <Link href={contactHref} className="pointer-events-auto fixed right-3 top-5 flex h-11 items-center rounded-full border border-white/20 bg-neutral-900/90 px-3 text-xs font-medium text-white backdrop-blur-md md:right-6 md:px-5 md:text-sm">Contact</Link>
+      <Link href={contactHref} className="lab-nav-contact pointer-events-auto fixed right-3 top-5 flex h-11 items-center rounded-full border border-white/20 bg-neutral-900/90 px-3 text-xs font-medium text-white backdrop-blur-md md:right-6 md:px-5 md:text-sm">Contact</Link>
     </header>
   );
 }

@@ -118,7 +118,7 @@ export default function DiagnoserCTA() {
     return (
         <div className="relative z-20">
             {/* Mobile-only top shapes - positioned OUTSIDE the section for perfect layering */}
-            <div className="md:hidden absolute -top-20 left-0 right-0 h-32 z-50 pointer-events-none">
+            <div className="diagnoser-mobile-art md:hidden absolute -top-20 left-0 right-0 h-32 z-50 pointer-events-none">
                 <motion.div
                     initial={{ opacity: 0, rotate: -25, x: -50 }}
                     whileInView={{ opacity: 1, rotate: -12, x: 0 }}
@@ -157,7 +157,7 @@ export default function DiagnoserCTA() {
                         viewport={{ once: false }}
                         transition={{ duration: 0.5 }}
                         style={{ y: headerY }}
-                        className="mb-16 text-center will-change-transform"
+                        className="intake-heading mb-16 text-center will-change-transform"
                     >
                         {/* Professional Badge */}
                         <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/80 border border-gray-200/50 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.04)] mb-8 transition-all hover:border-gray-300/50">
@@ -165,10 +165,10 @@ export default function DiagnoserCTA() {
                             <span className="text-sm text-gray-600 font-semibold tracking-wide">Kaelux Intake Agent</span>
                         </div>
 
-                        <h2 className="text-5xl md:text-6xl font-semibold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-700 to-gray-500">
+                        <h2 className="intake-title text-5xl md:text-6xl font-semibold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-700 to-gray-500">
                             Ask Kaelux before you reach out.
                         </h2>
-                        <p className="text-gray-500 text-xl max-w-2xl mx-auto leading-relaxed font-light">
+                        <p className="intake-summary text-gray-500 text-xl max-w-2xl mx-auto leading-relaxed font-light">
                             A fast terminal-style guide for venture questions, investor fit, partner builds, and business automations.
                         </p>
                     </motion.div>
@@ -217,7 +217,7 @@ export default function DiagnoserCTA() {
                             </div>
 
                             {/* Terminal Body — prompt-style messages */}
-                            <div className="p-6 font-mono text-sm space-y-3">
+                            <div className="intake-terminal-body p-6 font-mono text-sm space-y-3">
                                 {/* System init line */}
                                 <div className="flex items-center gap-2 text-zinc-600">
                                     <span className="text-zinc-700 select-none">#</span>
@@ -230,7 +230,7 @@ export default function DiagnoserCTA() {
                                     <span className="text-zinc-300">{agentReply}</span>
                                 </div>
 
-                                <div className="flex flex-wrap gap-2 pt-2">
+                                <div className="intake-quick-prompts flex flex-wrap gap-2 pt-2">
                                     {quickPrompts.map((prompt) => (
                                         <button
                                             key={prompt}
@@ -249,21 +249,22 @@ export default function DiagnoserCTA() {
                             <form onSubmit={handleSubmit} className="px-5 pb-5 pt-3 border-t border-white/5 bg-black/20">
                                 <div className="flex items-center gap-3 relative">
                                     <span className="text-white font-mono text-sm select-none">❯</span>
-                                    <div className="relative flex-1">
+                                    <div className="intake-input-wrap relative flex-1">
                                         <input
                                             value={input}
                                             onChange={(e) => setInput(e.target.value)}
                                             onFocus={() => setIsFocused(true)}
                                             onBlur={() => setIsFocused(false)}
                                             placeholder=""
+                                            aria-label="Ask Kaelux"
                                             disabled={isLoading}
                                             aria-describedby={error ? "kaelux-intake-error" : undefined}
-                                            className="w-full bg-transparent border-none rounded-none pl-0 pr-14 py-3
+                                            className="intake-input w-full bg-transparent border-none rounded-none pl-0 pr-14 py-3
                                        text-white placeholder-zinc-600 focus:outline-none font-mono text-sm caret-transparent"
                                         />
                                         {/* Blinking rectangle cursor after text */}
                                         <span
-                                            className="absolute top-1/2 -translate-y-1/2 inline-block w-[8px] h-[18px] bg-white/80 animate-pulse pointer-events-none"
+                                            className="intake-cursor absolute top-1/2 -translate-y-1/2 inline-block w-[8px] h-[18px] bg-white/80 animate-pulse pointer-events-none"
                                             style={{ left: `${input.length * 8.4}px` }}
                                         />
                                         {/* Placeholder text when empty */}
@@ -275,10 +276,11 @@ export default function DiagnoserCTA() {
                                     </div>
                                     <motion.button
                                         type="submit"
+                                        aria-label="Send message"
                                         disabled={isLoading || !input.trim()}
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="absolute right-0 p-2.5 rounded-lg bg-white text-black
+                                        className="intake-submit absolute right-0 p-2.5 rounded-lg bg-white text-black
                                    hover:bg-gray-100 transition-colors shadow-lg shadow-white/5 disabled:cursor-not-allowed disabled:opacity-50"
                                     >
                                         <Send className="w-4 h-4" />

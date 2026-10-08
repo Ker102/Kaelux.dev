@@ -93,3 +93,11 @@
 2. [x] Remove the wide scrim; add a neutral, static, asymmetrically faded hero grid.
 3. [x] Verify the wave pixels, copy readability, responsive layout, controls, tests, and build.
 4. [x] Commit the scoped preview locally, with no push. Source checkpoint: `5a19041`.
+
+## Phone-Only Refinement
+
+1. [x] Audit phone layouts and record a desktop comparison baseline.
+2. [x] Write the mobile plan and scope regression tests.
+3. [x] Add mobile-only navigation, artwork, robot CTA, typography, and input refinements.
+4. [x] Verify phone interactions, all landing sections, and unchanged desktop rendering.
+5. [ ] Run tests, lint, build, and make scoped local commits without pushing.
