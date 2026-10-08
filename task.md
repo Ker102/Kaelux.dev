@@ -140,3 +140,4 @@ The site should communicate:
 - Reduced motion disables the star animation and description rotation.
 - All 28 focused tests, lint, and the production build pass. The preview remains
   available at http://127.0.0.1:3001/. Generated QA artifacts are not staged.
+- Source checkpoint: `687cabb`. No changes have been pushed.

@@ -85,4 +85,4 @@
 2. [x] Align the corner and lower wave with a breakpoint-specific visible gap.
 3. [x] Replace the bounded copy overlay with a continuous artwork-owned scrim.
 4. [x] Verify pixel separation, readability, responsive layout, tests, and build.
-5. [ ] Commit only this correction locally, with no push.
+5. [x] Commit only this correction locally, with no push. Source checkpoint: `687cabb`.
