@@ -5,9 +5,11 @@ import Link from "next/link";
 import { HiExternalLink } from "react-icons/hi";
 
 import { coreVentures, Venture } from "@/data/ventures";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { fadeInUp } from "@/lib/animations";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 function VentureCard({ venture }: { venture: Venture }) {
+  const reducedMotion = useReducedMotion();
   const isFeatured = venture.id === "medai";
   const wrapperClassName = `block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-4 focus-visible:ring-offset-black ${
     isFeatured ? "md:col-span-2" : ""
@@ -15,15 +17,18 @@ function VentureCard({ venture }: { venture: Venture }) {
 
   const content = (
     <motion.article
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, amount: 0.1 }}
       variants={fadeInUp}
-      whileHover={{ y: -2 }}
+      whileHover={reducedMotion ? undefined : { y: -2 }}
       transition={{ type: "spring", stiffness: 300, damping: 28 }}
       className={`group flex h-full min-h-[15rem] flex-col border border-white/15 bg-[#0d0d0f] p-6 transition-colors duration-200 hover:border-white/30 hover:bg-[#121214] md:p-7 ${
         isFeatured ? "lg:min-h-[17rem] lg:p-8" : ""
       }`}
     >
       <div className="flex items-start justify-between gap-5">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
+        <p className="text-xs font-medium text-white/65">
           {venture.stage}
         </p>
         {venture.isExternal ? (
@@ -38,8 +43,8 @@ function VentureCard({ venture }: { venture: Venture }) {
         )}
       </div>
 
-      <h3 className={`mt-8 font-semibold leading-none tracking-[-0.045em] text-white ${
-        isFeatured ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"
+      <h3 className={`mt-8 break-words font-semibold leading-tight tracking-normal text-white ${
+        isFeatured ? "text-3xl md:text-4xl" : "text-2xl md:text-3xl"
       }`}>
         {venture.name}
       </h3>
@@ -47,10 +52,10 @@ function VentureCard({ venture }: { venture: Venture }) {
         {venture.category}
       </p>
 
-      <p className={`mt-6 leading-7 text-white/50 ${isFeatured ? "max-w-3xl text-base" : "text-sm"}`}>
+      <p className={`mt-6 leading-7 text-white/75 ${isFeatured ? "max-w-3xl text-base" : "text-sm"}`}>
         {venture.description}
       </p>
-      <p className="mt-4 text-sm leading-6 text-white/40">
+      <p className="mt-4 text-sm leading-6 text-white/65">
         {venture.audience}
       </p>
 
@@ -103,32 +108,26 @@ export default function Projects() {
           >
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
-                Our ventures
+                Our projects
               </p>
-              <h2 className="mt-5 max-w-xl text-5xl font-semibold leading-[0.94] tracking-[-0.055em] text-white md:text-7xl">
-                Research, made useful.
+              <h2 className="mt-5 max-w-xl text-3xl font-semibold leading-tight tracking-normal text-white md:text-5xl">
+                Different problems.<br /> Useful tools.
               </h2>
               <p className="mt-7 max-w-md text-base leading-7 text-white/60 md:text-lg md:leading-8">
-                Kaelux turns focused research into open-source work, products, divisions, and ventures built for real environments.
+                From Blender workflows and agent reliability to coastal access, our projects start with a problem people actually face.
               </p>
             </div>
 
             <p className="mt-12 max-w-sm border-t border-white/15 pt-5 text-sm leading-6 text-white/40 lg:mt-20">
-              Focused research becomes working software, then earns its path into a product, division, or venture.
+              Explore the public work, try a tool, or help us improve it with firsthand experience.
             </p>
           </motion.div>
 
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.12 }}
-            variants={staggerContainer}
-            className="grid gap-3 md:grid-cols-2"
-          >
+          <div className="grid gap-3 md:grid-cols-2">
             {coreVentures.map((venture) => (
               <VentureCard key={venture.id} venture={venture} />
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

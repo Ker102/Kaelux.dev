@@ -6,13 +6,13 @@ import { DefaultChatTransport } from "ai";
 import Link from "next/link";
 import {
     motion,
-    useReducedMotion,
     useScroll,
     useSpring,
     useTransform,
 } from "framer-motion";
 import { ArrowRight, Send } from "lucide-react";
 import { getLeadSubmissionStatus } from "@/lib/intake-lead";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const quickPrompts = [
     "What is Kaelux researching?",
@@ -73,17 +73,17 @@ export default function DiagnoserCTA() {
     const headerY = useTransform(
         progress,
         [0, 0.5, 1],
-        [prefersReducedMotion ? 8 : 22, 0, prefersReducedMotion ? -4 : -16]
+        [prefersReducedMotion ? 0 : 22, 0, prefersReducedMotion ? 0 : -16]
     );
     const terminalY = useTransform(
         progress,
         [0, 0.5, 1],
-        [prefersReducedMotion ? 10 : 30, 0, prefersReducedMotion ? -5 : -18]
+        [prefersReducedMotion ? 0 : 30, 0, prefersReducedMotion ? 0 : -18]
     );
     const trustY = useTransform(
         progress,
         [0, 0.5, 1],
-        [prefersReducedMotion ? 6 : 16, 0, prefersReducedMotion ? -3 : -10]
+        [prefersReducedMotion ? 0 : 16, 0, prefersReducedMotion ? 0 : -10]
     );
 
     const handleSubmit = (e: React.FormEvent) => {

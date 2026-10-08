@@ -2,13 +2,13 @@
 
 import {
     motion,
-    useReducedMotion,
     useScroll,
     useSpring,
     useTransform,
 } from "framer-motion";
 import { Geist } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { FaMicrosoft } from "react-icons/fa";
 import {
     SiGooglecloud,
@@ -73,12 +73,12 @@ export default function Supporters() {
     const sectionY = useTransform(
         progress,
         [0, 0.5, 1],
-        [prefersReducedMotion ? 6 : 22, 0, prefersReducedMotion ? -4 : -18]
+        [prefersReducedMotion ? 0 : 22, 0, prefersReducedMotion ? 0 : -18]
     );
     const headingY = useTransform(
         progress,
         [0, 0.5, 1],
-        [prefersReducedMotion ? 4 : 14, 0, prefersReducedMotion ? -2 : -10]
+        [prefersReducedMotion ? 0 : 14, 0, prefersReducedMotion ? 0 : -10]
     );
     const leftGroupX = useTransform(
         progress,
@@ -122,7 +122,7 @@ export default function Supporters() {
                                             key={label}
                                             initial={{
                                                 opacity: 0,
-                                                y: prefersReducedMotion ? 4 : 10,
+                                                y: prefersReducedMotion ? 0 : 10,
                                                 x: prefersReducedMotion || !isMobile
                                                     ? 0
                                                     : itemIndex % 2 === 0

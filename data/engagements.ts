@@ -12,20 +12,28 @@ export interface EngagementTrack {
 
 export const engagementTracks: EngagementTrack[] = [
     {
+        id: "collaborators", eyebrow: "Work on a real problem", title: "Research and open-source collaboration",
+        description: "For researchers, developers, and people with domain experience who want to build or improve a useful tool with Kaelux.",
+        bestFor: "A specific problem, an existing project to improve, or firsthand knowledge that can guide the work.",
+        outcomes: ["Agree on the problem and a useful first result", "Build and test a focused prototype", "Share reusable tools, findings, and improvements"],
+        cta: "Bring a problem", href: "/#contact", highlighted: true,
+    },
+
+    {
         id: "investors",
         eyebrow: "Capital and strategic backing",
         title: "Investors and strategic partners",
         description:
             "For angels, accelerators, funds, and strategic operators who want a clear view of the Kaelux research, open-source work, and venture pipeline.",
-        bestFor: "Investors evaluating Kaelux as a founder-led AI and ML research lab and venture group.",
+        bestFor: "Investors and strategic partners supporting useful tools and a collaborative research lab.",
         outcomes: [
             "Founder, research, and venture direction discussion",
-            "Overview of MedAI, ViperMesh, Harneloop, PromptTriage, and Nullstate",
+            "Overview of MedAI, ViperMesh, Harneloop, PromptTriage, Nullstate, and OpenCoast",
             "Strategic partnership or funding-fit conversation",
         ],
         cta: "Start investor conversation",
         href: "/#contact",
-        highlighted: true,
+        highlighted: false,
     },
     {
         id: "venture-partners",

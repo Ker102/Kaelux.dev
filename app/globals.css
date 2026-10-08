@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Shared controls for Kaelux's public lab pages. */
+.lab-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(48rem, calc(100svh - 2rem));
+  padding: 7rem 0 5rem;
+}
+.lab-hero-title { max-width: 16ch; font-size: 2.75rem; line-height: 1.1; font-weight: 650; letter-spacing: 0; }
+.lab-star { filter: drop-shadow(0 2px 8px rgb(255 255 255 / 0.12)); }
+.lab-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem;
+  min-height: 3rem; padding: 0.8rem 1.25rem;
+  border: 1px solid transparent; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 600; line-height: 1.3; letter-spacing: 0;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+.lab-button-primary { background: white; color: black; border-color: white; box-shadow: 0 4px 16px rgb(0 0 0 / 0.14); }
+.lab-button-primary:hover { background: #e9e9e9; border-color: #e9e9e9; }
+.lab-button-secondary { background: rgb(255 255 255 / 0.06); color: white; border-color: rgb(255 255 255 / 0.3); }
+.lab-button-secondary:hover { background: rgb(255 255 255 / 0.12); border-color: rgb(255 255 255 / 0.55); }
+.lab-button-light { background: #111; color: white; border-color: #111; }
+.lab-button-light:hover { background: #333; border-color: #333; }
+.lab-button:focus-visible, .lab-text-link:focus-visible, .lab-nav-toggle:focus-visible, .lab-nav-link:focus-visible {
+  outline: 2px solid currentColor; outline-offset: 4px;
+}
+.lab-text-link { color: inherit; font-size: 0.95rem; font-weight: 600; text-decoration: underline; text-underline-offset: 0.25rem; }
+.lab-nav-panel { max-height: calc(100svh - 7rem); overscroll-behavior: contain; }
+.lab-nav-toggle, .lab-nav-link { transition: background-color 160ms ease; }
+.lab-nav-toggle:hover { background: #292929; }
+.lab-nav-link:hover, .lab-nav-link[aria-current="page"] { background: rgb(255 255 255 / 0.12); }
+.lab-enter { animation: lab-enter 500ms ease-out both; }
+@keyframes lab-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+section[id] { scroll-margin-top: 6rem; }
+@media (min-width: 640px) { .lab-hero-title { font-size: 3.75rem; } }
+@media (min-width: 1024px) { .lab-hero-title { font-size: 4.5rem; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lab-enter { animation: none; }
+  .lab-button, .lab-nav-toggle, .lab-nav-link { transition: none; }
+}
+
 @keyframes terminal-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -21,6 +64,10 @@ html {
   position: relative;
   scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 body {

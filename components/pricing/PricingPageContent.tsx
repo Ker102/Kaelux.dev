@@ -20,13 +20,13 @@ export default function PricingPageContent() {
                     <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-white/45">
                         Engagements
                     </p>
-                    <h1 className="mb-6 text-5xl font-semibold tracking-[-0.055em] text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500 md:text-7xl">
-                        Partner with the Kaelux venture group.
+                    <h1 className="mb-6 text-3xl font-semibold leading-tight tracking-normal text-white md:text-5xl">
+                        Let&apos;s work on a real problem.
                     </h1>
                     <p className="mx-auto max-w-3xl text-lg leading-8 text-gray-400 md:text-xl">
-                        Kaelux is not selling a generic menu of AI packages. This page routes the right
-                        people to the right conversation: investors, venture partners, selective business
-                        builds, and focused business automations.
+                        Bring your domain knowledge, a project idea, or a workflow that needs improving.
+                        We collaborate on research, open-source tools, practical products, and focused
+                        business automation.
                     </p>
                 </motion.div>
 
@@ -38,7 +38,7 @@ export default function PricingPageContent() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.18 }}
                             transition={{ type: "spring", stiffness: 60, damping: 18, delay: index * 0.05 }}
-                            className={`relative overflow-hidden rounded-[30px] border p-7 shadow-[0_24px_86px_rgba(0,0,0,0.28)] backdrop-blur ${
+                            className={`relative overflow-hidden rounded-[8px] border p-7 shadow-[0_24px_86px_rgba(0,0,0,0.28)] backdrop-blur ${
                                 track.highlighted
                                     ? "border-white/22 bg-white/[0.065]"
                                     : "border-white/10 bg-white/[0.03]"
@@ -103,7 +103,7 @@ export default function PricingPageContent() {
                     <h2 className="text-2xl font-semibold text-white">No package pricing by default.</h2>
                     <p className="mt-4 text-base leading-7 text-gray-400">
                         Kaelux work is evaluated by fit, seriousness, and leverage. If the request is not a
-                        match for the venture group, the answer should be a clear no rather than a generic
+                        match for the lab, the answer should be a clear no rather than a generic
                         services proposal.
                     </p>
                     <div className="mt-5">

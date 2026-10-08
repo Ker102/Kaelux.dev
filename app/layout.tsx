@@ -3,14 +3,15 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
+import MotionPreferences from "@/components/MotionPreferences";
 import { coreVentures } from "@/data/ventures";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kaelux | AI Research Lab and Venture Group",
-  description: "Kaelux is an Estonia-based AI and ML research lab building open-source tools, products, ventures, and security-first business automations.",
-  keywords: ["Kaelux", "AI research lab", "ML engineering", "AI ventures", "secure business automation", "Baltics", "Kristofer Jussmann", "MedAI", "ViperMesh", "Harneloop", "PromptTriage", "Nullstate"],
+  title: "Kaelux | Research, Tools, and Collaboration",
+  description: "Kaelux is an Estonia-based collaborative lab solving real problems through research, open-source tools, practical products, and business automation.",
+  keywords: ["Kaelux", "research lab", "ML engineering", "open-source tools", "secure business automation", "Baltics", "Kristofer Jussmann", "MedAI", "ViperMesh", "Harneloop", "PromptTriage", "Nullstate", "OpenCoast"],
   authors: [{ name: "Kaelux" }],
   creator: "Kaelux",
   publisher: "Kaelux",
@@ -31,8 +32,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Kaelux | AI Research Lab and Venture Group",
-    description: "AI and ML research, open-source tools, ventures, and security-first business automations from Estonia.",
+    title: "Kaelux | Research, Tools, and Collaboration",
+    description: "A collaborative research and engineering lab building useful tools and solving real problems from Estonia.",
     type: "website",
     url: "https://kaelux.dev",
     siteName: "Kaelux",
@@ -49,8 +50,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Kaelux | AI Research Lab and Venture Group",
-    description: "AI and ML research, open-source tools, ventures, and secure business automations from Estonia.",
+    title: "Kaelux | Research, Tools, and Collaboration",
+    description: "Research, practical engineering, open-source tools, and collaboration on real problems.",
     images: ["https://kaelux.dev/kaelux-icon-v3.png"],
   },
   robots: {
@@ -86,12 +87,12 @@ export default function RootLayout({
       "url": "https://kaelux.dev",
       "logo": "https://kaelux.dev/kaelux-icon-v3.png",
       "image": "https://kaelux.dev/kaelux-icon-v3.png",
-      "description": "Kaelux is an Estonia-based AI and ML research lab building open-source tools, products, ventures, and security-first business automations.",
+      "description": "Kaelux is an Estonia-based collaborative lab solving real problems through research, open-source tools, practical products, and business automation.",
       "areaServed": "Worldwide",
       "knowsAbout": [
         "Artificial Intelligence",
         "Machine Learning Research",
-        "AI Venture Building",
+        "Collaborative Research and Engineering",
         "Agent Harness Engineering",
         "Spatial Reasoning",
         "Medical AI Research Tooling",
@@ -128,7 +129,7 @@ export default function RootLayout({
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "name": "Kaelux ventures",
+      "name": "Kaelux projects",
       "itemListElement": coreVentures.map((venture, index) => ({
         "@type": "ListItem",
         "position": index + 1,
@@ -163,7 +164,7 @@ export default function RootLayout({
         />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Navbar />
-          {children}
+          <MotionPreferences>{children}</MotionPreferences>
         </ThemeProvider>
       </body>
     </html>

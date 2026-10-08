@@ -16,8 +16,9 @@ test("hero uses the approved semantic copy and omits the venture inventory phras
     source,
     /MedAI, ViperMesh, Harneloop, PromptTriage, and Nullstate sit under the Kaelux group\./,
   );
-  assert.match(source, /Where Research Becomes Ventures\./);
-  assert.match(source, /alt="Where Research Becomes Ventures\."/);
+  assert.match(source, /Let&apos;s solve real problems\./);
+  assert.match(source, /src="\/hero-title-real-problems\.png"/);
+  assert.match(source, /alt="" aria-hidden="true"/);
 });
 
 test("chat uses current Groq model and exposes validated lead submission", async () => {
@@ -56,7 +57,8 @@ test("hero title uses the reduced approved footprint", async () => {
 
 test("ventures use the clean editorial modular system", async () => {
   const source = await read("components/sections/Projects.tsx");
-  assert.match(source, /Research,\s*made useful\./);
+  assert.match(source, /Different problems\./);
+  assert.match(source, /Useful tools\./);
   assert.match(
     source,
     /lg:grid-cols-\[minmax\(0,0\.72fr\)_minmax\(0,1\.55fr\)\]/,
@@ -75,9 +77,26 @@ test("ventures use the clean editorial modular system", async () => {
 test("hero title bypasses lossy Next image optimization", async () => {
   const source = await read("components/sections/Hero.tsx");
   const titleImage =
-    source.match(/<Image\s+src="\/hero-title-ventures\.png"[\s\S]*?\/>/)?.[0] ?? "";
+    source.match(/<Image\s+src="\/hero-title-real-problems\.png"[\s\S]*?\/>/)?.[0] ?? "";
 
   assert.match(titleImage, /\bunoptimized\b/);
+});
+
+test("lab navigation uses a stable disclosure with keyboard and motion support", async () => {
+  const source = await read("components/Navbar.tsx");
+  assert.match(source, /aria-expanded=\{isOpen\}/);
+  assert.match(source, /aria-controls="kaelux-navigation"/);
+  assert.match(source, /event\.key === "Escape"/);
+  assert.match(source, /event\.key === "ArrowDown"/);
+  assert.match(source, /useReducedMotion/);
+  assert.match(source, /overflow-y-auto/);
+  assert.doesNotMatch(source, /width:\s*["']auto|height:\s*["']auto/);
+});
+
+test("project discovery includes the public-interest OpenCoast build", async () => {
+  const source = await read("data/ventures.ts");
+  assert.match(source, /id: "opencoast"/);
+  assert.match(source, /https:\/\/opencoast\.kaelux\.dev\//);
 });
 
 test("contact uses the sharp editorial split while preserving behavior", async () => {

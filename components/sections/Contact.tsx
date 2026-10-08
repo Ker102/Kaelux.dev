@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import Link from "next/link";
 import { submitContactForm } from "@/lib/contact-form";
 import { SiGmail, SiGithub, SiInstagram } from "react-icons/si";
@@ -121,7 +122,7 @@ export default function Contact() {
               Get in touch.
             </h2>
             <p className="mt-7 max-w-md text-base leading-7 text-white/60 md:text-lg md:leading-8">
-              For investors, partners, collaborators, or businesses inspired by a Kaelux venture, send the context. Founder-led conversations start here.
+              Bring a real problem, a project idea, or useful domain experience. We welcome researchers, developers, collaborators, and business clients.
             </p>
 
             <div className="mt-12 grid border-t border-white/15 sm:grid-cols-2 lg:grid-cols-1">
@@ -175,7 +176,7 @@ export default function Contact() {
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
               </span>
               <span>
-                Open to investors, strategic partners, and selective build collaborations
+                Open to collaborators, domain experts, and focused business projects
               </span>
             </div>
           </motion.div>

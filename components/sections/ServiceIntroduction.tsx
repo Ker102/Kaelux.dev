@@ -1,205 +1,40 @@
 "use client";
-
-import {
-    motion,
-    useReducedMotion,
-    useScroll,
-    useSpring,
-    useTransform,
-} from "framer-motion";
-import { Geist } from "next/font/google";
-import { useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
-import { NeedHelpLink } from "@/components/ui/NeedHelpLink";
-import { ScrollUnderline } from "@/components/ui/ScrollUnderline";
-import { staggerContainer, textStagger, textReveal } from "@/lib/animations";
-
-const geist = Geist({
-    subsets: ["latin"],
-    weight: ["500", "600"],
-});
+const steps = [
+  { title: "Understand the problem.", text: "Start with the people, constraints, and existing workflow. Define what a better result would look like." },
+  { title: "Build with the people using it.", text: "Work in small, testable steps. Share prototypes, inspect the output, and act on what users find." },
+  { title: "Measure and improve.", text: "Keep what helps. Publish reusable tools and lessons, then improve the next version with evidence." },
+];
 
 export default function ServiceIntroduction() {
-    const sectionRef = useRef<HTMLElement>(null);
-    const prefersReducedMotion = useReducedMotion();
-
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start end", "end start"],
-    });
-
-    const progress = useSpring(scrollYProgress, {
-        stiffness: 170,
-        damping: 28,
-        mass: 0.24,
-    });
-
-    const headerY = useTransform(
-        progress,
-        [0, 0.45, 1],
-        [prefersReducedMotion ? 10 : 28, 0, prefersReducedMotion ? -4 : -14]
-    );
-    const copyY = useTransform(
-        progress,
-        [0, 0.5, 1],
-        [prefersReducedMotion ? 8 : 22, 0, prefersReducedMotion ? -4 : -12]
-    );
-    const headerX = useTransform(
-        progress,
-        [0, 0.5, 1],
-        [prefersReducedMotion ? -4 : -24, 0, prefersReducedMotion ? 3 : 14]
-    );
-    const copyX = useTransform(
-        progress,
-        [0, 0.5, 1],
-        [prefersReducedMotion ? 4 : 18, 0, prefersReducedMotion ? -3 : -12]
-    );
-    const ctaY = useTransform(
-        progress,
-        [0, 0.5, 1],
-        [prefersReducedMotion ? 4 : 16, 0, prefersReducedMotion ? -2 : -10]
-    );
-
-    return (
-        <section
-            ref={sectionRef}
-            id="approach"
-            className="relative min-h-screen overflow-hidden bg-transparent px-6 pb-36 pt-12 md:pb-72 md:pt-40 lg:pb-[26rem] lg:pt-48 xl:pb-[30rem]"
-        >
-            <div className="relative z-10 container mx-auto max-w-7xl">
-
-                <motion.div
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: true, margin: "-10%" }}
-                    variants={staggerContainer}
-                    className="flex flex-col w-full"
-                >
-                    {/* Top Header Section */}
-                    <motion.div
-                        variants={textStagger}
-                        style={{ y: headerY, x: headerX }}
-                        className="relative mb-12 w-full text-center will-change-transform lg:mb-20 lg:text-left"
-                    >
-                        <h2 className={`${geist.className} flex flex-col gap-2 text-5xl font-medium leading-[1.05] tracking-[-0.04em] text-white md:text-6xl lg:hidden`}>
-                            <motion.span variants={textReveal} className="inline-block text-white">
-                                How Kaelux
-                            </motion.span>
-                            <motion.span variants={textReveal} className="inline-block text-white">
-                                builds AI
-                            </motion.span>
-                            <motion.span variants={textReveal} className="inline-block text-white">
-                                ventures
-                            </motion.span>
-                        </h2>
-
-                        <div className="relative hidden min-h-[18.5rem] lg:block xl:min-h-[20.5rem]">
-                            <h2 className={`${geist.className} relative z-10 flex flex-col gap-2 text-[5.25rem] font-medium leading-[1.05] tracking-[-0.04em] text-white xl:text-[5.65rem]`}>
-                                <motion.span variants={textReveal} className="inline-block text-white">
-                                    How Kaelux
-                                </motion.span>
-                                <motion.span variants={textReveal} className="inline-block text-white">
-                                    builds AI
-                                </motion.span>
-                                <motion.span variants={textReveal} className="sr-only">
-                                    ventures
-                                </motion.span>
-                            </h2>
-
-                            <motion.div
-                                variants={textReveal}
-                                aria-hidden="true"
-                                className="pointer-events-none absolute left-[20.25rem] top-[5.1rem] z-30 h-[26rem] w-[45rem] select-none xl:left-[22rem] xl:top-[5.45rem] xl:h-[30rem] xl:w-[52rem]"
-                            >
-                                <span
-                                    className={`${geist.className} absolute left-[4.75rem] top-[1.15rem] z-20 origin-left rotate-[5deg] text-[4.35rem] font-semibold italic leading-none tracking-[-0.05em] text-white drop-shadow-[0_18px_42px_rgba(0,0,0,0.58)] xl:left-[5.35rem] xl:top-[1.45rem] xl:text-[5rem]`}
-                                >
-                                    ventures
-                                </span>
-
-                                <div className="absolute right-[4rem] top-[-5.15rem] z-30 h-[33rem] w-[30rem] overflow-hidden xl:right-[4rem] xl:top-[-6.05rem] xl:h-[38rem] xl:w-[35rem]">
-                                    <Image
-                                        src="/Now_remove_all_202604241650-Picsart-BackgroundRemover.png"
-                                        alt=""
-                                        width={2752}
-                                        height={1536}
-                                        sizes="(min-width: 1280px) 35rem, 30rem"
-                                        className="absolute right-0 top-0 h-full w-auto max-w-none object-contain drop-shadow-[0_26px_76px_rgba(168,85,247,0.3)]"
-                                        priority={false}
-                                        unoptimized
-                                    />
-                                </div>
-                            </motion.div>
-                        </div>
-                    </motion.div>
-
-                    {/* Split Content Section: Text Left, Image Right */}
-                    <div className="grid grid-cols-1 items-center gap-12">
-
-                        {/* Left Column: Description & CTA */}
-                        <motion.div
-                            variants={textStagger}
-                            style={{ y: copyY, x: copyX }}
-                            className="flex flex-col items-center lg:items-start text-center lg:text-left will-change-transform"
-                        >
-                            <motion.p variants={textReveal} className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-6 max-w-2xl">
-                                Kaelux is an independent{" "}
-                                <ScrollUnderline underlineClassName="via-white/85">
-                                    AI and ML research lab
-                                </ScrollUnderline>
-                                . We investigate how agents reason, use tools, and work inside real environments, then turn useful results into{" "}
-                                <ScrollUnderline underlineClassName="via-white/85">
-                                    open-source projects, products, and ventures
-                                </ScrollUnderline>
-                                .
-                            </motion.p>
-                            <motion.p variants={textReveal} className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-10 max-w-2xl">
-                                That research also informs our focused service work:{" "}
-                                <ScrollUnderline underlineClassName="via-white/85">
-                                    security-first business automations
-                                </ScrollUnderline>
-                                , designed in Estonia for Baltic and international teams. Each system is scoped around a real operation, with clear permissions, human review, and{" "}
-                                <ScrollUnderline underlineClassName="via-white/85">
-                                    measurable time returned
-                                </ScrollUnderline>
-                                .
-                            </motion.p>
-
-                            <motion.div variants={textReveal} style={{ y: ctaY }} className="flex flex-col items-center lg:items-start space-y-6 will-change-transform">
-                                <Link href="#ventures" passHref>
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                                        className="group relative px-10 py-5 bg-gradient-to-b from-gray-100 to-gray-300 text-black text-lg font-bold tracking-wide flex items-center gap-3 rounded-full overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-shadow duration-300"
-                                    >
-                                        {/* Metallic Sheen Sweep */}
-                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent w-full -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
-
-                                        <span className="relative z-10">Explore Ventures</span>
-                                        <FaArrowRight className="relative z-10 text-black group-hover:translate-x-1 transition-transform duration-300" />
-                                    </motion.button>
-                                </Link>
-
-                                <p className="text-sm font-medium uppercase tracking-widest text-white/62">
-                                    Research-led engineering from Estonia
-                                </p>
-
-                                <NeedHelpLink
-                                    label="For investors and partners"
-                                    href="/pricing"
-                                    className="text-white/72 decoration-white/45 hover:text-white hover:decoration-white"
-                                />
-                            </motion.div>
-                        </motion.div>
-
-                    </div>
-
-                </motion.div>
-            </div>
-        </section>
-    );
+  return (
+    <section id="approach" className="relative overflow-hidden bg-transparent px-5 py-20 text-white md:py-28">
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <h2 className="max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">From a real problem<br className="hidden sm:block" /> to a useful tool.</h2>
+        <p className="mt-6 max-w-2xl text-base leading-7 text-white/70 md:text-lg md:leading-8">
+          Kaelux is a collaborative lab. We combine research, practical engineering, and firsthand experience to build tools that work in the real world.
+        </p>
+        <div className="mt-10 grid items-center gap-10 md:grid-cols-[1.2fr_0.8fr]">
+          <ol className="divide-y divide-white/15">
+            {steps.map((step) => (
+              <li key={step.title} className="py-5">
+                <h3 className="text-lg font-semibold">{step.title}</h3>
+                <p className="mt-2 max-w-xl text-base leading-7 text-white/70">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="relative hidden aspect-square md:block" aria-hidden="true">
+            <Image src="/Now_remove_all_202604241650-Picsart-BackgroundRemover.png" alt="" fill
+              sizes="(min-width: 1024px) 24rem, 40vw" className="object-contain" />
+          </div>
+        </div>
+        <Link href="/pricing" className="lab-button lab-button-primary mt-8">
+          Bring a problem <ArrowUpRight size={17} aria-hidden="true" />
+        </Link>
+      </div>
+    </section>
+  );
 }

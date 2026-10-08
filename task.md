@@ -45,3 +45,23 @@ The site should communicate:
 - The homepage terminal remains writable after failed quick prompts and shows a recoverable error state.
 - Redis ingestion now replaces stale source chunks when canonical content changes.
 - Lint, TypeScript, production build, ingestion-script compilation, desktop checks, and mobile article checks pass.
+
+## October 8, 2026 Local Review
+
+- Positioning now centers on collaboration: "Let's solve real problems."
+- Generated a replacement transparent chrome headline; retained the original asset.
+- Reduced hero effects, stabilized the navigation disclosure, and replaced the
+  pastel business-automation panel with a restrained divided layout.
+- Added OpenCoast and aligned public copy around research, tools, and collaboration.
+- Preserved contact delivery and the intake-agent security and consent behavior.
+- Desktop and mobile preview checks show no page overflow or broken images;
+  navigation supports keyboard focus, Escape, and reduced motion.
+- A reduced-motion browser check exposed mismatched server/client styles in
+  existing scroll effects. A shared SSR-safe preference hook now prevents that
+  mismatch and stops the homepage parallax when reduced motion is enabled.
+- Project cards now reveal individually rather than waiting for a fraction of
+  the entire tall grid to enter the viewport on a short mobile screen.
+- Lint, TypeScript, production build, and 22 regression tests pass after these fixes.
+- Review URL: http://127.0.0.1:3001/.
+- Work is local on `codex/collaborative-lab-review-2026-10-08`.
+  Do not push, open a PR, or deploy Kaelux until the user reviews it.

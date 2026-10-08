@@ -34,8 +34,8 @@ export const coreVentures: Venture[] = [
         description:
             "A unified studio for 3D professionals that brings agent-assisted creation, Blender tooling, and production workflows into one workspace instead of another stack of disconnected subscriptions.",
         audience: "Built from extensive spatial-reasoning research into where AI struggles to understand, inspect, and reliably change 3D scenes.",
-        href: "https://github.com/Ker102/ViperMesh",
-        linkLabel: "View repository",
+        href: "https://github.com/Ker102/vipermesh-blender",
+        linkLabel: "Explore the Blender connector",
         isExternal: true,
         tags: ["3D production", "Spatial reasoning", "Blender"],
     },
@@ -45,10 +45,11 @@ export const coreVentures: Venture[] = [
         stage: "Public build",
         category: "Evidence-gated agent harness evolution",
         description:
-            "An open-source framework that helps agents improve task-specific harnesses through real attempts, artifact inspection, trace-backed diagnosis, candidate testing, and evidence-gated promotion.",
+            "An open-source framework that helps agents inspect their results, look back through their actions, diagnose mistakes, and test improvements to their tools and instructions.",
         audience: "First used to develop and measure the ViperMesh Blender harness; designed for coding, browser, visual, research, document, and custom application agents.",
-        href: "/wiki/harness-evolution-vs-fine-tuning",
-        linkLabel: "Read the engineering article",
+        href: "https://harneloop.kaelux.dev/",
+        linkLabel: "Explore Harneloop",
+        isExternal: true,
         tags: ["Open source", "Agent evaluation", "Harness research"],
     },
     {
@@ -76,6 +77,14 @@ export const coreVentures: Venture[] = [
         linkLabel: "View repository",
         isExternal: true,
         tags: ["Terraform", "DevSecOps", "IaC security"],
+    },
+    {
+        id: "opencoast", name: "OpenCoast", stage: "Public build",
+        category: "Coastal access and public-interest mapping",
+        description: "An open-source map bringing coastal access claims, routes, sources, and community review together. Anyone can submit information without creating an account.",
+        audience: "For coastal visitors, local communities, mappers, and researchers. Coverage grows through reviewed contributions; the map does not guarantee legal access.",
+        href: "https://opencoast.kaelux.dev/", linkLabel: "Explore the map", isExternal: true,
+        tags: ["Open source", "Community mapping", "Coastal access"],
     },
 ];
 

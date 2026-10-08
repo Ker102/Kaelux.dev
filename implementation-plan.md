@@ -56,3 +56,13 @@
 - Verified the terminal success path and forced error path in the browser.
 - Verified the Harneloop article at 1440px and 390px with no page-level horizontal overflow.
 - Full lint, typecheck, production build, and Python syntax validation pass.
+
+## October 8, 2026 Review Batch
+
+1. [x] Refresh upstream and work on a local review branch without reverting user changes.
+2. [x] Apply collaborative-lab copy, generate the replacement image headline,
+   and include OpenCoast in the public project list.
+3. [x] Simplify hero CTAs and automation layout; stabilize navigation and motion.
+4. [x] Verify lint, TypeScript, regression tests, build, and desktop/mobile preview.
+5. [x] Start the local review server on port 3001.
+6. [ ] User review and explicit approval before any Kaelux push or deployment.

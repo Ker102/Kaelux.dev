@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import AboutPageClient from "./AboutPageClient";
 
 export const metadata: Metadata = {
-    title: "About Kaelux | AI and ML Research Lab",
+    title: "About Kaelux | Research and Engineering Lab",
     description:
-        "Learn about Kaelux, the Estonia-based AI and ML research lab behind open-source tools, products, ventures, and secure business automations.",
+        "Meet Kaelux, a collaborative research and engineering lab building useful tools with researchers, developers, and domain experts.",
     keywords: [
         "Kaelux",
         "Kaelux.dev",
-        "Kaelux ventures",
+        "Kaelux projects",
         "AI research lab",
         "ML engineering",
         "AI product lab",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     creator: "Kaelux",
     publisher: "Kaelux",
     openGraph: {
-        title: "About Kaelux | AI and ML Research Lab",
+        title: "About Kaelux | Research and Engineering Lab",
         description:
-            "Kaelux is an Estonia-based AI and ML research lab building open-source tools, products, divisions, and ventures.",
+            "Kaelux is an Estonia-based collaborative lab working on real problems through research, open-source tools, and practical engineering.",
         type: "website",
         url: "https://kaelux.dev/about",
         siteName: "Kaelux",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary",
-        title: "About Kaelux | AI and ML Research Lab",
+        title: "About Kaelux | Research and Engineering Lab",
         description:
-            "AI and ML research, open-source tools, products, ventures, and secure automations by Kaelux.",
+            "Research, open-source tools, practical products, and collaboration by Kaelux.",
         images: ["https://kaelux.dev/kaelux-icon-v3.png"],
     },
     robots: {
@@ -70,7 +70,7 @@ export default function AboutPage() {
             name: "What is Kaelux?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Kaelux is an Estonia-based AI and ML research lab and venture group behind MedAI, ViperMesh, Harneloop, PromptTriage, and Nullstate.",
+                text: "Kaelux is an Estonia-based collaborative research and engineering lab behind MedAI, ViperMesh, Harneloop, PromptTriage, Nullstate, and OpenCoast.",
             },
         },
         {
@@ -86,7 +86,7 @@ export default function AboutPage() {
             name: "What kind of work does Kaelux do?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Kaelux researches AI/ML systems, publishes open-source tools, develops selected work into products and ventures, and builds secure business automations.",
+                text: "Kaelux works with collaborators to solve real problems through research, open-source tools, practical products, and business automation.",
             },
         },
         {
@@ -94,7 +94,7 @@ export default function AboutPage() {
             name: "Is Kaelux a software company or a content channel?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Kaelux is a research lab, software builder, and venture group rather than a personal portfolio or media channel.",
+                text: "Kaelux builds useful software, publishes open-source work, and collaborates with researchers, developers, domain experts, and business clients.",
             },
         },
     ];
@@ -118,7 +118,7 @@ export default function AboutPage() {
                 url: "https://kaelux.dev",
                 logo: "https://kaelux.dev/kaelux-icon-v3.png",
                 description:
-                    "Kaelux is an Estonia-based AI and ML research lab and venture group behind MedAI, ViperMesh, Harneloop, PromptTriage, and Nullstate.",
+                    "Kaelux is an Estonia-based collaborative research and engineering lab behind MedAI, ViperMesh, Harneloop, PromptTriage, Nullstate, and OpenCoast.",
                 areaServed: "Worldwide",
                 knowsAbout: [
                     "Artificial Intelligence",

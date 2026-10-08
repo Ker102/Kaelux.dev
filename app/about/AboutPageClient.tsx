@@ -46,8 +46,8 @@ const focusAreas = [
 const facts = [
     {
         label: "Entity Type",
-        value: "AI and ML Research Lab",
-        detail: "Kaelux is an Estonia-based research lab, software builder, and venture group.",
+        value: "Research and Engineering Lab",
+        detail: "Kaelux is an Estonia-based collaborative research and engineering lab.",
     },
     {
         label: "Founder",
@@ -61,7 +61,7 @@ const facts = [
     },
     {
         label: "Core Focus",
-        value: "Research, Open Source, and Ventures",
+        value: "Research, Useful Tools, and Collaboration",
         detail: "MedAI, ViperMesh, Harneloop, PromptTriage, Nullstate, and secure business automation.",
     },
 ];
@@ -69,7 +69,7 @@ const facts = [
 const faqs = [
     {
         question: "What is Kaelux?",
-        answer: "Kaelux is an Estonia-based AI and ML research lab and venture group behind MedAI, ViperMesh, Harneloop, PromptTriage, and Nullstate.",
+        answer: "Kaelux is an Estonia-based collaborative research and engineering lab behind MedAI, ViperMesh, Harneloop, PromptTriage, Nullstate, and OpenCoast.",
     },
     {
         question: "Who founded Kaelux?",
@@ -77,11 +77,11 @@ const faqs = [
     },
     {
         question: "What kind of work does Kaelux do?",
-        answer: "Kaelux researches AI/ML systems, publishes open-source tools, develops selected work into products and ventures, and builds secure business automations.",
+        answer: "Kaelux works with collaborators to solve real problems through research, open-source tools, practical products, and business automation.",
     },
     {
         question: "Is Kaelux a software company or a content channel?",
-        answer: "Kaelux is a research lab, software builder, and venture group rather than a personal portfolio or media channel.",
+        answer: "Kaelux builds useful software, publishes open-source work, and collaborates with researchers, developers, domain experts, and business clients.",
     },
 ];
 
@@ -122,7 +122,7 @@ export default function AboutPageClient() {
                             className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed max-w-3xl"
                         >
                             <strong className="text-white">Kaelux</strong> is an
-                            Estonia-based AI and ML research lab and venture group
+                            Estonia-based collaborative research and engineering lab
                             behind MedAI, ViperMesh, Harneloop, PromptTriage,
                             Nullstate, and the experiments that connect them.
                         </motion.p>
@@ -131,7 +131,7 @@ export default function AboutPageClient() {
                             variants={slideUpFade}
                             className="max-w-2xl text-sm uppercase tracking-[0.28em] text-gray-500"
                         >
-                            Last updated July 23, 2026
+                            Last updated October 7, 2026
                         </motion.p>
                     </motion.div>
                 </div>
@@ -154,11 +154,10 @@ export default function AboutPageClient() {
                                 Kaelux At a Glance
                             </h2>
                             <p className="max-w-3xl text-lg text-gray-300 font-light leading-relaxed">
-                                This page exists to make the Kaelux brand easy to
-                                identify, cite, and understand across search
-                                engines, AI assistants, partner directories, and
-                                social platforms as a research lab that publishes
-                                open-source work and develops products and ventures.
+                                Our projects cover agent reliability, creative workflows,
+                                infrastructure security, medical research tools, and
+                                public-interest mapping. The common goal is useful
+                                software grounded in real needs.
                             </p>
                         </motion.div>
 
@@ -205,11 +204,10 @@ export default function AboutPageClient() {
                             variants={slideUpFade}
                             className="rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.05] p-7 text-lg text-gray-200 leading-relaxed"
                         >
-                            Kaelux is a founder-led AI and ML research lab,
-                            software builder, and venture group. It is the
-                            operating label under which Kristofer Jussmann
-                            researches, publishes, and develops intelligent
-                            systems.
+                            Kaelux is a collaborative lab founded by Kristofer Jussmann.
+                            We start with problems people encounter and combine
+                            research, engineering, and firsthand experience to build
+                            practical solutions.
                         </motion.div>
                         <motion.p
                             variants={slideUpFade}
@@ -249,11 +247,10 @@ export default function AboutPageClient() {
                                 <strong className="text-white">
                                     Kristofer Jussmann
                                 </strong>{" "}
-                                to give AI and ML research a place to become
-                                open-source infrastructure, useful products, and
-                                ventures. The site makes that work legible to
-                                researchers, collaborators, investors, partners,
-                                and businesses.
+                                to work on real problems with people who understand them.
+                                The lab welcomes researchers, developers, domain experts,
+                                and businesses that want to turn a practical need into
+                                a useful tool.
                             </p>
                             <p>
                                 Kaelux closes the loop between research and use:
@@ -324,22 +321,19 @@ export default function AboutPageClient() {
                             className="text-lg text-gray-300 font-light leading-relaxed"
                         >
                             Kristofer is an Agentic Systems Architect & Cloud
-                            Engineer based in Estonia, designing intelligent
+                            Engineer based in Estonia, developing
                             products that bridge LLM orchestration, autonomous
                             agents, research workflows, creative tooling, and
-                            infrastructure security. He focuses on turning those
-                            systems into ventures with a coherent story and
-                            visible public proof.
+                            infrastructure security. He focuses on useful results,
+                            observable systems, and public engineering evidence.
                         </motion.p>
                         <motion.p
                             variants={slideUpFade}
                             className="text-lg text-gray-400 font-light leading-relaxed"
                         >
-                            Under the Kaelux brand, he combines hands-on
-                            founder-led product thinking with hands-on
-                            engineering so Kaelux can move from scattered
-                            experiments to ventures that deserve more capital,
-                            partners, or distribution.
+                            Through Kaelux, he works with clients and collaborators
+                            to understand problems, build practical systems, and
+                            improve them through real use and measured evidence.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -398,9 +392,9 @@ export default function AboutPageClient() {
                             Interested in Kaelux?
                         </h2>
                         <p className="text-gray-400 text-lg">
-                            Investors, strategic partners, collaborators, and
-                            businesses inspired by the ventures can start with
-                            the engagement paths or contact form.
+                            Researchers, developers, businesses, and people with
+                            firsthand experience of a problem can start with
+                            the collaboration paths or contact form.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4 pt-4">
                             <Link

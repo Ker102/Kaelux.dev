@@ -45,11 +45,11 @@ export default function AboutKaelux() {
                         variants={slideUpFade}
                         className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-3xl"
                     >
-                        Kaelux is an Estonia-based AI and ML research lab and venture
-                        group. We study how intelligent systems reason, use tools,
-                        inspect artifacts, and operate in real environments, then
-                        publish the useful work or develop it into products,
-                        divisions, and ventures.
+                        Kaelux is a collaborative research and engineering lab based in Estonia.
+                        We build useful tools with researchers, developers, and people who
+                        understand the problem firsthand. Our work spans agent reliability,
+                        creative tools, infrastructure security, and public-interest projects
+                        such as OpenCoast.
                     </motion.p>
                 </motion.div>
             </div>
