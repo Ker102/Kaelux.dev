@@ -76,4 +76,4 @@
 4. [x] Recompose the approach CTA and robot in a shared responsive coordinate system.
 5. [x] Repair the background stacking and give the complete artwork enough room.
 6. [x] Run focused tests, lint, build, desktop/mobile visual and motion checks.
-7. [ ] Commit only this correction locally; do not push.
+7. [x] Commit only this correction locally; do not push. Source checkpoint: `0bc99d2`.

@@ -96,3 +96,4 @@ The site should communicate:
   browser checks without console or hydration errors.
 - 25 focused tests, lint, and production build pass.
 - Local preview remains http://127.0.0.1:3001/. No Kaelux push is authorized yet.
+- Correction committed locally as `0bc99d2`; production remains unchanged.
