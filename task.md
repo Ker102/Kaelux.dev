@@ -198,3 +198,4 @@ The site should communicate:
   liquid artwork, robot, and CTA rectangles match the 1440px baseline exactly.
 - All 33 focused tests, lint, and the production build pass. The CSS parser
   regression test requires every new style rule to remain below 768px.
+- Source checkpoint: `a3bb754`. The local preview remains on port 3001; no push.

@@ -100,4 +100,4 @@
 2. [x] Write the mobile plan and scope regression tests.
 3. [x] Add mobile-only navigation, artwork, robot CTA, typography, and input refinements.
 4. [x] Verify phone interactions, all landing sections, and unchanged desktop rendering.
-5. [ ] Run tests, lint, build, and make scoped local commits without pushing.
+5. [x] Run tests, lint, build, and make scoped local commits without pushing. Source checkpoint: `a3bb754`.
