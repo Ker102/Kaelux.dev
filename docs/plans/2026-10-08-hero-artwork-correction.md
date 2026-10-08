@@ -7,8 +7,9 @@ new navigation, buttons, and clean lower sections. This is a local review only.
 
 ## Composition
 
-- Original liquid images retain their original breakpoint sizes and positioning,
-  without the previous review's low-opacity treatment or full-height black overlay.
+- Original liquid images retain their materials and full-strength treatment.
+  Right-side positioning uses their measured visible bounds to prevent collision;
+  there is no full-height black overlay over the hero.
 - The star uses a slower, restrained shimmer and the existing glow image. Both
   stop under reduced motion. There is no extra Kaelux label under the star.
 - Descriptions rotate within a fixed-height area. Pause/resume is available;
@@ -16,7 +17,8 @@ new navigation, buttons, and clean lower sections. This is a local review only.
 - Hero and approach share an artwork owner. The approach background is rendered
   once, faded at its boundaries, and given enough height to finish before the
   project section begins. On mobile its full composition adapts to section height.
-- The approach text has a feathered readability layer, not a framed panel.
+- The approach text has a feathered readability layer owned by the full artwork,
+  not the foreground section rectangle. This prevents horizontal dark bands.
 - The robot and tilted CTA share one coordinate system. Its source canvas is
   2752 x 1536, with the character occupying approximately x1595..2493 and
   y247..1294. A CSS crop removes empty canvas without editing the original image.
@@ -56,3 +58,21 @@ Generation prompt:
 - Screenshots are in `output/playwright/`; generated logs and QA artifacts are
   not part of the source commit.
 - All 25 focused tests, lint, and the production build pass.
+
+## Right-Side Spacing Follow-Up
+
+- The upper-right PNG is 571x1024, not square. Its bright alpha pixels extend
+  to source y769, giving a visible-height ratio of 769/571 = 1.34676 times
+  rendered width.
+- The lower-right PNG is 1024x571. Its first bright pixels begin at y18.
+  With the existing 5% downward translation, its first visible pixel is
+  0.512158 times its rendered width above the hero bottom.
+- CSS uses those two bounds to place the upper piece above the lower piece,
+  reserving 96px on desktop and 80px on tablet. Mobile reserves at least 64px.
+  The upper piece also moves left; the lower piece follows the taller hero bottom.
+- Seven viewport checks from 320x568 to 2560x1080 confirm visible separation,
+  buttons within the first viewport, and no horizontal overflow. Screenshot
+  checks at 1440 and 1909 pixels confirm the approach background has no bounded
+  dark overlay. Reduced-motion controls remain correct.
+- All 28 focused tests, lint, and the production build pass for this follow-up.
+  Changes remain local pending approval.

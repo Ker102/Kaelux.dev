@@ -111,3 +111,32 @@ The site should communicate:
   clipping, page overflow, broken images, or browser errors; buttons remain visible.
 - All 26 focused tests, lint, and the production build pass.
 - Keep this follow-up local, without pushing.
+
+## Separate Right-Side Liquids And Remove Dark Bands
+
+- The remaining collision is between `liquid-flow-1.png` and `liquid-flow-3.png`,
+  not the separate approach wave. The upper asset is 571x1024, although its
+  JSX declared it square. Use its real dimensions and visible-pixel bounds.
+- Move the upper-right piece up and left and reserve a visible gap before the
+  lower-right piece. Validate the pixels rather than only comparing element boxes.
+- Provide additional hero height on desktop, with smaller-screen constraints.
+- Remove the section-bounded readability overlay that produces dark horizontal
+  bands. Preserve contrast with a continuously blended layer owned by the full
+  approach artwork, not by the foreground section's rectangle.
+- Keep the current headline, buttons, navigation, star, phrase rotation, robot,
+  and original assets. Keep all changes local pending review.
+
+### Verification
+
+- Measured the source PNG alpha bounds and projected their visible pixels into
+  seven layouts: 320x568, 390x844, 768x1024, 1366x768, 1440x900, 1909x938,
+  and 2560x1080. Desktop clearance is approximately 96px; tablet clearance
+  is 80px. Mobile clearance remains at least 64px.
+- Desktop hero height now reaches 720px on the laptop check, 858px at
+  1909x938, and 960px at 2560x1080. Hero buttons stay within every viewport.
+- Screenshot review confirms the section-local dark bands are removed and
+  the approach copy retains readable contrast. The complete background stays
+  inside its stage, with no horizontal overflow or browser page errors.
+- Reduced motion disables the star animation and description rotation.
+- All 28 focused tests, lint, and the production build pass. The preview remains
+  available at http://127.0.0.1:3001/. Generated QA artifacts are not staged.

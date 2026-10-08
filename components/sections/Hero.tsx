@@ -62,12 +62,12 @@ export default function Hero() {
   return (
     <section id="hero" className="lab-hero relative z-10 text-white">
       <div aria-hidden="true" className="hero-liquid-art pointer-events-none absolute inset-0">
-        <Image src="/images/decorative/liquid-flow-1.png" alt="" width={800} height={800} loading="eager"
-          className="hero-liquid absolute right-0 top-0 w-[250px] translate-x-[20%] -translate-y-[10%] md:w-[400px] lg:w-[500px]" />
+        <Image src="/images/decorative/liquid-flow-1.png" alt="" width={571} height={1024} loading="eager"
+          className="hero-liquid hero-liquid-upper" />
         <Image src="/images/decorative/liquid-flow-left-hq.png" alt="" width={1000} height={1000} loading="eager"
           className="hero-liquid absolute left-0 top-0 w-[150px] -translate-x-[20%] md:w-[600px] lg:w-[800px]" />
         <Image src="/images/decorative/liquid-flow-3.png" alt="" width={1024} height={571} loading="eager"
-          className="hero-liquid hero-liquid-bottom absolute bottom-0 right-0 w-[400px] translate-x-[5%] translate-y-[5%] md:w-[700px] lg:w-[900px]" />
+          className="hero-liquid hero-liquid-bottom" />
       </div>
       <div className="lab-enter relative mx-auto flex w-full max-w-6xl flex-col items-center px-5 text-center">
         <div className="hero-star-scene relative mb-6 h-20 w-20 md:h-28 md:w-28" aria-hidden="true">

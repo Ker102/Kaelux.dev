@@ -48,3 +48,21 @@ test("robot and tilted CTA share a single composition with one accessible link",
   assert.match(css, /approach-robot-crop[^}]*pointer-events: none/);
   assert.match(css, /approach-robot-image[^}]*max-width: none/);
 });
+
+test("corner artwork uses its real aspect ratio and a visible-pixel clearance", async () => {
+  const source = await readFile("components/sections/Hero.tsx", "utf8");
+  const css = await readFile("app/globals.css", "utf8");
+  const png = await readFile("public/images/decorative/liquid-flow-1.png");
+  assert.equal(png.readUInt32BE(16), 571);
+  assert.equal(png.readUInt32BE(20), 1024);
+  assert.match(source, /src="\/images\/decorative\/liquid-flow-1\.png"[^>]*width=\{571\} height=\{1024\}/);
+  assert.match(source, /hero-liquid-upper/);
+  assert.match(css, /--hero-liquid-gap: 6rem/);
+  assert.match(css, /top: min\(-6rem, calc\(100%[^;]*var\(--hero-liquid-gap\)/);
+});
+
+test("readability shading belongs to the continuous artwork, not a section rectangle", async () => {
+  const css = await readFile("app/globals.css", "utf8");
+  assert.doesNotMatch(css, /#approach::before/);
+  assert.match(css, /\.lab-approach-art::after\s*\{[^}]*pointer-events: none/);
+});
