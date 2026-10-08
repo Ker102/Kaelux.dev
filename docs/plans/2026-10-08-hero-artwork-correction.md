@@ -17,8 +17,10 @@ new navigation, buttons, and clean lower sections. This is a local review only.
 - Hero and approach share an artwork owner. The approach background is rendered
   once, faded at its boundaries, and given enough height to finish before the
   project section begins. On mobile its full composition adapts to section height.
-- The approach text has a feathered readability layer owned by the full artwork,
-  not the foreground section rectangle. This prevents horizontal dark bands.
+- The approach artwork has no readability overlay. Brighter copy and a tight
+  text shadow protect the letters without dimming the wave image.
+- A static neutral hairline grid sits behind the hero's existing artwork, faded
+  unevenly by two soft masks. The central star remains the focal ornament.
 - The robot and tilted CTA share one coordinate system. Its source canvas is
   2752 x 1536, with the character occupying approximately x1595..2493 and
   y247..1294. A CSS crop removes empty canvas without editing the original image.
@@ -76,3 +78,18 @@ Generation prompt:
   dark overlay. Reduced-motion controls remain correct.
 - All 28 focused tests, lint, and the production build pass for this follow-up.
   Changes remain local pending approval.
+
+## Grid And Uncovered Waves Preview
+
+The subsequent review rejected the artwork-wide scrim as too broad even without
+its earlier horizontal edges. Remove it entirely; the source wave composition
+must remain visible. Keep contrast treatment at the text rather than on the art.
+The grid is a local preview of the user's suggested replacement for star specks:
+CSS-only, static, neutral, 48px cells on mobile and 72px on larger screens.
+Existing artwork, layout, and motion remain unchanged. Do not push before review.
+
+Validated at seven viewport sizes, including short mobile, tablet, laptop, and
+wide desktop. Wave pixels sampled outside the foreground differ from the rendered
+source by only 1-3 RGB levels, instead of being dimmed by an overlay. There are no
+missing images, horizontal overflow, or browser page errors. The grid has no
+animation or pointer interception. All 29 focused tests, lint, and build pass.

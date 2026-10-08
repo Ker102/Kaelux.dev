@@ -61,6 +61,7 @@ function HeroSubtitle() {
 export default function Hero() {
   return (
     <section id="hero" className="lab-hero relative z-10 text-white">
+      <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-0" />
       <div aria-hidden="true" className="hero-liquid-art pointer-events-none absolute inset-0">
         <Image src="/images/decorative/liquid-flow-1.png" alt="" width={571} height={1024} loading="eager"
           className="hero-liquid hero-liquid-upper" />

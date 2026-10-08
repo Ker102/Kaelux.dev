@@ -13,6 +13,13 @@
 .lab-hero-title { max-width: 16ch; font-size: 2.75rem; line-height: 1.1; font-weight: 650; letter-spacing: 0; }
 .lab-star { filter: drop-shadow(0 2px 8px rgb(255 255 255 / 0.12)); }
 .lab-intro-artwork { position: relative; isolation: isolate; overflow: hidden; background: #000; }
+.hero-grid {
+  background-image: linear-gradient(to right, rgb(255 255 255 / 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / 0.1) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center;
+  mask-image: radial-gradient(ellipse at 28% 24%, black 0%, rgb(0 0 0 / 0.6) 25%, transparent 64%), radial-gradient(ellipse at 78% 68%, rgb(0 0 0 / 0.7) 0%, transparent 56%);
+}
+@media (min-width: 768px) { .hero-grid { background-size: 72px 72px; } }
 .hero-liquid-art {
   --hero-upper-size: 250px;
   --hero-lower-size: 400px;
@@ -54,10 +61,8 @@
   aspect-ratio: 2752 / 2168;
   mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 80%, transparent 100%);
 }
-.lab-approach-art::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / 0.9) 10%, rgb(0 0 0 / 0.9) 52%, transparent 76%);
-}
+#approach h2, #approach h3, #approach p { text-shadow: 0 1px 2px #000, 0 0 3px #000; }
+#approach p { color: #e4e4e7; }
 .approach-handoff { position: relative; isolation: isolate; justify-self: center; width: min(100%, 21rem); aspect-ratio: 440 / 500; }
 .approach-held-cta { position: absolute; left: -0.75rem; top: 14.5%; z-index: 1; width: 13.3rem; transform: rotate(8deg); white-space: nowrap; }
 .approach-robot-crop { pointer-events: none; position: absolute; right: 0; top: 0; z-index: 2; width: 80%; aspect-ratio: 1000 / 1150; overflow: hidden; }
@@ -68,7 +73,6 @@
 @media (max-width: 767px) {
   .lab-approach-stage { min-height: 0; padding-bottom: 3rem; }
   .lab-approach-art { height: 100%; aspect-ratio: auto; }
-  .lab-approach-art::after { background: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.86) 19%, rgb(0 0 0 / 0.86) 64%, transparent 82%); }
 }
 @media (min-width: 768px) and (max-height: 850px) {
   .lab-hero { min-height: calc(100svh - 3rem); padding: 6rem 0 4.5rem; }

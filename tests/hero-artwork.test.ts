@@ -61,8 +61,21 @@ test("corner artwork uses its real aspect ratio and a visible-pixel clearance", 
   assert.match(css, /top: min\(-6rem, calc\(100%[^;]*var\(--hero-liquid-gap\)/);
 });
 
-test("readability shading belongs to the continuous artwork, not a section rectangle", async () => {
+test("approach contrast is text-local without a shadow over the waves", async () => {
   const css = await readFile("app/globals.css", "utf8");
-  assert.doesNotMatch(css, /#approach::before/);
-  assert.match(css, /\.lab-approach-art::after\s*\{[^}]*pointer-events: none/);
+  assert.doesNotMatch(css, /#approach::(?:before|after)|\.lab-approach-art::(?:before|after)/);
+  assert.match(css, /#approach h2, #approach h3, #approach p\s*\{[^}]*text-shadow:/);
+  assert.match(css, /#approach p\s*\{[^}]*color: #e4e4e7/);
+});
+
+test("hero grid is a static decorative layer with unevenly faded visibility", async () => {
+  const source = await readFile("components/sections/Hero.tsx", "utf8");
+  const css = await readFile("app/globals.css", "utf8");
+  assert.match(source, /<div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-0" \/>/);
+  assert.ok(source.indexOf('className="hero-grid') < source.indexOf('className="hero-liquid-art'));
+  const grid = css.match(/\.hero-grid\s*\{[^}]+\}/)?.[0] ?? "";
+  assert.match(grid, /background-size: 48px 48px/);
+  assert.equal((grid.match(/linear-gradient/g) ?? []).length, 2);
+  assert.equal((grid.match(/radial-gradient/g) ?? []).length, 2);
+  assert.doesNotMatch(grid, /animation|transition|filter/);
 });

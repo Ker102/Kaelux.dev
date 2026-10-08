@@ -141,3 +141,29 @@ The site should communicate:
 - All 28 focused tests, lint, and the production build pass. The preview remains
   available at http://127.0.0.1:3001/. Generated QA artifacts are not staged.
 - Source checkpoint: `687cabb`. No changes have been pushed.
+
+## Uncover Waves And Preview A Faded Hero Grid
+
+- Remove the artwork-wide readability overlay entirely. The previous correction
+  eliminated its horizontal boundaries but still left a broad dark shadow.
+- Keep text readable using brighter copy and a tight, glyph-local text shadow;
+  do not paint black gradients or panels over the decorative image.
+- Add a static, neutral hairline grid beneath the hero's existing chrome and
+  liquids. Fade it unevenly and keep it outside the accessibility tree and
+  pointer interactions. No new assets, dependencies, or animation loops.
+- Preserve the approved positioning, controls, rotating phrases, and robot CTA.
+- Verify mobile, tablet, and desktop views, then commit locally without pushing.
+
+### Grid Preview Verification
+
+- Seven viewport checks from 320x568 to 2560x1080 confirm no overflow, missing
+  images, or browser page errors. Hero buttons remain visible and right-side
+  liquid clearance is unchanged.
+- The grid has no animation and no pointer events; it uses 48px cells on mobile
+  and 72px on larger screens. Original star and description motion remain intact.
+- Both artwork and section overlay pseudo-elements are absent. Screenshot pixel
+  checks against the rendered source image differ by at most 3 RGB levels at
+  three sampled wave locations, confirming the broad dark scrim is gone.
+- Mobile and desktop screenshots confirm the original waves and robot composition
+  are visible; only the letters receive contrast treatment.
+- All 29 focused tests, lint, and the production build pass. Keep this local.
