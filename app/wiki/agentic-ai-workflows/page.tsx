@@ -120,7 +120,7 @@ export default function AgenticAIWorkflowsPage() {
                         the Command Palette. Merge this entry into the existing <code>servers</code> object in
                         your profile&apos;s <code>mcp.json</code>, preserving other servers:
                     </p>
-                    <pre className="my-4 max-w-full overflow-x-auto rounded-lg bg-black/30 p-4 text-sm" tabIndex={0} aria-label="VS Code MCP configuration">
+                    <pre className="my-4 max-w-full overflow-x-auto rounded-lg bg-black/30 p-4 text-sm" tabIndex={0} role="region" aria-label="VS Code MCP configuration">
                         <code>{`{
   "servers": {
     "parallel-search": {
