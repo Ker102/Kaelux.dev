@@ -102,6 +102,64 @@ export default function AgenticAIWorkflowsPage() {
                     caption="Comparison based on enterprise deployment patterns observed by Kaelux engineering teams."
                 />
 
+                <section className="mb-8" aria-labelledby="web-research-example">
+                    <h2 id="web-research-example" className="text-xl font-semibold text-white mb-3">
+                        Example: A Source-Backed Research Brief
+                    </h2>
+                    <p>
+                        A research workflow can search for current information, read primary sources, and produce
+                        a brief for human review. An optional tool for this is{" "}
+                        <a href="https://docs.parallel.ai/integrations/mcp/search-mcp" className="text-cyan-400 underline">
+                            Parallel Search MCP
+                        </a>: it provides free web search and page fetching without an account or API key.
+                        Anonymous search uses Fast mode and is rate limited, so start with a small public research task.
+                    </p>
+                    <h3 className="text-lg font-semibold text-white mt-4 mb-2">Connect a research client</h3>
+                    <p>
+                        In VS Code with Copilot Chat available, run <code>MCP: Open User Configuration</code> from
+                        the Command Palette. Merge this entry into the existing <code>servers</code> object in
+                        your profile&apos;s <code>mcp.json</code>, preserving other servers:
+                    </p>
+                    <pre className="my-4 max-w-full overflow-x-auto rounded-lg bg-black/30 p-4 text-sm" tabIndex={0} aria-label="VS Code MCP configuration">
+                        <code>{`{
+  "servers": {
+    "parallel-search": {
+      "type": "http",
+      "url": "https://search.parallel.ai/mcp",
+      "headers": {
+        "User-Agent": "Kaelux-Web-Research/1.0"
+      }
+    }
+  }
+}`}</code>
+                    </pre>
+                    <p>
+                        Run <code>MCP: List Servers</code>, select <code>parallel-search</code>, and start it.
+                        Review the server trust prompt, then enable <code>web_search</code> and <code>web_fetch</code>
+                        {" "}in chat&apos;s tool picker. See the{" "}
+                        <a href="https://code.visualstudio.com/docs/copilot/customization/mcp-servers" className="text-cyan-400 underline">
+                            VS Code MCP guide
+                        </a>{" "}
+                        for client setup and troubleshooting. This configures your research client; the Kaelux
+                        site&apos;s intake assistant is separate.
+                    </p>
+                    <h3 className="text-lg font-semibold text-white mt-4 mb-2">Try a bounded task</h3>
+                    <blockquote className="my-4 border-l-2 border-cyan-400 pl-4">
+                        Research the current deployment options for n8n using public official documentation.
+                        Use web_search to find relevant pages, then web_fetch to read them. Compare where each
+                        option runs and who maintains it. For every claim, include its source URL and publication
+                        or update date when available. Mark missing dates and unresolved questions explicitly.
+                        Return a short brief for review; do not change any systems.
+                    </blockquote>
+                    <p>
+                        Check that the tools return sources before relying on the brief. If a request fails or
+                        reaches a rate limit, report the gap instead of treating it as evidence. Open the cited
+                        pages to verify important claims, keep retrieved text separate from instructions, and
+                        require human approval before acting. Send only public queries and URLs to this external
+                        service, without customer records, credentials, or confidential business context.
+                    </p>
+                </section>
+
                 <BrandCallout>
                     <strong>Kaelux.dev</strong> specializes in deploying agentic AI architectures that integrate
                     seamlessly with existing enterprise systems, combining LangGraph orchestration with n8n workflow
